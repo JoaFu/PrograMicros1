@@ -1,129 +1,100 @@
 /*
 * Contador4Bits.asm
 *
-* Creado:
-* Autor :
+* Creado: 6 de febrero del 2026
+* Autor : Joaquín Fuentes
 * Descripción:
 * Contador binario de 4 bits con incremento y decremento
 * mediante dos pushbuttons con antirrebote por software
 */
 /****************************************/
 // Encabezado (Definición de Registros, Variables y Constantes)
-.include "M328PDEF.inc"     // Definiciones ATmega328P
-
-.def contador = R16
-.def temp     = R17
-
-/****************************************/
-// Segmento de datos
+.include "M328PDEF.inc"     // Include definitions specific to ATMega328P
 .dseg
-.org SRAM_START
-// (No se usan variables en SRAM)
+.org    SRAM_START
+//variable_name:     .byte   1   // Memory alocation for variable_name:     .byte   (byte size)
 
-/****************************************/
-// Segmento de código
 .cseg
 .org 0x0000
-    RJMP RESET
-
-/****************************************/
+ /****************************************/
 // Configuración de la pila
-RESET:
-    LDI     temp, LOW(RAMEND)
-    OUT     SPL, temp
-    LDI     temp, HIGH(RAMEND)
-    OUT     SPH, temp
-
+LDI     R16, LOW(RAMEND)
+OUT     SPL, R16
+LDI     R16, HIGH(RAMEND)
+OUT     SPH, R16
 /****************************************/
-// Configuración MCU
 SETUP:
-    ; PORTB[3:0] como salida
-    LDI     temp, 0x0F
-    OUT     DDRB, temp
+    ; -------- ENTRADAS --------
+    ; PD2–PD5 entradas
+    CBI DDRD, DDD2
+    CBI DDRD, DDD3
+    CBI DDRD, DDD4
+    CBI DDRD, DDD5
 
-    ; PORTD como entrada
-    CLR     temp
-    OUT     DDRD, temp
+    ; Pull-ups
+    LDI R16, (1<<PD2)|(1<<PD3)|(1<<PD4)|(1<<PD5)
+    OUT PORTD, R16
 
-    ; Pull-up en PD2 y PD3
-    LDI     temp, (1<<PD2)|(1<<PD3)
-    OUT     PORTD, temp
+    ; -------- SALIDAS --------
+    ; PORTB completo
+    LDI R16, 0xFF
+    OUT DDRB, R16
+    CLR R16
+    OUT PORTB, R16
 
-    ; Inicializar contador
-    CLR     contador
+    ; -------- INICIAL --------
+    CLR R20        ; contador 1
+    CLR R21        ; contador 2
+    IN  R16, PIND  ; estado previo
 
-/****************************************/
-// Loop Infinito
-MAIN_LOOP:
-    ; Mostrar contador en PORTB
-    MOV     temp, contador
-    OUT     PORTB, temp
+MAIN:
+    IN  R17, PIND
+    CP  R17, R16
+    BREQ MAIN
 
-    ; Botón incrementar (PD2)
-    SBIS    PIND, PD2
-    RCALL   DEBOUNCE_INC
+    RCALL DELAY
 
-    ; Botón decrementar (PD3)
-    SBIS    PIND, PD3
-    RCALL   DEBOUNCE_DEC
+    IN  R18, PIND
+    CP  R18, R17
+    BRNE MAIN
 
-    RJMP    MAIN_LOOP
+    MOV R16, R17
 
-/****************************************/
-// NON-Interrupt subroutines
+    ; ---- CONTADOR 1 ----
+    ; PD2 suma
+    SBRS R17, PD2
+    INC R20
 
-; ---- Antirrebote + incremento ----
-DEBOUNCE_INC:
-    RCALL   DELAY
-    SBIS    PIND, PD2
-    RCALL   INCREMENTA
-WAIT_INC:
-    SBIC    PIND, PD2
-    RJMP    WAIT_INC
-    RET
+    ; PD3 resta
+    SBRS R17, PD3
+    DEC R20
 
-; ---- Antirrebote + decremento ----
-DEBOUNCE_DEC:
-    RCALL   DELAY
-    SBIS    PIND, PD3
-    RCALL   DECREMENTA
-WAIT_DEC:
-    SBIC    PIND, PD3
-    RJMP    WAIT_DEC
-    RET
+    ; ---- CONTADOR 2 ----
+    ; PD4 suma
+    SBRS R17, PD4
+    INC R21
 
-; ---- Incrementar contador ----
-INCREMENTA:
-    INC     contador
-    CPI     contador, 16
-    BRLO    INC_OK
-    CLR     contador
-INC_OK:
-    RET
+    ; PD5 resta
+    SBRS R17, PD5
+    DEC R21
 
-; ---- Decrementar contador ----
-DECREMENTA:
-    TST     contador
-    BRNE    DEC_OK
-    LDI     contador, 15
-    RET
-DEC_OK:
-    DEC     contador
-    RET
+    ; limitar a 4 bits
+    ANDI R20, 0x0F
+    ANDI R21, 0x0F
 
-; ---- Retardo (antirrebote) ----
+    ; ---- SALIDA ----
+    MOV R22, R21
+    SWAP R22
+    ANDI R22, 0xF0
+    OR   R22, R20
+    OUT  PORTB, R22
+
+    RJMP MAIN
+
+; --------------------------
 DELAY:
-    LDI     R18, 100
+    LDI R19, 255
 D1:
-    LDI     R19, 255
-D2:
-    DEC     R19
-    BRNE    D2
-    DEC     R18
-    BRNE    D1
+    DEC R19
+    BRNE D1
     RET
-
-/****************************************/
-// Interrupt routines
-; (No se utilizan interrupciones)
-/*****************************

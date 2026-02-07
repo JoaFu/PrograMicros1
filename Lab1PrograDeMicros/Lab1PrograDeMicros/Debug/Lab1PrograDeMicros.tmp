@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\Debug\Lab1PrograDeMicros.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Lab1PrograDeMicros.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Lab1PrograDeMicros.map</FILE>
+  <FILE>Lab1PrograDeMicros.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>26</LINE></SETUP>
+  <MAIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>50</LINE></MAIN>
+  <DELAY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>95</LINE></DELAY>
+  <D1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>97</LINE></D1>
+ </LABELS>
+</ASSEMBLER_INFO>
