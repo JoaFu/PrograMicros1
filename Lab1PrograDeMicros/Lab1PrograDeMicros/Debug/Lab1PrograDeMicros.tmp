@@ -24,8 +24,9 @@
  </OUTPUT_FILES>
  <LABELS>
   <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>26</LINE></SETUP>
-  <MAIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>50</LINE></MAIN>
-  <DELAY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>95</LINE></DELAY>
-  <D1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>97</LINE></D1>
+  <MAIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>71</LINE></MAIN>
+  <DELAY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>170</LINE></DELAY>
+  <SUMA><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>128</LINE></SUMA>
+  <D1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm</FILE><LINE>172</LINE></D1>
  </LABELS>
 </ASSEMBLER_INFO>

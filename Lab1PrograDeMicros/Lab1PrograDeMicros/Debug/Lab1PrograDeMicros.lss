@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm Fri Feb 06 18:42:05 2026
+AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm Wed Feb 11 09:30:30 2026
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm(12): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm(10): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm(12): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1PrograDeMicros\main.asm(10): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
                                  
                                  /*
                                  
@@ -987,13 +987,11 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1P
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 * Contador4Bits.asm
+                                 * Sumador de 4 bits
                                  *
-                                 * Creado: 6 de febrero del 2026
+                                 * Creado: 11-feb-2026
                                  * Autor : Joaquín Fuentes
-                                 * Descripción:
-                                 * Contador binario de 4 bits con incremento y decremento
-                                 * mediante dos pushbuttons con antirrebote por software
+                                 * Descripción: Se tienen dos contadores de 4 bits que funcionan por separado, cuyos valores se pueden sumar. Se tiene una led que muestra carry.
                                  */
                                  /****************************************/
                                  // Encabezado (Definición de Registros, Variables y Constantes)
@@ -1054,80 +1052,158 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab1PrograDeMicros\Lab1P
 000002 e008                      LDI     R16, HIGH(RAMEND)
 000003 bf0e                      OUT     SPH, R16
                                  /****************************************/
+                                 // Configuracion MCU
+                                 
                                  SETUP:
-                                     ; -------- ENTRADAS --------
-                                     ; PD2–PD5 entradas
-000004 9852                          CBI DDRD, DDD2
-000005 9853                          CBI DDRD, DDD3
-000006 9854                          CBI DDRD, DDD4
-000007 9855                          CBI DDRD, DDD5
                                  
-                                     ; Pull-ups
-000008 e30c                          LDI R16, (1<<PD2)|(1<<PD3)|(1<<PD4)|(1<<PD5)
-000009 b90b                          OUT PORTD, R16
+                                 	; -------- ENTRADAS (BOTONES EN PORTD) --------
+000004 9852                      	CBI DDRD, DDD2
+000005 9853                      	CBI DDRD, DDD3
+000006 9854                      	CBI DDRD, DDD4
+000007 9855                      	CBI DDRD, DDD5
+000008 9856                      	CBI DDRD, DDD6
                                  
-                                     ; -------- SALIDAS --------
-                                     ; PORTB completo
-00000a ef0f                          LDI R16, 0xFF
-00000b b904                          OUT DDRB, R16
-00000c 2700                          CLR R16
-00000d b905                          OUT PORTB, R16
+000009 e70c                      	LDI R16, (1<<PD2)|(1<<PD3)|(1<<PD4)|(1<<PD5)|(1<<PD6)
+00000a b90b                      	OUT PORTD, R16 ; PULLUPS
                                  
-                                     ; -------- INICIAL --------
-00000e 2744                          CLR R20        ; contador 1
-00000f 2755                          CLR R21        ; contador 2
-000010 b109                          IN  R16, PIND  ; estado previo
+                                 	; -------- SALIDAS --------
+                                 
+                                 	; CONTADOR 1 (PB0-PB3)
+00000b e00f                      	LDI R16, 0X0F
+00000c b904                      	OUT DDRB, R16
+                                 
+                                 	; CONTADOR 2 (PC0-PC3)
+00000d e00f                      	LDI R16, 0X0F
+00000e b907                      	OUT DDRC, R16
+                                 
+                                 	; RESULTADO PB4-PB5
+00000f 9a24                      	SBI DDRB, DDB4
+000010 9a25                      	SBI DDRB, DDB5
+                                 
+                                 	; RESULTADO PC4-PC5
+000011 9a3c                      	SBI DDRC, DDC4
+000012 9a3d                      	SBI DDRC, DDC5
+                                 
+                                 	; CARRY PD7
+000013 9a57                      	SBI DDRD, DDD7
+                                 
+                                 	; LIMPIAR SOLO SALIDAS (NO TOCAR PULLUPS)
+000014 2700                      	CLR R16
+000015 b905                      	OUT PORTB, R16
+000016 b908                      	OUT PORTC, R16
+000017 985f                      	CBI PORTD, PD7
+                                 
+                                 	; -------- INICIAL --------
+000018 2744                      	CLR R20
+000019 2755                      	CLR R21
+00001a b109                      	IN  R16, PIND
+00001b 770c                      	ANDI R16, 0b01111100
                                  
                                  MAIN:
-000011 b119                          IN  R17, PIND
-000012 1710                          CP  R17, R16
-000013 f3e9                          BREQ MAIN
+                                 	;ON/OFF?
+00001c b119                      	IN  R17, PIND
+00001d 771c                      	ANDI R17, 0b01111100
+00001e 1710                      	CP   R17, R16
+00001f f3e1                      	BREQ MAIN
                                  
-000014 d014                          RCALL DELAY
                                  
-000015 b129                          IN  R18, PIND
-000016 1721                          CP  R18, R17
-000017 f7c9                          BRNE MAIN
+000020 d032                      	RCALL DELAY
                                  
-000018 2f01                          MOV R16, R17
+000021 b129                      	IN   R18, PIND
+000022 772c                      	ANDI R18, 0b01111100
+000023 1721                      	CP   R18, R17
+000024 f7b9                      	BRNE MAIN
                                  
-                                     ; ---- CONTADOR 1 ----
-                                     ; PD2 suma
-000019 ff12                          SBRS R17, PD2
-00001a 9543                          INC R20
                                  
-                                     ; PD3 resta
-00001b ff13                          SBRS R17, PD3
-00001c 954a                          DEC R20
+000025 2f01                      	MOV R16, R17
                                  
-                                     ; ---- CONTADOR 2 ----
-                                     ; PD4 suma
-00001d ff14                          SBRS R17, PD4
-00001e 9553                          INC R21
+                                 	; ---- CONTADOR 1 ----
+000026 ff12                      	SBRS R17, PD2
+000027 9543                      	INC R20
                                  
-                                     ; PD5 resta
-00001f ff15                          SBRS R17, PD5
-000020 955a                          DEC R21
+000028 ff13                      	SBRS R17, PD3
+000029 954a                      	DEC R20
                                  
-                                     ; limitar a 4 bits
-000021 704f                          ANDI R20, 0x0F
-000022 705f                          ANDI R21, 0x0F
+                                 	; ---- CONTADOR 2 ----
+00002a ff14                      	SBRS R17, PD4
+00002b 9553                      	INC R21
                                  
-                                     ; ---- SALIDA ----
-000023 2f65                          MOV R22, R21
-000024 9562                          SWAP R22
-000025 7f60                          ANDI R22, 0xF0
-000026 2b64                          OR   R22, R20
-000027 b965                          OUT  PORTB, R22
+00002c ff15                      	SBRS R17, PD5
+00002d 955a                      	DEC R21
+                                 	
+                                 	;SOLO 4 BITS
+00002e 704f                      	ANDI R20, 0X0F
+00002f 705f                      	ANDI R21, 0X0F
                                  
-000028 cfe8                          RJMP MAIN
+                                 	; ---- MOSTRAR CONTADORES ----
                                  
-                                 ; --------------------------
+                                 	; PB0-PB3
+000030 b165                      	IN R22, PORTB
+000031 7f60                      	ANDI R22, 0b11110000
+000032 2b64                      	OR R22, R20
+000033 b965                      	OUT PORTB, R22
+                                 
+                                 	; PC0-PC3
+000034 b178                      	IN R23, PORTC
+000035 7f70                      	ANDI R23, 0b11110000
+000036 2b75                      	OR R23, R21
+000037 b978                      	OUT PORTC, R23
+                                 
+                                 	; ---- SUMA ----
+000038 ff16                      	SBRS R17, PD6
+000039 d001                      	RCALL SUMA
+                                 
+00003a cfe1                      	RJMP MAIN
+                                 
+                                 
+                                 SUMA:
+                                 
+                                 	;SUMA DE REGISTROS
+00003b 2f84                      	MOV R24, R20
+00003c 0f85                      	ADD R24, R21
+                                 
+                                 	;LÓGICA DEL CARRY
+00003d fd84                      	SBRC R24, 4 ;10000
+00003e 9a5f                      	SBI PORTD, PD7
+                                 
+00003f ff84                      	SBRS R24, 4
+000040 985f                      	CBI PORTD, PD7
+                                 	;--------------
+000041 708f                      	ANDI R24, 0X0F
+                                 
+                                 	; BIT0 -> PB4
+000042 ff80                      	SBRS R24, 0
+000043 982c                      	CBI PORTB, PB4
+000044 fd80                      	SBRC R24, 0
+000045 9a2c                      	SBI PORTB, PB4
+                                 
+                                 	; BIT1 -> PB5
+000046 ff81                      	SBRS R24, 1
+000047 982d                      	CBI PORTB, PB5
+000048 fd81                      	SBRC R24, 1
+000049 9a2d                      	SBI PORTB, PB5
+                                 
+                                 	; BIT2 -> PC4
+00004a ff82                      	SBRS R24, 2
+00004b 9844                      	CBI PORTC, PC4
+00004c fd82                      	SBRC R24, 2
+00004d 9a44                      	SBI PORTC, PC4
+                                 
+                                 	; BIT3 -> PC5
+00004e ff83                      	SBRS R24, 3
+00004f 9845                      	CBI PORTC, PC5
+000050 fd83                      	SBRC R24, 3
+000051 9a45                      	SBI PORTC, PC5
+                                 
+000052 9508                      	RET
+                                 
+                                 
                                  DELAY:
-000029 ef3f                          LDI R19, 255
+000053 ec38                      	LDI R19, 200
                                  D1:
-00002a 953a                          DEC R19
-00002b f7f1                          BRNE D1
+000054 953a                      	DEC R19
+000055 f7f1                      	BRNE D1
+000056 9508                      	RET
 
 
 RESOURCE USE INFORMATION
@@ -1147,37 +1223,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  13 r17:   8 r18:   2 r19:   2 r20:   5 
-r21:   5 r22:   5 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  17 r17:  10 r18:   3 r19:   2 r20:   6 
+r21:   6 r22:   4 r23:   4 r24:  13 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 7 out of 35 (20.0%)
+Registers used: 9 out of 35 (25.7%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
-andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
+andi  :   8 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   4 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :  11 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   3 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   2 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   5 lds   :   0 lpm   :   0 lsl   :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   5 inc   :   2 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   6 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   1 ori   :   0 out   :   6 pop   :   0 
-push  :   0 rcall :   1 ret   :   1 reti  :   0 rjmp  :   1 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   4 sec   :   0 seh   :   0 
+neg   :   0 nop   :   0 or    :   2 ori   :   0 out   :   9 pop   :   0 
+push  :   0 rcall :   2 ret   :   2 reti  :   0 rjmp  :   1 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :  10 sbic  :   0 sbis  :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   5 sbrs  :  10 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
-sub   :   0 subi  :   0 swap  :   1 tst   :   0 wdr   :   0 
-Instructions used: 18 out of 113 (15.9%)
+sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 20 out of 113 (17.7%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00005a     90      0     90   32768   0.3%
+[.cseg] 0x000000 0x0000ae    174      0    174   32768   0.5%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
