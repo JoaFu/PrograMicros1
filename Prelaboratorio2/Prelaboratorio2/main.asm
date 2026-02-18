@@ -125,14 +125,7 @@ CONTADOR_AUTO:
 
     CLR R17
 
-    ; ---- contador binario 4 bits ----
-    INC R18
-    ANDI R18, 0x0F
-
-    IN R16, PORTB
-    ANDI R16, 0b11110000
-    OR R16, R18
-    OUT PORTB, R16
+   
 
     ; ---- contar décimas ----
     INC R19
@@ -144,6 +137,11 @@ CONTADOR_AUTO:
     ; ---- contar segundos ----
     INC R21
     ANDI R21, 0x0F
+
+	IN R16, PORTB
+    ANDI R16, 0b11110000
+    OR R16, R21
+    OUT PORTB, R16
 
     CP R21, R20
     BRNE CA_FIN

@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm Wed Feb 18 01:37:40 2026
+AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm Wed Feb 18 15:43:38 2026
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm(10): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm(11): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm(10): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm(11): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
                                  
                                  /*
                                  
@@ -989,9 +989,10 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelabor
                                  
                                  * Laboratorio2_PrograMicros.asm
                                  *
-                                 * Creado: 12-feb-2026 
-                                 * Autor : Joaquín Fuentes
-                                 * Descripción: Contador de 4 bits que cambia cada 100ms
+                                 * Creado: 17-feb-2026 
+                                 * Autor : Joaquín Fuentes 24830
+                                 * Descripción: Genera una base de tiempo 100ms con Timer0, usa botones con detección de flanco para seleccionar un valor hexadecimal mostrado en el display.
+                                 				Dicho valor controla cada cuantos segundos cambia el estado de una led en D12.
                                  */
                                  /****************************************/
                                  /// Encabezado (Definición de Registros, Variables y Constantes)
@@ -1079,11 +1080,11 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelabor
 000010 e005                          LDI R16, (1<<CS02)|(1<<CS00)   ; prescaler 1024
 000011 bd05                          OUT TCCR0B, R16
                                  
-000012 2711                          CLR R17        ; contador overflow
-000013 2722                          CLR R18        ; contador automático
-000014 2744                          CLR R20        ; contador manual
-000015 2733                      	CLR R19        ; contador de décimas
-000016 2755                      	CLR R21        ; contador de segundos
+000012 2711                          CLR R17		; contador de overflows
+000013 2722                          CLR R18		; contador automático
+000014 2744                          CLR R20     ; contador manual
+000015 2733                      	CLR R19     ; contador de décimas
+000016 2755                      	CLR R21     ; contador de segundos
                                  
                                      ; guardar estado inicial botones
 000017 b169                          IN R22, PIND
@@ -1091,7 +1092,7 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelabor
                                  
                                  MAIN:
 000019 d003                          RCALL CONTADOR_MANUAL
-00001a d037                          RCALL MOSTRAR_DIS
+00001a d035                          RCALL MOSTRAR_DIS
 00001b d01d                          RCALL CONTADOR_AUTO
 00001c cffc                          RJMP MAIN
                                  
@@ -1102,26 +1103,25 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelabor
 00001f 17a6                          CP R26, R22
 000020 f0b9                          BREQ CM_FIN
                                  
-000021 d079                          RCALL DELAY_10MS
+000021 d077                          RCALL DELAY_10MS
                                  
 000022 b1a9                          IN R26, PIND
 000023 70ac                          ANDI R26, 0b00001100
 000024 17a6                          CP R26, R22
 000025 f091                          BREQ CM_FIN
                                  
-                                        ; ---- PD2 incremento ----
+                                 	; === PD2 incremento ===
 000026 ff62                          SBRS R22, PD2      ; si antes NO era 1 ? saltar
 000027 c002                          RJMP CHECK_PD3
 000028 ffa2                          SBRS R26, PD2      ; si ahora es 1 ? saltar
 000029 c006                          RJMP INC_MANUAL    ; si ahora es 0 ? flanco descendente
                                  
                                  CHECK_PD3:
-                                     ; ---- PD3 decremento ----
+                                 	; === PD3 decremento ===
 00002a ff63                          SBRS R22, PD3
 00002b c002                          RJMP UPDATE_STATE
 00002c ffa3                          SBRS R26, PD3
 00002d c006                          RJMP DEC_MANUAL
-                                 
                                  
                                  UPDATE_STATE:
 00002e 2f6a                          MOV R22, R26
@@ -1139,7 +1139,7 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelabor
 000036 2f6a                          MOV R22, R26
 000037 9508                          RET
                                  
-                                 CM_FIN:
+                                 CM_FIN:			;Contador Manual Final
 000038 9508                          RET
                                  
                                  CONTADOR_AUTO:
@@ -1152,140 +1152,134 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelabor
                                  
 00003d 9513                          INC R17
 00003e 3016                          CPI R17, 6
-00003f f489                          BRNE CA_FIN
+00003f f479                          BRNE CA_FIN
                                  
 000040 2711                          CLR R17
                                  
-                                     ; ---- contador binario 4 bits ----
-000041 9523                          INC R18
-000042 702f                          ANDI R18, 0x0F
-                                 
-000043 b105                          IN R16, PORTB
-000044 7f00                          ANDI R16, 0b11110000
-000045 2b02                          OR R16, R18
-000046 b905                          OUT PORTB, R16
+                                    
                                  
                                      ; ---- contar décimas ----
-000047 9533                          INC R19
-000048 303a                          CPI R19, 10
-000049 f439                          BRNE CA_FIN
+000041 9533                          INC R19
+000042 303a                          CPI R19, 10
+000043 f459                          BRNE CA_FIN
                                  
-00004a 2733                          CLR R19
+000044 2733                          CLR R19
                                  
                                      ; ---- contar segundos ----
-00004b 9553                          INC R21
-00004c 705f                          ANDI R21, 0x0F
+000045 9553                          INC R21
+000046 705f                          ANDI R21, 0x0F
                                  
-00004d 1754                          CP R21, R20
-00004e f411                          BRNE CA_FIN
+000047 b105                      	IN R16, PORTB
+000048 7f00                          ANDI R16, 0b11110000
+000049 2b05                          OR R16, R21
+00004a b905                          OUT PORTB, R16
                                  
-00004f 2755                          CLR R21
-000050 9a1c                          SBI PINB, PINB4
+00004b 1754                          CP R21, R20
+00004c f411                          BRNE CA_FIN
                                  
-                                 CA_FIN:
-000051 9508                          RET
+00004d 2755                          CLR R21
+00004e 9a1c                          SBI PINB, PINB4
+                                 
+                                 CA_FIN:			;Contador Automático Final
+00004f 9508                          RET
                                  
                                  
                                  MOSTRAR_DIS:
+                                 	; Lista de casos con comparaciones. Si R20=N => SHOWN.
+000050 704f                          ANDI R20, 0x0F
                                  
-000052 704f                          ANDI R20, 0x0F
+000051 3040                          CPI R20, 0
+000052 f0f9                          BREQ SHOW0
+000053 3041                          CPI R20, 1
+000054 f0f9                          BREQ SHOW1
+000055 3042                          CPI R20, 2
+000056 f0f9                          BREQ SHOW2
+000057 3043                          CPI R20, 3
+000058 f0f9                          BREQ SHOW3
+000059 3044                          CPI R20, 4
+00005a f0f9                          BREQ SHOW4
+00005b 3045                          CPI R20, 5
+00005c f0f9                          BREQ SHOW5
+00005d 3046                          CPI R20, 6
+00005e f0f9                          BREQ SHOW6
+00005f 3047                          CPI R20, 7
+000060 f0f9                          BREQ SHOW7
+000061 3048                          CPI R20, 8
+000062 f0f9                          BREQ SHOW8
+000063 3049                          CPI R20, 9
+000064 f0f9                          BREQ SHOW9
+000065 304a                          CPI R20, 10
+000066 f0f9                          BREQ SHOWA
+000067 304b                          CPI R20, 11
+000068 f0f9                          BREQ SHOWb
+000069 304c                          CPI R20, 12
+00006a f0f9                          BREQ SHOWC
+00006b 304d                          CPI R20, 13
+00006c f0f9                          BREQ SHOWd
+00006d 304e                          CPI R20, 14
+00006e f0f9                          BREQ SHOWE
+00006f 304f                          CPI R20, 15
+000070 f0f9                          BREQ SHOWF
                                  
-000053 3040                          CPI R20, 0
-000054 f0f9                          BREQ SHOW0
-000055 3041                          CPI R20, 1
-000056 f0f9                          BREQ SHOW1
-000057 3042                          CPI R20, 2
-000058 f0f9                          BREQ SHOW2
-000059 3043                          CPI R20, 3
-00005a f0f9                          BREQ SHOW3
-00005b 3044                          CPI R20, 4
-00005c f0f9                          BREQ SHOW4
-00005d 3045                          CPI R20, 5
-00005e f0f9                          BREQ SHOW5
-00005f 3046                          CPI R20, 6
-000060 f0f9                          BREQ SHOW6
-000061 3047                          CPI R20, 7
-000062 f0f9                          BREQ SHOW7
-000063 3048                          CPI R20, 8
-000064 f0f9                          BREQ SHOW8
-000065 3049                          CPI R20, 9
-000066 f0f9                          BREQ SHOW9
-000067 304a                          CPI R20, 10
-000068 f0f9                          BREQ SHOWA
-000069 304b                          CPI R20, 11
-00006a f0f9                          BREQ SHOWb
-00006b 304c                          CPI R20, 12
-00006c f0f9                          BREQ SHOWC
-00006d 304d                          CPI R20, 13
-00006e f0f9                          BREQ SHOWd
-00006f 304e                          CPI R20, 14
-000070 f0f9                          BREQ SHOWE
-000071 304f                          CPI R20, 15
-000072 f0f9                          BREQ SHOWF
+000071 9508                          RET
                                  
-000073 9508                          RET
-                                 
-000074 e37f                      SHOW0: LDI R23, 0b00111111 ;0
-000075 c01e                             RJMP SHOWN
-000076 e076                      SHOW1: LDI R23, 0b00000110 ;1
-000077 c01c                             RJMP SHOWN
-000078 e57b                      SHOW2: LDI R23, 0b01011011 ;2
-000079 c01a                             RJMP SHOWN
-00007a e47f                      SHOW3: LDI R23, 0b01001111 ;3
-00007b c018                             RJMP SHOWN
-00007c e676                      SHOW4: LDI R23, 0b01100110 ;4
-00007d c016                             RJMP SHOWN
-00007e e67d                      SHOW5: LDI R23, 0b01101101 ;5
-00007f c014                             RJMP SHOWN
-000080 e77d                      SHOW6: LDI R23, 0b01111101 ;6
-000081 c012                             RJMP SHOWN
-000082 e077                      SHOW7: LDI R23, 0b00000111 ;7
-000083 c010                             RJMP SHOWN
-000084 e77f                      SHOW8: LDI R23, 0b01111111 ;8
-000085 c00e                             RJMP SHOWN
-000086 e67f                      SHOW9: LDI R23, 0b01101111 ;9
-000087 c00c                             RJMP SHOWN
-000088 e777                      SHOWA: LDI R23, 0b01110111 ;A
-000089 c00a                             RJMP SHOWN
-00008a e77c                      SHOWb: LDI R23, 0b01111100 ;b
-00008b c008                             RJMP SHOWN
-00008c e379                      SHOWC: LDI R23, 0b00111001 ;C
-00008d c006                             RJMP SHOWN
-00008e e57e                      SHOWd: LDI R23, 0b01011110 ;d
-00008f c004                             RJMP SHOWN
-000090 e779                      SHOWE: LDI R23, 0b01111001 ;E
-000091 c002                             RJMP SHOWN
-000092 e771                      SHOWF: LDI R23, 0b01110001 ;F
-000093 c000                             RJMP SHOWN
+000072 e37f                      SHOW0: LDI R23, 0b00111111 ;0
+000073 c01e                             RJMP SHOWN
+000074 e076                      SHOW1: LDI R23, 0b00000110 ;1
+000075 c01c                             RJMP SHOWN
+000076 e57b                      SHOW2: LDI R23, 0b01011011 ;2
+000077 c01a                             RJMP SHOWN
+000078 e47f                      SHOW3: LDI R23, 0b01001111 ;3
+000079 c018                             RJMP SHOWN
+00007a e676                      SHOW4: LDI R23, 0b01100110 ;4
+00007b c016                             RJMP SHOWN
+00007c e67d                      SHOW5: LDI R23, 0b01101101 ;5
+00007d c014                             RJMP SHOWN
+00007e e77d                      SHOW6: LDI R23, 0b01111101 ;6
+00007f c012                             RJMP SHOWN
+000080 e077                      SHOW7: LDI R23, 0b00000111 ;7
+000081 c010                             RJMP SHOWN
+000082 e77f                      SHOW8: LDI R23, 0b01111111 ;8
+000083 c00e                             RJMP SHOWN
+000084 e67f                      SHOW9: LDI R23, 0b01101111 ;9
+000085 c00c                             RJMP SHOWN
+000086 e777                      SHOWA: LDI R23, 0b01110111 ;A
+000087 c00a                             RJMP SHOWN
+000088 e77c                      SHOWb: LDI R23, 0b01111100 ;b
+000089 c008                             RJMP SHOWN
+00008a e379                      SHOWC: LDI R23, 0b00111001 ;C
+00008b c006                             RJMP SHOWN
+00008c e57e                      SHOWd: LDI R23, 0b01011110 ;d
+00008d c004                             RJMP SHOWN
+00008e e779                      SHOWE: LDI R23, 0b01111001 ;E
+00008f c002                             RJMP SHOWN
+000090 e771                      SHOWF: LDI R23, 0b01110001 ;F
+000091 c000                             RJMP SHOWN
                                  
                                  SHOWN:
                                  
                                      ; segmento g (bit 6)
-000094 ff76                          SBRS R23, 6
-000095 985c                          CBI PORTD, PORTD4
-000096 fd76                          SBRC R23, 6
-000097 9a5c                          SBI PORTD, PORTD4
+000092 ff76                          SBRS R23, 6
+000093 985c                          CBI PORTD, PORTD4
+000094 fd76                          SBRC R23, 6
+000095 9a5c                          SBI PORTD, PORTD4
                                  
                                      ; a–f
-000098 737f                          ANDI R23, 0b00111111
-000099 b978                          OUT PORTC, R23
+000096 737f                          ANDI R23, 0b00111111
+000097 b978                          OUT PORTC, R23
                                  
-00009a 9508                          RET
+000098 9508                          RET
                                  
-                                 
-                                 ; =====================================================
-                                 ; DELAY 10ms aprox
-                                 ; =====================================================
                                  DELAY_10MS:
-00009b ec88                          LDI R24, 200
+000099 ec88                          LDI R24, 200
                                  D1:
-00009c ec98                          LDI R25, 200
+00009a ec98                          LDI R25, 200
                                  D2:
-00009d 959a                          DEC R25
-00009e f7f1                          BRNE D2
-00009f 958a                          DEC R24
-0000a0 f7d9                          BRNE D1
-0000a1 9508                          RET
+00009b 959a                          DEC R25
+00009c f7f1                          BRNE D2
+00009d 958a                          DEC R24
+00009e f7d9                          BRNE D1
+00009f 9508                          RET
 
 
 RESOURCE USE INFORMATION
@@ -1305,14 +1299,14 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  18 r17:   4 r18:   4 r19:   4 r20:  23 
-r21:   5 r22:   9 r23:  20 r24:   2 r25:   2 r26:  11 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  18 r17:   4 r18:   1 r19:   4 r20:  23 
+r21:   6 r22:   9 r23:  20 r24:   2 r25:   2 r26:  11 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 11 out of 35 (31.4%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
-andi  :  10 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+andi  :   9 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :  18 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   5 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
@@ -1320,7 +1314,7 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   3 cbr   :   0
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   8 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   3 cpc   :   0 
 cpi   :  18 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   5 inc   :   5 jmp   :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   5 inc   :   4 jmp   :   0 
 ld    :   0 ldd   :   0 ldi   :  24 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   3 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   1 ori   :   0 out   :   8 pop   :   0 
@@ -1335,7 +1329,7 @@ Instructions used: 20 out of 113 (17.7%)
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000144    324      0    324   32768   1.0%
+[.cseg] 0x000000 0x000140    320      0    320   32768   1.0%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

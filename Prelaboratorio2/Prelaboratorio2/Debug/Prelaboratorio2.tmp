@@ -23,36 +23,36 @@
   <FILE>Prelaboratorio2.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>25</LINE></SETUP>
-  <MAIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>61</LINE></MAIN>
-  <CONTADOR_MANUAL><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>67</LINE></CONTADOR_MANUAL>
-  <MOSTRAR_DIS><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>158</LINE></MOSTRAR_DIS>
+  <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>26</LINE></SETUP>
+  <MAIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>62</LINE></MAIN>
+  <CONTADOR_MANUAL><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>68</LINE></CONTADOR_MANUAL>
+  <MOSTRAR_DIS><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>156</LINE></MOSTRAR_DIS>
   <CONTADOR_AUTO><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>114</LINE></CONTADOR_AUTO>
   <CM_FIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>111</LINE></CM_FIN>
-  <DELAY_10MS><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>248</LINE></DELAY_10MS>
-  <CHECK_PD3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>87</LINE></CHECK_PD3>
+  <DELAY_10MS><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>242</LINE></DELAY_10MS>
+  <CHECK_PD3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>88</LINE></CHECK_PD3>
   <INC_MANUAL><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>99</LINE></INC_MANUAL>
   <UPDATE_STATE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>95</LINE></UPDATE_STATE>
   <DEC_MANUAL><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>105</LINE></DEC_MANUAL>
-  <CA_FIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>154</LINE></CA_FIN>
-  <SHOW0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>197</LINE></SHOW0>
-  <SHOW1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>199</LINE></SHOW1>
-  <SHOW2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>201</LINE></SHOW2>
-  <SHOW3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>203</LINE></SHOW3>
-  <SHOW4><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>205</LINE></SHOW4>
-  <SHOW5><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>207</LINE></SHOW5>
-  <SHOW6><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>209</LINE></SHOW6>
-  <SHOW7><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>211</LINE></SHOW7>
-  <SHOW8><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>213</LINE></SHOW8>
-  <SHOW9><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>215</LINE></SHOW9>
-  <SHOWA><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>217</LINE></SHOWA>
-  <SHOWb><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>219</LINE></SHOWb>
-  <SHOWC><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>221</LINE></SHOWC>
-  <SHOWd><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>223</LINE></SHOWd>
-  <SHOWE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>225</LINE></SHOWE>
-  <SHOWF><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>227</LINE></SHOWF>
-  <SHOWN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>230</LINE></SHOWN>
-  <D1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>250</LINE></D1>
-  <D2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>252</LINE></D2>
+  <CA_FIN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>152</LINE></CA_FIN>
+  <SHOW0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>195</LINE></SHOW0>
+  <SHOW1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>197</LINE></SHOW1>
+  <SHOW2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>199</LINE></SHOW2>
+  <SHOW3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>201</LINE></SHOW3>
+  <SHOW4><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>203</LINE></SHOW4>
+  <SHOW5><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>205</LINE></SHOW5>
+  <SHOW6><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>207</LINE></SHOW6>
+  <SHOW7><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>209</LINE></SHOW7>
+  <SHOW8><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>211</LINE></SHOW8>
+  <SHOW9><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>213</LINE></SHOW9>
+  <SHOWA><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>215</LINE></SHOWA>
+  <SHOWb><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>217</LINE></SHOWb>
+  <SHOWC><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>219</LINE></SHOWC>
+  <SHOWd><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>221</LINE></SHOWd>
+  <SHOWE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>223</LINE></SHOWE>
+  <SHOWF><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>225</LINE></SHOWF>
+  <SHOWN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>228</LINE></SHOWN>
+  <D1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>244</LINE></D1>
+  <D2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Prelaboratorio2\Prelaboratorio2\main.asm</FILE><LINE>246</LINE></D2>
  </LABELS>
 </ASSEMBLER_INFO>
