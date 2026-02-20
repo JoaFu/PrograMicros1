@@ -62,8 +62,6 @@ SETUP:
 
 	CLR R20 ; Contador
 	CLR R21 ; Bandera de antirebote
-	IN  R23, PINB ; estado previo
-	ANDI R23, (1<<PB0)|(1<<PB1)
 
 	SEI
 
@@ -116,20 +114,30 @@ TIMER0_ISR:
 	;Detenemos el timer
 	LDI R16, 0x00
 	OUT TCCR0B, R16
-
 	CLR R16
 	OUT TCNT0, R16
-	
-	IN R16, PINB
+
+	IN R16, PINB ;Leer estado actual
 	ANDI R16, (1<<PB0|1<<PB1)
+	MOV R17, R16
+	
+	EOR R16, R22
 
-	SBRS R16, PB0
-	INC R20
+	; ¿Cambió PB0?
+    SBRS R16, PB0
+    RJMP CHECK_PB1
+    INC R20
 
-	SBRS R16, PB1
-	DEC R20
+CHECK_PB1:
+    SBRS R16, PB1
+    RJMP END_ISR
+    DEC R20
 
-	ANDI R20, 0x0F
+END_ISR:
+    ANDI R20, 0x0F
+
+    ; Guardar nuevo estado
+    MOV R22, R17
 
 	;Activamos de nuevo PCINT
 	LDI	 R16, (1<<PCIE0)

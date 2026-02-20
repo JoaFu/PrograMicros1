@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm Fri Feb 20 11:56:53 2026
+AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm Fri Feb 20 15:46:52 2026
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm(10): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1048,10 +1048,10 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm
 000000 c020                      	RJMP RESET
                                  
                                  .org 0x0006
-000006 c03e                          RJMP PCINT0_ISR
+000006 c03c                          RJMP PCINT0_ISR
                                  
                                  .org 0x0020     ; TIMER0_OVF
-000020 c031                          RJMP TIMER0_ISR
+000020 c02f                          RJMP TIMER0_ISR
                                   /****************************************/
                                  RESET:
                                  // Configuración de la pila
@@ -1093,10 +1093,8 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm
                                  
 000038 2744                      	CLR R20 ; Contador
 000039 2755                      	CLR R21 ; Bandera de antirebote
-00003a b173                      	IN  R23, PINB ; estado previo
-00003b 7073                      	ANDI R23, (1<<PB0)|(1<<PB1)
                                  
-00003c 9478                      	SEI
+00003a 9478                      	SEI
                                  
                                      
                                  /****************************************/
@@ -1104,15 +1102,15 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm
                                  MAIN_LOOP:
                                  	; Mostrar LEDS
                                  
-00003d b105                      	IN R16, PORTB
-00003e 7c03                      	ANDI R16, 0b11000011
-00003f 2f24                      	MOV R18, R20 ; R18 toma el valor del contador, pero habrá que moverlo porque es de PB2-PB5
-000040 0f22                      	LSL R18 ;<-
-000041 0f22                      	LSL R18 ;<--
-000042 2b02                      	OR R16, R18 
-000043 b905                      	OUT PORTB, R16
+00003b b105                      	IN R16, PORTB
+00003c 7c03                      	ANDI R16, 0b11000011
+00003d 2f24                      	MOV R18, R20 ; R18 toma el valor del contador, pero habrá que moverlo porque es de PB2-PB5
+00003e 0f22                      	LSL R18 ;<-
+00003f 0f22                      	LSL R18 ;<--
+000040 2b02                      	OR R16, R18 
+000041 b905                      	OUT PORTB, R16
                                  
-000044 cff8                          RJMP    MAIN_LOOP
+000042 cff8                          RJMP    MAIN_LOOP
                                  
                                  /****************************************/
                                  // NON-Interrupt subroutines
@@ -1121,54 +1119,64 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm
                                  // Interrupt routines
                                  PCINT0_ISR:
                                  
-000045 930f                      	PUSH R16 ; Guardamos
+000043 930f                      	PUSH R16 ; Guardamos
                                  
-000046 2355                      	AND R21, R21; ¿R21=0?
-000047 f441                      	BRNE EXIT_ISR
+000044 2355                      	AND R21, R21; ¿R21=0?
+000045 f441                      	BRNE EXIT_ISR
                                  	
-000048 e051                      	LDI R21, 1 ;Bandera forzada
+000046 e051                      	LDI R21, 1 ;Bandera forzada
                                  
-000049 e000                      	LDI R16, 0x00
-00004a 9300 0068                 	STS PCICR, R16
+000047 e000                      	LDI R16, 0x00
+000048 9300 0068                 	STS PCICR, R16
                                  
-00004c 2700                      	CLR R16
-00004d bd06                      	OUT TCNT0, R16
+00004a 2700                      	CLR R16
+00004b bd06                      	OUT TCNT0, R16
                                  	;INICIAR Timer0
-00004e e005                      	LDI R16, (1<<CS02|1<<CS00); Presecaler de 1024
-00004f bd05                      	OUT TCCR0B, R16
+00004c e005                      	LDI R16, (1<<CS02|1<<CS00); Presecaler de 1024
+00004d bd05                      	OUT TCCR0B, R16
                                  
                                  EXIT_ISR:
-000050 910f                      	POP R16
-000051 9518                      	RETI
+00004e 910f                      	POP R16
+00004f 9518                      	RETI
                                  
                                  TIMER0_ISR:
-000052 930f                      	PUSH R16
+000050 930f                      	PUSH R16
                                  
                                  	;Detenemos el timer
-000053 e000                      	LDI R16, 0x00
-000054 bd05                      	OUT TCCR0B, R16
+000051 e000                      	LDI R16, 0x00
+000052 bd05                      	OUT TCCR0B, R16
+000053 2700                      	CLR R16
+000054 bd06                      	OUT TCNT0, R16
                                  
-000055 2700                      	CLR R16
-000056 bd06                      	OUT TCNT0, R16
+000055 b103                      	IN R16, PINB ;Leer estado actual
+000056 7003                      	ANDI R16, (1<<PB0|1<<PB1)
+000057 2f10                      	MOV R17, R16
                                  	
-000057 b103                      	IN R16, PINB
-000058 7003                      	ANDI R16, (1<<PB0|1<<PB1)
+000058 2706                      	EOR R16, R22
                                  
-000059 ff00                      	SBRS R16, PB0
-00005a 9543                      	INC R20
+                                 	; ¿Cambió PB0?
+000059 ff00                          SBRS R16, PB0
+00005a c001                          RJMP CHECK_PB1
+00005b 9543                          INC R20
                                  
-00005b ff01                      	SBRS R16, PB1
-00005c 954a                      	DEC R20
+                                 CHECK_PB1:
+00005c ff01                          SBRS R16, PB1
+00005d c001                          RJMP END_ISR
+00005e 954a                          DEC R20
                                  
-00005d 704f                      	ANDI R20, 0x0F
+                                 END_ISR:
+00005f 704f                          ANDI R20, 0x0F
+                                 
+                                     ; Guardar nuevo estado
+000060 2f61                          MOV R22, R17
                                  
                                  	;Activamos de nuevo PCINT
-00005e e001                      	LDI	 R16, (1<<PCIE0)
-00005f 9300 0068                 	STS PCICR, R16
-000061 2755                      	CLR R21
+000061 e001                      	LDI	 R16, (1<<PCIE0)
+000062 9300 0068                 	STS PCICR, R16
+000064 2755                      	CLR R21
                                  
-000062 910f                      	POP R16
-000063 9518                      	RETI
+000065 910f                      	POP R16
+000066 9518                      	RETI
 
 
 RESOURCE USE INFORMATION
@@ -1188,37 +1196,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  40 r17:   0 r18:   4 r19:   0 r20:   5 
-r21:   5 r22:   0 r23:   2 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  42 r17:   2 r18:   4 r19:   0 r20:   5 
+r21:   5 r22:   2 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 5 out of 35 (14.3%)
+Registers used: 6 out of 35 (17.1%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   1 
-andi  :   4 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   1 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   2 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   5 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   1 jmp   :   0 
+cpi   :   0 cpse  :   0 dec   :   1 eor   :   1 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   1 jmp   :   0 
 ld    :   0 ldd   :   0 ldi   :  13 lds   :   0 lpm   :   0 lsl   :   2 
-lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+lsr   :   0 mov   :   3 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   1 ori   :   0 out   :  10 pop   :   2 
-push  :   2 rcall :   0 ret   :   0 reti  :   2 rjmp  :   4 rol   :   0 
+push  :   2 rcall :   0 ret   :   0 reti  :   2 rjmp  :   6 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   2 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   2 sec   :   0 seh   :   0 
 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   5 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 21 out of 113 (18.6%)
+Instructions used: 22 out of 113 (19.5%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0000c8    140      0    140   32768   0.4%
+[.cseg] 0x000000 0x0000ce    146      0    146   32768   0.4%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
