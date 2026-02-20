@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\Debug\Lab3_PM.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Lab3_PM.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Lab3_PM.map</FILE>
+  <FILE>Lab3_PM.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <RESET><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</FILE><LINE>25</LINE></RESET>
+  <PCINT0_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</FILE><LINE>91</LINE></PCINT0_ISR>
+  <TIMER0_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</FILE><LINE>113</LINE></TIMER0_ISR>
+  <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</FILE><LINE>33</LINE></SETUP>
+  <MAIN_LOOP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</FILE><LINE>73</LINE></MAIN_LOOP>
+  <EXIT_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Lab3_PM\Lab3_PM\main.asm</FILE><LINE>109</LINE></EXIT_ISR>
+ </LABELS>
+</ASSEMBLER_INFO>
