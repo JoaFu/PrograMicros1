@@ -72,6 +72,7 @@ SETUP:
 	SBI DDRC, DDC1
 
     ; Registros
+	CLR R17	; estado anterior
     CLR R20	; contador LEDs
     CLR R21 ; bandera debounce
     CLR R22 ; acumulador 10 ms
@@ -243,7 +244,7 @@ TIMER0_ISR:
 	; Contamos el tiempo (timer)
     INC R22
     CPI R22,  100
-    BRNE SECOND_GOT
+    BRNE CONTINUE_TIMER
 
     CLR R22
     
@@ -264,8 +265,6 @@ TIMER0_ISR:
 	CLR R24            ; reset total
 
 CONTINUE_TIMER:
-
-SECOND_GOT:
     AND R21, R21
     BREQ END_TIMER
 
@@ -275,16 +274,32 @@ SECOND_GOT:
 
     CLR R21
 
-    IN R16, PINB
-    ANDI R16, (1<<PB0)|(1<<PB1)
+	IN R16, PINB
+	ANDI R16, (1<<PB0)|(1<<PB1)
 
-    SBRS R16, PB0
-    INC R20
+	MOV R18, R16        ; R18 = estado actual
+	EOR R18, R17        ; R18 = bits que cambiaron
 
-    SBRS R16, PB1
-    DEC R20
+	; Si PB0 cambió
+	SBRS R18, PB0
+	RJMP CHECK_PB1
 
-    ANDI R20, 0x0F
+	; Si PB0 está presionado (0)
+	SBRS R16, PB0
+	INC R20
+
+CHECK_PB1:
+	; Si PB1 cambió
+	SBRS R18, PB1
+	RJMP SAVE_STATE
+
+	; Si PB1 está presionado (0)
+	SBRS R16, PB1
+	DEC R20
+
+SAVE_STATE:
+	MOV R17, R16        ; guardar nuevo estado
+	ANDI R20, 0x0F
 
 END_TIMER:
     POP R16
