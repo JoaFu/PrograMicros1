@@ -102,10 +102,10 @@ MAIN_LOOP:
 	MOV R16, R25    ; mostrar decenas
 	RJMP SHOW_NUMBER
 
-	SHOW_UNITS:
+SHOW_UNITS:
 	MOV R16, R24    ; mostrar unidades
 
-	SHOW_NUMBER:
+SHOW_NUMBER:
 
     CPI R16, 0x00
     BREQ SHOW0
