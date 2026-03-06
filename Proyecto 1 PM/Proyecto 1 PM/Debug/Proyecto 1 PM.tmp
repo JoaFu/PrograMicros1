@@ -1,0 +1,50 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\Debug\Proyecto 1 PM.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Proyecto 1 PM.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Proyecto 1 PM.map</FILE>
+  <FILE>Proyecto 1 PM.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <DIGIT_INDEX><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>15</LINE></DIGIT_INDEX>
+  <DIG0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>16</LINE></DIG0>
+  <DIG1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>17</LINE></DIG1>
+  <DIG2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>18</LINE></DIG2>
+  <DIG3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>19</LINE></DIG3>
+  <MILISEC_L><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>20</LINE></MILISEC_L>
+  <MILISEC_H><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>21</LINE></MILISEC_H>
+  <RESET><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>31</LINE></RESET>
+  <TIMER_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>98</LINE></TIMER_ISR>
+  <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>40</LINE></SETUP>
+  <MAIN_LOOP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>90</LINE></MAIN_LOOP>
+  <LOAD_DIG0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>121</LINE></LOAD_DIG0>
+  <LOAD_DIG1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>124</LINE></LOAD_DIG1>
+  <LOAD_DIG2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>127</LINE></LOAD_DIG2>
+  <LOAD_DIG3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>130</LINE></LOAD_DIG3>
+  <LOAD_PATTERN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>133</LINE></LOAD_PATTERN>
+  <tabla_7seg><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>224</LINE></tabla_7seg>
+  <SHIFT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>147</LINE></SHIFT>
+  <ACT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>154</LINE></ACT>
+  <STORE_INDEX><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>167</LINE></STORE_INDEX>
+  <NO_CARRY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>178</LINE></NO_CARRY>
+  <END_SECOND><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>210</LINE></END_SECOND>
+  <LED_2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>206</LINE></LED_2>
+ </LABELS>
+</ASSEMBLER_INFO>

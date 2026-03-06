@@ -1,0 +1,48 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\Debug\Clase FSM.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Clase FSM.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Clase FSM.map</FILE>
+  <FILE>Clase FSM.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <START><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>30</LINE></START>
+  <PCINT2_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>144</LINE></PCINT2_ISR>
+  <TMR1_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>186</LINE></TMR1_ISR>
+  <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>39</LINE></SETUP>
+  <INIT_TMR1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>136</LINE></INIT_TMR1>
+  <MAIN_LOOP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>85</LINE></MAIN_LOOP>
+  <INC_MODE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>101</LINE></INC_MODE>
+  <DEC_MODE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>109</LINE></DEC_MODE>
+  <AUTO_INC_MODE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>117</LINE></AUTO_INC_MODE>
+  <AUTO_DEC_MODE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>125</LINE></AUTO_DEC_MODE>
+  <EXIT_IM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>106</LINE></EXIT_IM>
+  <EXIT_DM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>114</LINE></EXIT_DM>
+  <EXIT_AIM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>122</LINE></EXIT_AIM>
+  <EXIT_ADM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>130</LINE></EXIT_ADM>
+  <CONTINUE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>151</LINE></CONTINUE>
+  <PCINT2_ISR_MODE0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>167</LINE></PCINT2_ISR_MODE0>
+  <PCINT2_ISR_MODE1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>172</LINE></PCINT2_ISR_MODE1>
+  <PCINT2_ISR_MODE2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>177</LINE></PCINT2_ISR_MODE2>
+  <PCINT2_ISR_MODE3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>180</LINE></PCINT2_ISR_MODE3>
+  <EXIT_PCINT2_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>184</LINE></EXIT_PCINT2_ISR>
+  <EXIT_TMR1_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Clase FSM\Clase FSM\main.asm</FILE><LINE>200</LINE></EXIT_TMR1_ISR>
+ </LABELS>
+</ASSEMBLER_INFO>
