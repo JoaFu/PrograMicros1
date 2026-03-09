@@ -27,7 +27,8 @@ MONTH:			.byte 1
 ALARM_MIN:		.byte 1
 ALARM_HOUR:		.byte 1
 ALARM_ON:		.byte 1
-FLAG_1S:			.byte 1
+FLAG_1S:		.byte 1
+FLAG_500MS:		.byte 1
 
 .equ MAX_DIG	= 4
 .equ MAX_MODES  = 3
@@ -123,12 +124,27 @@ SETUP:
 /****************************************/
 // Loop Infinito
 MAIN_LOOP:
+
+    LDS R16, FLAG_500MS
+    CPI R16, 1
+    BRNE CHECK_1S
+    
+    CLR R16
+    STS FLAG_500MS, R16
+
+    ; Toggle LEDs aquí
+    IN  R16, PORTB
+    LDI R17, (1<<PB4)|(1<<PB5)
+    EOR R16, R17
+    OUT PORTB, R16
+
+CHECK_1S:
 	LDS R16, FLAG_1S
 	CPI R16, 1
 	BRNE MAIN_LOOP
 	
 	CLR R16
-	STS FLAG_1S, R16
+	STS FLAG_1S, R16 ; Reiniciar Flag de 1s
 	RCALL UPDATE_CLOCK
 	RCALL UPDATE_DISPLAY
 	RJMP MAIN_LOOP
@@ -146,16 +162,20 @@ UPDATE_CLOCK:
     CPI R16, 60
     BRSH SEC_OVERFLOW
     RJMP STORE_SECS
-SEC_OVERFLOW:
-    CLR R16
 
-    ; Incrementar minutos
+SEC_OVERFLOW:
+    ; Segundos de nuevo a 0
+	CLR R16
+
+    ; Incrementan minutos
     LDS R17, MINS
     INC R17
     CPI R17, 60
     BRSH MIN_OVERFLOW
     RJMP STORE_MINS_SKIP
+
 MIN_OVERFLOW:
+	; Minutos de nuevo a 0
     CLR R17
 
     ; Incrementar horas
@@ -165,6 +185,7 @@ MIN_OVERFLOW:
     BRSH HOUR_OVERFLOW
     RJMP STORE_HOURS_SKIP
 HOUR_OVERFLOW:
+	; Horas de nuevo en cero
     CLR R18
 
 STORE_HOURS_SKIP:
@@ -187,7 +208,11 @@ UPDATE_DISPLAY:
     PUSH R17
     PUSH R18
     PUSH R19
-/******HOURS******/
+
+/*--------------------------------*/
+/*-----------HOURS----------------*/
+/* Dividiremos decenas y unidades en
+el display */
     LDS R16, HOURS
     CLR R17          ; decenas
 
@@ -250,6 +275,7 @@ TIMER_ISR:
 	ANDI R16, 0b11110000
 	OUT  PORTB, R16
 
+	;2*62.5ns=125ns
 	NOP
 	NOP
 
@@ -325,6 +351,16 @@ NO_CARRY:
     STS MILISEC_L, R18
     STS MILISEC_H, R19
 
+	LDI R16, LOW(500)
+	CP R18, R16
+	LDI R16, HIGH(500)
+	CPC R19, R16
+	BRNE CHECK_1000
+	
+	LDI R16, 1
+	STS FLAG_500MS, R16
+
+CHECK_1000:
     ; Comparar contra 1000 (0x03E8)
     LDI R16, LOW(1000)
     CP  R18, R16
@@ -342,7 +378,7 @@ NO_CARRY:
     LDI R16, 1
     STS FLAG_1S, R16
 END_T0ISR:
-	;Restaurar 
+	; Restaurar 
 	POP ZH
 	POP ZL
 	POP R19
