@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm Fri Mar 06 10:40:43 2026
+AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm Sun Mar 08 21:33:49 2026
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm(10): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1050,14 +1050,33 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1
 000104                           DIG3:			.byte 1
 000105                           MILISEC_L:		.byte 1
 000106                           MILISEC_H:		.byte 1
+000107                           SECS:			.byte 1
+000108                           MINS:			.byte 1
+000109                           HOURS:			.byte 1
+00010a                           DAY:			.byte 1
+00010b                           MONTH:			.byte 1
+00010c                           ALARM_MIN:		.byte 1
+00010d                           ALARM_HOUR:		.byte 1
+00010e                           ALARM_ON:		.byte 1
+00010f                           FLAG_1S:			.byte 1
                                  
-                                 .equ MAX_DIG = 4
+                                 .equ MAX_DIG	= 4
+                                 .equ MAX_MODES  = 3
+                                 .def MODE		= R23
+                                 .def FLAG_PC0	= R21
+                                 .def COUNTER_S	= R20
+                                 .def COUNTER_M  = R22
+                                 .def COUNTER_H  = R24
+                                 
                                  .cseg
                                  .org 0x0000
 000000 c01c                          RJMP RESET
                                  
+                                 .org PCI1addr
+000008 c099                      	RJMP PCINT8_ISR
+                                 
                                  .org OC0Aaddr
-00001c c02b                          RJMP TIMER_ISR
+00001c c08b                          RJMP TIMER_ISR
                                  	
                                  RESET:
                                   /****************************************/
@@ -1076,188 +1095,301 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1
 000025 9300 0105                 	STS MILISEC_L, R16
 000027 9300 0106                 	STS MILISEC_H, R16
                                  
-000029 e008                      	LDI R16, 8
+000029 e000                      	LDI R16, 0
 00002a 9300 0101                 	STS DIG0, R16
-00002c e006                      	LDI R16, 6
-00002d 9300 0102                 	STS DIG1, R16
-00002f e009                      	LDI R16, 9
-000030 9300 0103                 	STS DIG2, R16
-000032 e007                      	LDI R16, 7
-000033 9300 0104                 	STS DIG3, R16
+00002c 9300 0102                 	STS DIG1, R16
+00002e 9300 0103                 	STS DIG2, R16
+000030 9300 0104                 	STS DIG3, R16
+000032 9300 0107                 	STS SECS, R16
+000034 9300 0108                 	STS MINS, R16
+000036 9300 0109                 	STS HOURS, R16
                                  
+                                 
+                                 	; Botones 
+000038 e000                      	LDI R16, 0x00
+000039 b907                      	OUT DDRC, R16
+                                 
+00003a e00f                      	LDI R16, (1<<PC0)|(1<<PC1)|(1<<PC2)|(1<<PC3)
+00003b b908                      	OUT PORTC, R16
+                                 
+                                 	; Habilitar PCINT grupo 1
+00003c e002                      	LDI R16, (1<<PCIE1)
+00003d 9300 0068                 	STS PCICR, R16
+                                 
+                                 	; Habilitar PCINT8 (PC0)
+00003f e001                      	LDI R16, (1<<PCINT8)
+000040 9300 006c                 	STS PCMSK1, R16
                                  
                                      ; Segmentos salida
-000035 e70f                          LDI R16, 0b01111111
-000036 b90a                          OUT DDRD, R16
+000042 e70f                          LDI R16, 0b01111111
+000043 b90a                          OUT DDRD, R16
                                  
                                      ; Dígitos + LEDs salida
-000037 e30f                          LDI R16, 0b00111111
-000038 b904                          OUT DDRB, R16
+000044 e30f                          LDI R16, 0b00111111
+000045 b904                          OUT DDRB, R16
                                  
                                  	; Empezamos apagados
-000039 2700                          CLR R16
-00003a b90b                          OUT PORTD, R16
-00003b b905                          OUT PORTB, R16
+000046 2700                          CLR R16
+000047 2755                      	CLR FLAG_PC0
+000048 b90b                          OUT PORTD, R16
+000049 b905                          OUT PORTB, R16
                                  
                                      ; Timer0 a 1ms utilizando CTC
-00003c e002                          LDI R16, (1<<WGM01)
-00003d bd04                          OUT TCCR0A, R16
+00004a e002                          LDI R16, (1<<WGM01)
+00004b bd04                          OUT TCCR0A, R16
                                  
-00003e e003                          LDI R16, (1<<CS01)|(1<<CS00)
-00003f bd05                          OUT TCCR0B, R16
+00004c e003                          LDI R16, (1<<CS01)|(1<<CS00)
+00004d bd05                          OUT TCCR0B, R16
                                  
-000040 ef09                          LDI R16, 249
-000041 bd07                          OUT OCR0A, R16
+00004e ef09                          LDI R16, 249
+00004f bd07                          OUT OCR0A, R16
                                  
-000042 e002                          LDI R16, (1<<OCIE0A)
-000043 9300 006e                     STS TIMSK0, R16
+000050 e002                          LDI R16, (1<<OCIE0A)
+000051 9300 006e                     STS TIMSK0, R16
                                  
-000045 2711                      	CLR R17; Indicador de dígito
+000053 2711                      	CLR R17; Indicador de dígito
                                  
-000046 9478                          SEI
+000054 9478                          SEI
                                  	
                                  /****************************************/
                                  // Loop Infinito
                                  MAIN_LOOP:
-000047 cfff                      	RJMP MAIN_LOOP
+000055 9100 010f                 	LDS R16, FLAG_1S
+000057 3001                      	CPI R16, 1
+000058 f7e1                      	BRNE MAIN_LOOP
+                                 	
+000059 2700                      	CLR R16
+00005a 9300 010f                 	STS FLAG_1S, R16
+00005c d002                      	RCALL UPDATE_CLOCK
+00005d d023                      	RCALL UPDATE_DISPLAY
+00005e cff6                      	RJMP MAIN_LOOP
                                  
                                  /****************************************/
                                  // NON-Interrupt subroutines
+                                 UPDATE_CLOCK:
+00005f 930f                      	PUSH R16
+000060 931f                      	PUSH R17
+000061 932f                      	PUSH R18
                                  
+                                 	; Incrementar segundos
+000062 9100 0107                     LDS R16, SECS
+000064 9503                          INC R16
+000065 330c                          CPI R16, 60
+000066 f408                          BRSH SEC_OVERFLOW
+000067 c013                          RJMP STORE_SECS
+                                 SEC_OVERFLOW:
+000068 2700                          CLR R16
+                                 
+                                     ; Incrementar minutos
+000069 9110 0108                     LDS R17, MINS
+00006b 9513                          INC R17
+00006c 331c                          CPI R17, 60
+00006d f408                          BRSH MIN_OVERFLOW
+00006e c00a                          RJMP STORE_MINS_SKIP
+                                 MIN_OVERFLOW:
+00006f 2711                          CLR R17
+                                 
+                                     ; Incrementar horas
+000070 9120 0109                     LDS R18, HOURS
+000072 9523                          INC R18
+000073 3128                          CPI R18, 24
+000074 f408                          BRSH HOUR_OVERFLOW
+000075 c001                          RJMP STORE_HOURS_SKIP
+                                 HOUR_OVERFLOW:
+000076 2722                          CLR R18
+                                 
+                                 STORE_HOURS_SKIP:
+000077 9320 0109                     STS HOURS, R18
+                                 
+                                 STORE_MINS_SKIP:
+000079 9310 0108                     STS MINS, R17
+                                 
+                                 STORE_SECS:
+00007b 9300 0107                     STS SECS, R16
+                                 
+00007d 912f                          POP R18
+00007e 911f                          POP R17
+00007f 910f                          POP R16
+000080 9508                          RET
+                                 
+                                 UPDATE_DISPLAY:
+                                 
+000081 930f                          PUSH R16
+000082 931f                          PUSH R17
+000083 932f                          PUSH R18
+000084 933f                          PUSH R19
+                                 /******HOURS******/
+000085 9100 0109                     LDS R16, HOURS
+000087 2711                          CLR R17          ; decenas
+                                 
+                                 DIV_H:
+000088 300a                          CPI R16, 10
+000089 f018                          BRLO DIV_H_DONE
+00008a 500a                          SUBI R16, 10
+00008b 9513                          INC R17
+00008c cffb                          RJMP DIV_H
+                                 
+                                 DIV_H_DONE:
+00008d 9310 0101                     STS DIG0, R17    ; decenas hora
+00008f 9300 0102                     STS DIG1, R16    ; unidades hora
+                                 
+                                 /******MIN*******/
+                                 
+000091 9100 0108                     LDS R16, MINS
+000093 2711                          CLR R17
+                                 
+                                 DIV_M:
+000094 300a                          CPI R16, 10
+000095 f018                          BRLO DIV_M_DONE
+000096 500a                          SUBI R16, 10
+000097 9513                          INC R17
+000098 cffb                          RJMP DIV_M
+                                 
+                                 DIV_M_DONE:
+000099 9310 0103                     STS DIG2, R17    ; decenas minuto
+00009b 9300 0104                     STS DIG3, R16    ; unidades minuto
+                                 
+00009d 913f                          POP R19
+00009e 912f                          POP R18
+00009f 911f                          POP R17
+0000a0 910f                          POP R16
+0000a1 9508                          RET
                                  /****************************************/
                                  // Interrupt routines
+                                 
+                                 PCINT8_ISR:
+0000a2 930f                      	PUSH R16
+0000a3 2355                      	AND FLAG_PC0, FLAG_PC0
+0000a4 f409                      	BRNE EXIT_PCINT1
+                                 
+0000a5 e051                      	LDI FLAG_PC0, 1
+                                 
+                                 EXIT_PCINT1:
+0000a6 910f                      	POP R16
+0000a7 9518                      	RETI
+                                 
                                  TIMER_ISR:
-000048 930f                      	PUSH R16
-000049 931f                      	PUSH R17
-00004a 932f                      	PUSH R18
-00004b 933f                      	PUSH R19
-00004c 93ef                      	PUSH ZL
-00004d 93ff                      	PUSH ZH
+0000a8 930f                      	PUSH R16
+0000a9 931f                      	PUSH R17
+0000aa 932f                      	PUSH R18
+0000ab 933f                      	PUSH R19
+0000ac 93ef                      	PUSH ZL
+0000ad 93ff                      	PUSH ZH
                                  
                                  	; Apagar dígitos
-00004e b105                      	IN   R16, PORTB
-00004f 7f00                      	ANDI R16, 0b11110000
-000050 b905                      	OUT  PORTB, R16
+0000ae b105                      	IN   R16, PORTB
+0000af 7f00                      	ANDI R16, 0b11110000
+0000b0 b905                      	OUT  PORTB, R16
                                  
-000051 9110 0100                 	LDS R17, DIGIT_INDEX
+0000b1 0000                      	NOP
+0000b2 0000                      	NOP
                                  
-000053 3010                      	CPI R17, 0
-000054 f029                      	BREQ LOAD_DIG0
-000055 3011                      	CPI R17, 1
-000056 f031                      	BREQ LOAD_DIG1
-000057 3012                      	CPI R17, 2
-000058 f039                      	BREQ LOAD_DIG2
-000059 c009                      	RJMP LOAD_DIG3
+0000b3 9110 0100                 	LDS R17, DIGIT_INDEX
+                                 
+0000b5 3010                      	CPI R17, 0
+0000b6 f029                      	BREQ LOAD_DIG0
+0000b7 3011                      	CPI R17, 1
+0000b8 f031                      	BREQ LOAD_DIG1
+0000b9 3012                      	CPI R17, 2
+0000ba f039                      	BREQ LOAD_DIG2
+0000bb c009                      	RJMP LOAD_DIG3
                                  
                                  LOAD_DIG0:
-00005a 9120 0101                 	LDS R18, DIG0
-00005c c008                      	RJMP LOAD_PATTERN
+0000bc 9120 0101                 	LDS R18, DIG0
+0000be c008                      	RJMP LOAD_PATTERN
                                  LOAD_DIG1:
-00005d 9120 0102                 	LDS R18, DIG1
-00005f c005                      	RJMP LOAD_PATTERN
+0000bf 9120 0102                 	LDS R18, DIG1
+0000c1 c005                      	RJMP LOAD_PATTERN
                                  LOAD_DIG2:
-000060 9120 0103                 	LDS R18, DIG2
-000062 c002                      	RJMP LOAD_PATTERN
+0000c2 9120 0103                 	LDS R18, DIG2
+0000c4 c002                      	RJMP LOAD_PATTERN
                                  LOAD_DIG3:
-000063 9120 0104                 	LDS R18, DIG3
+0000c5 9120 0104                 	LDS R18, DIG3
                                  
                                  LOAD_PATTERN:
                                  	;Apuntamos a la tabla que está en la memoria flash
-000065 e0f1                      	LDI ZH, HIGH(tabla_7seg << 1)
-000066 e4e6                      	LDI ZL, LOW(tabla_7seg << 1)
+0000c7 e0f2                      	LDI ZH, HIGH(tabla_7seg << 1)
+0000c8 e0e0                      	LDI ZL, LOW(tabla_7seg << 1)
                                  
-000067 0fe2                      	ADD ZL, R18
-000068 1df1                      	ADC ZH, R1
+0000c9 0fe2                      	ADD ZL, R18
+0000ca 1df1                      	ADC ZH, R1
                                  
-000069 9104                      	LPM R16, Z
-00006a b90b                      	OUT PORTD, R16
+0000cb 9104                      	LPM R16, Z
+0000cc b90b                      	OUT PORTD, R16
                                  
-00006b 2f21                      	MOV R18, R17
-00006c e031                      	LDI R19, 1
+0000cd 2f21                      	MOV R18, R17
+0000ce e031                      	LDI R19, 1
                                  
                                  SHIFT:
-00006d 3020                      	CPI R18, 0
-00006e f019                      	BREQ ACT
-00006f 0f33                      	LSL R19 
-000070 952a                      	DEC R18
-000071 cffb                      	RJMP SHIFT
+0000cf 3020                      	CPI R18, 0
+0000d0 f019                      	BREQ ACT
+0000d1 0f33                      	LSL R19 
+0000d2 952a                      	DEC R18
+0000d3 cffb                      	RJMP SHIFT
                                  
                                  ACT:
-000072 b105                          IN   R16, PORTB
-000073 7f00                          ANDI R16, 0b11110000
-000074 2b03                          OR   R16, R19
-000075 b905                          OUT  PORTB, R16
+0000d4 b105                          IN   R16, PORTB
+0000d5 7f00                          ANDI R16, 0b11110000
+0000d6 2b03                          OR   R16, R19
+0000d7 b905                          OUT  PORTB, R16
                                  
                                      ; Incrementar índice
-000076 9110 0100                     LDS  R17, DIGIT_INDEX
-000078 9513                          INC  R17
-000079 3014                          CPI  R17, MAX_DIG
-00007a f008                          BRLO STORE_INDEX
-00007b 2711                          CLR  R17
+0000d8 9110 0100                     LDS  R17, DIGIT_INDEX
+0000da 9513                          INC  R17
+0000db 3014                          CPI  R17, MAX_DIG
+0000dc f008                          BRLO STORE_INDEX
+0000dd 2711                          CLR  R17
                                  
                                  STORE_INDEX:
-00007c 9310 0100                 	STS DIGIT_INDEX, R17
+0000de 9310 0100                 	STS DIGIT_INDEX, R17
                                  
-                                 ; CONTADOR DE 1 SEGUNDO
+                                 ; Contador de 1s
+0000e0 9120 0105                     LDS R18, MILISEC_L
+0000e2 9130 0106                     LDS R19, MILISEC_H
                                  
-00007e 9120 0105                     LDS R18, MILISEC_L
-000080 9130 0106                     LDS R19, MILISEC_H
+0000e4 9523                          INC R18
+0000e5 f409                          BRNE NO_CARRY
+0000e6 9533                          INC R19
                                  
-000082 9523                          INC R18
-000083 f409                          BRNE NO_CARRY
-000084 9533                          INC R19
                                  NO_CARRY:
                                  
-000085 9320 0105                     STS MILISEC_L, R18
-000087 9330 0106                     STS MILISEC_H, R19
+0000e7 9320 0105                     STS MILISEC_L, R18
+0000e9 9330 0106                     STS MILISEC_H, R19
                                  
                                      ; Comparar contra 1000 (0x03E8)
-000089 ee08                          LDI R16, LOW(1000)
-00008a 1720                          CP  R18, R16
-00008b e003                          LDI R16, HIGH(1000)
-00008c 0730                          CPC R19, R16
-00008d f471                          BRNE END_SECOND
+0000eb ee08                          LDI R16, LOW(1000)
+0000ec 1720                          CP  R18, R16
+0000ed e003                          LDI R16, HIGH(1000)
+0000ee 0730                          CPC R19, R16
+0000ef f449                          BRNE END_T0ISR
                                  
                                      ; Reset contador
-00008e 2722                          CLR R18
-00008f 2733                          CLR R19
-000090 9320 0105                     STS MILISEC_L, R18
-000092 9330 0106                     STS MILISEC_H, R19
+0000f0 2722                          CLR R18
+0000f1 2733                          CLR R19
+0000f2 9320 0105                     STS MILISEC_L, R18
+0000f4 9330 0106                     STS MILISEC_H, R19
                                  
-                                     ; Toggle PB4 y PB5
-000094 b105                          IN  R16, PORTB
+                                 	; Activar FLAG_1S
+0000f6 e001                          LDI R16, 1
+0000f7 9300 010f                     STS FLAG_1S, R16
+                                 END_T0ISR:
+                                 	;Restaurar 
+0000f9 91ff                      	POP ZH
+0000fa 91ef                      	POP ZL
+0000fb 913f                      	POP R19
+0000fc 912f                      	POP R18
+0000fd 911f                      	POP R17
+0000fe 910f                      	POP R16
                                  
-000095 ff04                      	SBRS R16, PB4
-000096 c003                      	RJMP LED_2
+0000ff 9518                      	RETI
                                  
-000097 982c                      	CBI PORTB, PB4
-000098 9a2d                      	SBI PORTB, PB5
-000099 c002                      	RJMP END_SECOND
-                                 
-                                 	LED_2:
-00009a 9a2c                      	SBI PORTB, PB4
-00009b 982d                      	CBI PORTB, PB5
-                                 
-                                 END_SECOND:
-                                 
-                                 
-                                 	;Restaurar registros
-                                 
-00009c 91ff                      	POP ZH
-00009d 91ef                      	POP ZL
-00009e 913f                      	POP R19
-00009f 912f                      	POP R18
-0000a0 911f                      	POP R17
-0000a1 910f                      	POP R16
-                                 
-0000a2 9518                      	RETI
                                  /****************************************/
                                  tabla_7seg:
-0000a3 063f
-0000a4 4f5b
-0000a5 6d66
-0000a6 077d
-0000a7 6f7f                          .db 0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F
+000100 063f
+000101 4f5b
+000102 6d66
+000103 077d
+000104 6f7f                          .db 0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F
                                  
 
 
@@ -1278,38 +1410,38 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   1 r0 :   0 r1 :   2 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  48 r17:  13 r18:  16 r19:  11 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  79 r17:  28 r18:  25 r19:  13 r20:   0 
+r21:   4 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   4 r31:   4 
-Registers used: 8 out of 35 (22.9%)
+Registers used: 9 out of 35 (25.7%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   1 add   :   1 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   1 add   :   1 adiw  :   0 and   :   1 
 andi  :   2 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   4 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   1 brlt  :   0 brmi  :   0 
-brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   2 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   6 cls   :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   3 brlt  :   0 brmi  :   0 
+brne  :   4 brpl  :   0 brsh  :   3 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  13 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   1 
-cpi   :   5 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   3 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  18 lds   :   8 lpm   :   2 lsl   :   1 
+cpi   :  11 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   8 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :  21 lds   :  14 lpm   :   2 lsl   :   1 
 lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   1 ori   :   0 out   :  12 pop   :   6 
-push  :   6 rcall :   0 ret   :   0 reti  :   1 rjmp  :  10 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   2 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
+neg   :   0 nop   :   2 or    :   1 ori   :   0 out   :  14 pop   :  14 
+push  :  14 rcall :   2 ret   :   2 reti  :   2 rjmp  :  14 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :  13 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 29 out of 113 (25.7%)
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :  27 
+sub   :   0 subi  :   2 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 32 out of 113 (28.3%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000150    272     10    282   32768   0.9%
-[.dseg] 0x000100 0x000107      0      7      7    2048   0.3%
+[.cseg] 0x000000 0x00020a    460     10    470   32768   1.4%
+[.dseg] 0x000100 0x000110      0     16     16    2048   0.8%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
 Assembly complete, 0 errors, 0 warnings
