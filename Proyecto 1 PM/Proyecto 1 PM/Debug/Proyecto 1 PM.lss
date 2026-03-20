@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm Fri Mar 20 01:43:47 2026
+AVRASM ver. 2.2.8  C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm Fri Mar 20 03:38:09 2026
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm(26): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -2032,13 +2032,17 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1
 000367 f039                          BREQ T_LOAD2
 000368 c009                          RJMP T_LOAD3
                                  
-000369 9120 0101                 T_LOAD0: LDS R18, DIG0
+                                 T_LOAD0: 
+000369 9120 0101                 	LDS R18, DIG0
 00036b c008                          RJMP T_PATTERN
-00036c 9120 0102                 T_LOAD1: LDS R18, DIG1
+                                 T_LOAD1: 
+00036c 9120 0102                 	LDS R18, DIG1
 00036e c005                          RJMP T_PATTERN
-00036f 9120 0103                 T_LOAD2: LDS R18, DIG2
+                                 T_LOAD2: 
+00036f 9120 0103                 	LDS R18, DIG2
 000371 c002                          RJMP T_PATTERN
-000372 9120 0104                 T_LOAD3: LDS R18, DIG3
+                                 T_LOAD3: 
+000372 9120 0104                 	LDS R18, DIG3
                                  
                                  T_PATTERN:
 000374 e0f8                          LDI ZH, HIGH(tabla_7seg << 1)
@@ -2327,7 +2331,7 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1
 000477 6d66
 000478 077d
 000479 6f7f
-C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm(1294): warning: .cseg .db misalignment - padding zero byte
+C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm(1298): warning: .cseg .db misalignment - padding zero byte
 00047a 0000                          .db 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x00
                                  
                                  ; tabla_dias_mes: índice 1-12 (índice 0 no usado)
@@ -2338,7 +2342,7 @@ C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1
 00047e 1f1e
 00047f 1e1f
 000480 1e1f
-C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm(1298): warning: .cseg .db misalignment - padding zero byte
+C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm(1302): warning: .cseg .db misalignment - padding zero byte
 
 
 RESOURCE USE INFORMATION

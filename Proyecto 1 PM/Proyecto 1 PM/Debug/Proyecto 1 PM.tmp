@@ -55,7 +55,7 @@
   <CONFIG_SUB><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>60</LINE></CONFIG_SUB>
   <BLINK_HIDE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>61</LINE></BLINK_HIDE>
   <RESET><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>86</LINE></RESET>
-  <PCINT8_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1209</LINE></PCINT8_ISR>
+  <PCINT8_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1213</LINE></PCINT8_ISR>
   <TIMER_ISR><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>980</LINE></TIMER_ISR>
   <SETUP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>92</LINE></SETUP>
   <MAIN_LOOP><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>187</LINE></MAIN_LOOP>
@@ -80,7 +80,7 @@
   <GET_MAX_DAY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>360</LINE></GET_MAX_DAY>
   <STORE_INC_DAY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>349</LINE></STORE_INC_DAY>
   <STORE_INC_MONTH><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>347</LINE></STORE_INC_MONTH>
-  <tabla_dias_mes><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1297</LINE></tabla_dias_mes>
+  <tabla_dias_mes><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1301</LINE></tabla_dias_mes>
   <FSM_NOT0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>378</LINE></FSM_NOT0>
   <MODE_HORA><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>401</LINE></MODE_HORA>
   <FSM_NOT1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>382</LINE></FSM_NOT1>
@@ -168,36 +168,36 @@
   <ALA_LED_OFF><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>969</LINE></ALA_LED_OFF>
   <ALA_LED_STORE><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>971</LINE></ALA_LED_STORE>
   <T_LOAD0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1004</LINE></T_LOAD0>
-  <T_LOAD1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1006</LINE></T_LOAD1>
-  <T_LOAD2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1008</LINE></T_LOAD2>
-  <T_LOAD3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1010</LINE></T_LOAD3>
-  <T_PATTERN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1012</LINE></T_PATTERN>
-  <tabla_7seg><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1293</LINE></tabla_7seg>
-  <T_BUZZER_OFF><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1025</LINE></T_BUZZER_OFF>
-  <T_PORTD_OUT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1027</LINE></T_PORTD_OUT>
-  <T_SHIFT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1032</LINE></T_SHIFT>
-  <T_ACT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1038</LINE></T_ACT>
-  <T_STORE_IDX><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1049</LINE></T_STORE_IDX>
-  <T_NO_CARRY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1058</LINE></T_NO_CARRY>
-  <T_DEB0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1063</LINE></T_DEB0>
-  <T_DEB1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1095</LINE></T_DEB1>
-  <T_DEB0_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1073</LINE></T_DEB0_CONFIRM>
-  <T_CHECK_MS><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1170</LINE></T_CHECK_MS>
-  <T_CANCEL0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1087</LINE></T_CANCEL0>
-  <T_RESET_SUB><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1083</LINE></T_RESET_SUB>
-  <T_DEB2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1120</LINE></T_DEB2>
-  <T_DEB1_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1105</LINE></T_DEB1_CONFIRM>
-  <T_CANCEL1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1112</LINE></T_CANCEL1>
-  <T_DEB3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1145</LINE></T_DEB3>
-  <T_DEB2_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1130</LINE></T_DEB2_CONFIRM>
-  <T_CANCEL2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1137</LINE></T_CANCEL2>
-  <T_DEB3_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1155</LINE></T_DEB3_CONFIRM>
-  <T_CANCEL3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1162</LINE></T_CANCEL3>
-  <T_CHECK_1S><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1179</LINE></T_CHECK_1S>
-  <T_END><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1195</LINE></T_END>
-  <P_CHK1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1230</LINE></P_CHK1>
-  <P_CHK2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1248</LINE></P_CHK2>
-  <P_CHK3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1266</LINE></P_CHK3>
-  <P_EXIT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1284</LINE></P_EXIT>
+  <T_LOAD1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1007</LINE></T_LOAD1>
+  <T_LOAD2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1010</LINE></T_LOAD2>
+  <T_LOAD3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1013</LINE></T_LOAD3>
+  <T_PATTERN><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1016</LINE></T_PATTERN>
+  <tabla_7seg><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1297</LINE></tabla_7seg>
+  <T_BUZZER_OFF><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1029</LINE></T_BUZZER_OFF>
+  <T_PORTD_OUT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1031</LINE></T_PORTD_OUT>
+  <T_SHIFT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1036</LINE></T_SHIFT>
+  <T_ACT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1042</LINE></T_ACT>
+  <T_STORE_IDX><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1053</LINE></T_STORE_IDX>
+  <T_NO_CARRY><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1062</LINE></T_NO_CARRY>
+  <T_DEB0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1067</LINE></T_DEB0>
+  <T_DEB1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1099</LINE></T_DEB1>
+  <T_DEB0_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1077</LINE></T_DEB0_CONFIRM>
+  <T_CHECK_MS><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1174</LINE></T_CHECK_MS>
+  <T_CANCEL0><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1091</LINE></T_CANCEL0>
+  <T_RESET_SUB><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1087</LINE></T_RESET_SUB>
+  <T_DEB2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1124</LINE></T_DEB2>
+  <T_DEB1_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1109</LINE></T_DEB1_CONFIRM>
+  <T_CANCEL1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1116</LINE></T_CANCEL1>
+  <T_DEB3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1149</LINE></T_DEB3>
+  <T_DEB2_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1134</LINE></T_DEB2_CONFIRM>
+  <T_CANCEL2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1141</LINE></T_CANCEL2>
+  <T_DEB3_CONFIRM><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1159</LINE></T_DEB3_CONFIRM>
+  <T_CANCEL3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1166</LINE></T_CANCEL3>
+  <T_CHECK_1S><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1183</LINE></T_CHECK_1S>
+  <T_END><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1199</LINE></T_END>
+  <P_CHK1><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1234</LINE></P_CHK1>
+  <P_CHK2><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1252</LINE></P_CHK2>
+  <P_CHK3><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1270</LINE></P_CHK3>
+  <P_EXIT><FILE>C:\Users\joaqu\OneDrive\Documentos\GitHub\PrograMicros1\Proyecto 1 PM\Proyecto 1 PM\main.asm</FILE><LINE>1288</LINE></P_EXIT>
  </LABELS>
 </ASSEMBLER_INFO>
