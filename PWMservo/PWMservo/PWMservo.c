@@ -9,7 +9,7 @@
 #include "PWMservo.h"
 
 /****************************************/
-// Varible interna
+// Varible Pterna
 static uint16_t current_pulse_width_us = 1500U;
 
 /****************************************/
@@ -23,7 +23,7 @@ void pwm_servo_init(void)
     TCCR1A = 0;
     TCCR1B = 0;
 
-    // Período: ICR1 = TOP = 39999 ? 20 ms 
+    // Período: ICR1 = TOP = 39999 => 20 ms 
     ICR1 = (uint16_t)PWM_TIMER_TOP_VALUE;
 
     // Fast PWM con TOP en ICR1
@@ -49,7 +49,7 @@ void pwm_servo_set_us(uint16_t pulse_width_us)
 void pwm_servo_set_angle(uint8_t angle_degrees)
 {
     if (angle_degrees > 180U) 
-		angle_degrees = 180U; //Seguridad
+		angle_degrees = 180U; //Se regresa el valor por seguridad
 
     uint16_t pulse_width_us = (uint16_t)(PWM_MIN_PULSE_WIDTH_US + ((uint32_t)angle_degrees * (PWM_MAX_PULSE_WIDTH_US - PWM_MIN_PULSE_WIDTH_US)) / 180U);
     pwm_servo_set_us(pulse_width_us);

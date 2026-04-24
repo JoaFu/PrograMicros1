@@ -8,7 +8,7 @@
  * Genera una señal de 50Hz en OC1A (PB1).
  *
  *  F_timer = 16MHz / 8 = 2MHz  ?  1 tick = 0.5us
- *  TOP (ICR1) = 39,999  ?  período 20 ms (50 Hz)
+ *  TOP (ICR1) = 39999  ?  período 20 ms (50 Hz)
  *  OCR1A = microsegundos × 2 ? 1
  *    1000us (0°)	=>	 OCR1A = 1999
  *    1500us (90°)  =>	 OCR1A = 2999
