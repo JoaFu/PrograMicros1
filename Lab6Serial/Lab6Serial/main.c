@@ -16,8 +16,6 @@
 
 /****************************************/
 // Function prototypes
-
-void cadena(char txt[]);
 void initADC(void);
 uint16_t leerADC(void);
 void mostrarByte(uint8_t dato);
