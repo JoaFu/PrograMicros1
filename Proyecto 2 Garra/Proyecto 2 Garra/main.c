@@ -9,8 +9,8 @@
  *   seleccionables con PC4/PC5, keyframes en EEPROM y feedback UART
  *   hacia Python/Adafruit IO.
  *
- *   Servo1 (hombro): TIMER1 OC1A PB1 | 0-180
- *   Servo2 (base):   TIMER1 OC1B PB2 | 110-180
+ *   Servo1 (base): TIMER1 OC1A PB1 | 0-180
+ *   Servo2 (hombro):   TIMER1 OC1B PB2 | 110-180
  *   Servo3 (codo):   TIMER2 OC2B PD3 | 95-160
  *   Servo4 (garra):  TIMER0 OC0B PD5 | 0-10
  *
@@ -340,7 +340,7 @@ static void run_mode_serial(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t
                     break;
                 }
 
-                procesar_comando_directo(buffer, s1, s2, s3, s4);
+                procesar_comando_directo(buffer, s1, s2, s3, s4); 
                 index = 0;
             }
             else if (index < sizeof(buffer) - 1)
