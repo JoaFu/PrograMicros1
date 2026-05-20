@@ -57,7 +57,7 @@ int main(void)
 			cadena ("\n Seleccionaste la opcion 1\n");
 			cadena ("----------------------------------------\n");
 			uint16_t valor = leerADC();
-			char caracter = (char)((valor * 94UL) / 1023 + 0x20);
+			char caracter = (char)((valor * 94UL) / 1023 + 0x20);  
 			cadena("Valor leido: ");
 			writeChar(caracter);
 			cadena("\n----------------------------------------\n");
