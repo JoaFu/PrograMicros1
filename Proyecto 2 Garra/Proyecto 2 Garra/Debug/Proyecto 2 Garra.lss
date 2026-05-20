@@ -3,31 +3,31 @@ Proyecto 2 Garra.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000043a  00800100  0000126e  00001302  2**0
+  0 .data         00000448  00800100  000012dc  00001370  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000126e  00000000  00000000  00000094  2**1
+  1 .text         000012dc  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000004  0080053a  0080053a  0000173c  2**0
+  2 .bss          00000004  00800548  00800548  000017b8  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000173c  2**0
+  3 .comment      00000030  00000000  00000000  000017b8  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000176c  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000017e8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000001e8  00000000  00000000  000017ac  2**0
+  5 .debug_aranges 000001e8  00000000  00000000  00001828  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00002bae  00000000  00000000  00001994  2**0
+  6 .debug_info   00002b7a  00000000  00000000  00001a10  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000d86  00000000  00000000  00004542  2**0
+  7 .debug_abbrev 00000dc2  00000000  00000000  0000458a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001359  00000000  00000000  000052c8  2**0
+  8 .debug_line   000013b3  00000000  00000000  0000534c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000604  00000000  00000000  00006624  2**2
+  9 .debug_frame  00000604  00000000  00000000  00006700  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000924  00000000  00000000  00006c28  2**0
+ 10 .debug_str    00000937  00000000  00000000  00006d04  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001e8d  00000000  00000000  0000754c  2**0
+ 11 .debug_loc    00001f0d  00000000  00000000  0000763b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000001d0  00000000  00000000  000093d9  2**0
+ 12 .debug_ranges 000001b8  00000000  00000000  00009548  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -51,7 +51,7 @@ Disassembly of section .text:
       3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
       40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
       44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-      48:	0c 94 26 07 	jmp	0xe4c	; 0xe4c <__vector_18>
+      48:	0c 94 5d 07 	jmp	0xeba	; 0xeba <__vector_18>
       4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
       50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
       54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
@@ -72,18 +72,18 @@ Disassembly of section .text:
       74:	15 e0       	ldi	r17, 0x05	; 5
       76:	a0 e0       	ldi	r26, 0x00	; 0
       78:	b1 e0       	ldi	r27, 0x01	; 1
-      7a:	ee e6       	ldi	r30, 0x6E	; 110
+      7a:	ec ed       	ldi	r30, 0xDC	; 220
       7c:	f2 e1       	ldi	r31, 0x12	; 18
       7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
       80:	05 90       	lpm	r0, Z+
       82:	0d 92       	st	X+, r0
-      84:	aa 33       	cpi	r26, 0x3A	; 58
+      84:	a8 34       	cpi	r26, 0x48	; 72
       86:	b1 07       	cpc	r27, r17
       88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
 
 0000008a <__do_clear_bss>:
       8a:	25 e0       	ldi	r18, 0x05	; 5
-      8c:	aa e3       	ldi	r26, 0x3A	; 58
+      8c:	a8 e4       	ldi	r26, 0x48	; 72
       8e:	b5 e0       	ldi	r27, 0x05	; 5
       90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
 
@@ -91,11 +91,11 @@ Disassembly of section .text:
       92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-      94:	ae 33       	cpi	r26, 0x3E	; 62
+      94:	ac 34       	cpi	r26, 0x4C	; 76
       96:	b2 07       	cpc	r27, r18
       98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
-      9a:	0e 94 6e 06 	call	0xcdc	; 0xcdc <main>
-      9e:	0c 94 35 09 	jmp	0x126a	; 0x126a <_exit>
+      9a:	0e 94 a5 06 	call	0xd4a	; 0xd4a <main>
+      9e:	0c 94 6c 09 	jmp	0x12d8	; 0x12d8 <_exit>
 
 000000a2 <__bad_interrupt>:
       a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -149,9 +149,9 @@ uint8_t eepromRead(uint16_t address)
       ce:	08 95       	ret
 
 000000d0 <buttons_init>:
-
 /****************************************/
-// Botones
+// NON-Interrupt subroutines
+
 static void buttons_init(void)
 {
     DDRC  &= ~((1 << BTN_CHANGE_PIN) | (1 << BTN_ACTION_PIN));
@@ -165,9 +165,9 @@ static void buttons_init(void)
       dc:	08 95       	ret
 
 000000de <set_mode_leds>:
+    return 0;
+}
 
-/****************************************/
-// LEDs
 static void set_mode_leds(app_mode_t mode)
 {
     PORTD &= ~(1 << PD2);
@@ -214,9 +214,9 @@ static void set_mode_leds(app_mode_t mode)
      11e:	08 95       	ret
 
 00000120 <adc_init>:
+    }
+}
 
-/****************************************/
-// ADC
 static void adc_init(void)
 {
     ADMUX  = (1 << REFS0);
@@ -268,8 +268,7 @@ static uint16_t adc_read(uint8_t channel)
 
 00000168 <map_value>:
 
-static int32_t map_value(int32_t val, int32_t in_min, int32_t in_max,
-                          int32_t out_min, int32_t out_max)
+static int32_t map_value(int32_t val, int32_t in_min, int32_t in_max, int32_t out_min, int32_t out_max)
 {
      168:	4f 92       	push	r4
      16a:	5f 92       	push	r5
@@ -289,14 +288,13 @@ static int32_t map_value(int32_t val, int32_t in_min, int32_t in_max,
      186:	de b7       	in	r29, 0x3e	; 62
      188:	29 01       	movw	r4, r18
      18a:	3a 01       	movw	r6, r20
-    return out_min + (val - in_min)
+    return out_min + (val - in_min) * (out_max - out_min) / (in_max - in_min);
      18c:	9b 01       	movw	r18, r22
      18e:	ac 01       	movw	r20, r24
      190:	24 19       	sub	r18, r4
      192:	35 09       	sbc	r19, r5
      194:	46 09       	sbc	r20, r6
      196:	57 09       	sbc	r21, r7
-           * (out_max - out_min) / (in_max - in_min);
      198:	89 89       	ldd	r24, Y+17	; 0x11
      19a:	9a 89       	ldd	r25, Y+18	; 0x12
      19c:	ab 89       	ldd	r26, Y+19	; 0x13
@@ -307,27 +305,20 @@ static int32_t map_value(int32_t val, int32_t in_min, int32_t in_max,
      1a6:	7b 09       	sbc	r23, r11
      1a8:	8c 09       	sbc	r24, r12
      1aa:	9d 09       	sbc	r25, r13
-     1ac:	0e 94 90 08 	call	0x1120	; 0x1120 <__mulsi3>
+     1ac:	0e 94 c7 08 	call	0x118e	; 0x118e <__mulsi3>
      1b0:	a8 01       	movw	r20, r16
      1b2:	97 01       	movw	r18, r14
      1b4:	24 19       	sub	r18, r4
      1b6:	35 09       	sbc	r19, r5
      1b8:	46 09       	sbc	r20, r6
      1ba:	57 09       	sbc	r21, r7
-     1bc:	0e 94 c2 08 	call	0x1184	; 0x1184 <__divmodsi4>
-}
-
-static int32_t map_value(int32_t val, int32_t in_min, int32_t in_max,
-                          int32_t out_min, int32_t out_max)
-{
-    return out_min + (val - in_min)
+     1bc:	0e 94 f9 08 	call	0x11f2	; 0x11f2 <__divmodsi4>
      1c0:	c6 01       	movw	r24, r12
      1c2:	b5 01       	movw	r22, r10
      1c4:	62 0f       	add	r22, r18
      1c6:	73 1f       	adc	r23, r19
      1c8:	84 1f       	adc	r24, r20
      1ca:	95 1f       	adc	r25, r21
-           * (out_max - out_min) / (in_max - in_min);
 }
      1cc:	df 91       	pop	r29
      1ce:	cf 91       	pop	r28
@@ -346,10 +337,10 @@ static int32_t map_value(int32_t val, int32_t in_min, int32_t in_max,
      1e8:	08 95       	ret
 
 000001ea <enviar_feedback>:
+    }
+    writeString("  PC5=ejecutar  PC4=cambiar\r\n");
+}
 
-/****************************************/
-// Feedback UART
-// Formato: FB1:90\r\n
 static void enviar_feedback(uint8_t servo_id, uint8_t angulo)
 {
      1ea:	cf 93       	push	r28
@@ -477,7 +468,7 @@ static void enviar_feedback(uint8_t servo_id, uint8_t angulo)
     writeString(buf);
      2ae:	ce 01       	movw	r24, r28
      2b0:	01 96       	adiw	r24, 0x01	; 1
-     2b2:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     2b2:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 }
      2b6:	60 96       	adiw	r28, 0x10	; 16
      2b8:	0f b6       	in	r0, 0x3f	; 63
@@ -490,10 +481,10 @@ static void enviar_feedback(uint8_t servo_id, uint8_t angulo)
      2c6:	08 95       	ret
 
 000002c8 <print_mode_name>:
+        case MODE_PLAYBACK: PORTD |= (1 << PD2); PORTB |= (1<<PB4); break;
+    }
 }
 
-/****************************************/
-// Nombre del modo
 static void print_mode_name(app_mode_t mode)
 {
      2c8:	cf 93       	push	r28
@@ -501,7 +492,7 @@ static void print_mode_name(app_mode_t mode)
     writeString("\r\n> Modo: ");
      2cc:	80 e0       	ldi	r24, 0x00	; 0
      2ce:	91 e0       	ldi	r25, 0x01	; 1
-     2d0:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     2d0:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     switch (mode)
      2d4:	c1 30       	cpi	r28, 0x01	; 1
      2d6:	59 f0       	breq	.+22     	; 0x2ee <print_mode_name+0x26>
@@ -515,27 +506,27 @@ static void print_mode_name(app_mode_t mode)
         case MODE_ADC:      writeString("ADC\r\n");      break;
      2e4:	8b e0       	ldi	r24, 0x0B	; 11
      2e6:	91 e0       	ldi	r25, 0x01	; 1
-     2e8:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     2e8:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
      2ec:	0e c0       	rjmp	.+28     	; 0x30a <print_mode_name+0x42>
         case MODE_SERIAL:   writeString("SERIAL\r\n");   break;
      2ee:	81 e1       	ldi	r24, 0x11	; 17
      2f0:	91 e0       	ldi	r25, 0x01	; 1
-     2f2:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     2f2:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
      2f6:	09 c0       	rjmp	.+18     	; 0x30a <print_mode_name+0x42>
         case MODE_RECORD:   writeString("RECORD\r\n");   break;
      2f8:	8a e1       	ldi	r24, 0x1A	; 26
      2fa:	91 e0       	ldi	r25, 0x01	; 1
-     2fc:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     2fc:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
      300:	04 c0       	rjmp	.+8      	; 0x30a <print_mode_name+0x42>
         case MODE_PLAYBACK: writeString("PLAYBACK\r\n"); break;
      302:	83 e2       	ldi	r24, 0x23	; 35
      304:	91 e0       	ldi	r25, 0x01	; 1
-     306:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     306:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     }
     writeString("  PC5=ejecutar  PC4=cambiar\r\n");
      30a:	8e e2       	ldi	r24, 0x2E	; 46
      30c:	91 e0       	ldi	r25, 0x01	; 1
-     30e:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     30e:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 }
      312:	cf 91       	pop	r28
      314:	08 95       	ret
@@ -622,10 +613,10 @@ static uint8_t button_pressed(uint8_t pin)
 
 00000384 <run_mode_adc>:
 
-/****************************************/
-// MODE_ADC
-static void run_mode_adc(servo_t *s1, servo_t *s2,
-                          servo_t2_t *s3, servo_t0_t *s4)
+    writeString("[HOME] OK\r\n");
+}
+
+static void run_mode_adc(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
      384:	2f 92       	push	r2
      386:	3f 92       	push	r3
@@ -654,12 +645,12 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
     writeString("\r\n[ADC] Activo. PC4 para salir.\r\n");
      3b0:	8c e4       	ldi	r24, 0x4C	; 76
      3b2:	91 e0       	ldi	r25, 0x01	; 1
-     3b4:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     3b4:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 
-/****************************************/
-// MODE_ADC
-static void run_mode_adc(servo_t *s1, servo_t *s2,
-                          servo_t2_t *s3, servo_t0_t *s4)
+    writeString("[HOME] OK\r\n");
+}
+
+static void run_mode_adc(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
      3b8:	c0 e0       	ldi	r28, 0x00	; 0
 
@@ -676,7 +667,7 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
             writeString("[ADC] Saliendo...\r\n");
      3c4:	8e e6       	ldi	r24, 0x6E	; 110
      3c6:	91 e0       	ldi	r25, 0x01	; 1
-     3c8:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     3c8:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
             enviar_feedback(2, pwm_servo_get_angle(s2));
             enviar_feedback(3, pwm_servo_t2_get_angle(s3));
             enviar_feedback(4, pwm_servo_t0_get_angle(s4));
@@ -689,10 +680,9 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
             break;
         }
 
-        uint16_t adc0 = adc_read(0);
+        pwm_servo_set_angle(s1, (uint8_t)map_value((int32_t)adc_read(0), 0, 1023, SERVO1_MIN_ANGLE, SERVO1_MAX_ANGLE));
      3ce:	80 e0       	ldi	r24, 0x00	; 0
      3d0:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        pwm_servo_set_angle(s1, (uint8_t)map_value(
      3d4:	bc 01       	movw	r22, r24
      3d6:	80 e0       	ldi	r24, 0x00	; 0
      3d8:	90 e0       	ldi	r25, 0x00	; 0
@@ -719,14 +709,10 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
      404:	0f 90       	pop	r0
      406:	0f 90       	pop	r0
      408:	c3 01       	movw	r24, r6
-     40a:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
-            (int32_t)adc0, 0, 1023,
-            SERVO1_MIN_ANGLE, SERVO1_MAX_ANGLE));
-
-        uint16_t adc1 = adc_read(1);
+     40a:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
+        pwm_servo_set_angle(s2, (uint8_t)map_value((int32_t)adc_read(1), 0, 1023, SERVO2_MIN_ANGLE, SERVO2_MAX_ANGLE));
      40e:	81 e0       	ldi	r24, 0x01	; 1
      410:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        pwm_servo_set_angle(s2, (uint8_t)map_value(
      414:	bc 01       	movw	r22, r24
      416:	80 e0       	ldi	r24, 0x00	; 0
      418:	90 e0       	ldi	r25, 0x00	; 0
@@ -750,14 +736,10 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
      43e:	0f 90       	pop	r0
      440:	0f 90       	pop	r0
      442:	c4 01       	movw	r24, r8
-     444:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
-            (int32_t)adc1, 0, 1023,
-            SERVO2_MIN_ANGLE, SERVO2_MAX_ANGLE));
-
-        uint16_t adc2 = adc_read(2);
+     444:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
+        pwm_servo_t2_set_angle(s3, (uint8_t)map_value((int32_t)adc_read(2), 0, 1023, SERVO3_MIN_ANGLE, SERVO3_MAX_ANGLE));
      448:	82 e0       	ldi	r24, 0x02	; 2
      44a:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        pwm_servo_t2_set_angle(s3, (uint8_t)map_value(
      44e:	bc 01       	movw	r22, r24
      450:	80 e0       	ldi	r24, 0x00	; 0
      452:	90 e0       	ldi	r25, 0x00	; 0
@@ -782,14 +764,10 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
      47a:	0f 90       	pop	r0
      47c:	0f 90       	pop	r0
      47e:	c1 01       	movw	r24, r2
-     480:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t2_set_angle>
-            (int32_t)adc2, 0, 1023,
-            SERVO3_MIN_ANGLE, SERVO3_MAX_ANGLE));
-
-        uint16_t adc3 = adc_read(3);
+     480:	0e 94 70 08 	call	0x10e0	; 0x10e0 <pwm_servo_t2_set_angle>
+        pwm_servo_t0_set_angle(s4, (uint8_t)map_value((int32_t)adc_read(3), 0, 1023, SERVO4_MIN_ANGLE, SERVO4_MAX_ANGLE));
      484:	83 e0       	ldi	r24, 0x03	; 3
      486:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        pwm_servo_t0_set_angle(s4, (uint8_t)map_value(
      48a:	bc 01       	movw	r22, r24
      48c:	80 e0       	ldi	r24, 0x00	; 0
      48e:	90 e0       	ldi	r25, 0x00	; 0
@@ -810,7 +788,7 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
      4ae:	0f 90       	pop	r0
      4b0:	0f 90       	pop	r0
      4b2:	c2 01       	movw	r24, r4
-     4b4:	0e 94 da 07 	call	0xfb4	; 0xfb4 <pwm_servo_t0_set_angle>
+     4b4:	0e 94 11 08 	call	0x1022	; 0x1022 <pwm_servo_t0_set_angle>
      4b8:	2f ef       	ldi	r18, 0xFF	; 255
      4ba:	89 ef       	ldi	r24, 0xF9	; 249
      4bc:	90 e0       	ldi	r25, 0x00	; 0
@@ -820,8 +798,6 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
      4c4:	e1 f7       	brne	.-8      	; 0x4be <__EEPROM_REGION_LENGTH__+0xbe>
      4c6:	00 c0       	rjmp	.+0      	; 0x4c8 <__EEPROM_REGION_LENGTH__+0xc8>
      4c8:	00 00       	nop
-            (int32_t)adc3, 0, 1023,
-            SERVO4_MIN_ANGLE, SERVO4_MAX_ANGLE));
 
         _delay_ms(20);
 
@@ -835,25 +811,25 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
             fb_counter = 0;
             enviar_feedback(1, pwm_servo_get_angle(s1));
      4d2:	c3 01       	movw	r24, r6
-     4d4:	0e 94 b9 07 	call	0xf72	; 0xf72 <pwm_servo_get_angle>
+     4d4:	0e 94 f0 07 	call	0xfe0	; 0xfe0 <pwm_servo_get_angle>
      4d8:	68 2f       	mov	r22, r24
      4da:	81 e0       	ldi	r24, 0x01	; 1
      4dc:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             enviar_feedback(2, pwm_servo_get_angle(s2));
      4e0:	c4 01       	movw	r24, r8
-     4e2:	0e 94 b9 07 	call	0xf72	; 0xf72 <pwm_servo_get_angle>
+     4e2:	0e 94 f0 07 	call	0xfe0	; 0xfe0 <pwm_servo_get_angle>
      4e6:	68 2f       	mov	r22, r24
      4e8:	82 e0       	ldi	r24, 0x02	; 2
      4ea:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             enviar_feedback(3, pwm_servo_t2_get_angle(s3));
      4ee:	c1 01       	movw	r24, r2
-     4f0:	0e 94 64 08 	call	0x10c8	; 0x10c8 <pwm_servo_t2_get_angle>
+     4f0:	0e 94 9b 08 	call	0x1136	; 0x1136 <pwm_servo_t2_get_angle>
      4f4:	68 2f       	mov	r22, r24
      4f6:	83 e0       	ldi	r24, 0x03	; 3
      4f8:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             enviar_feedback(4, pwm_servo_t0_get_angle(s4));
      4fc:	c2 01       	movw	r24, r4
-     4fe:	0e 94 02 08 	call	0x1004	; 0x1004 <pwm_servo_t0_get_angle>
+     4fe:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t0_get_angle>
      502:	68 2f       	mov	r22, r24
      504:	84 e0       	ldi	r24, 0x04	; 4
      506:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
@@ -882,11 +858,11 @@ static void run_mode_adc(servo_t *s1, servo_t *s2,
      530:	08 95       	ret
 
 00000532 <move_to_home>:
- * (paso a paso) para evitar saltos bruscos al arrancar o al
- * finalizar RECORD/PLAYBACK.
- */
-static void move_to_home(servo_t *s1, servo_t *s2,
-                          servo_t2_t *s3, servo_t0_t *s4)
+
+    writeString(buf);
+}
+
+static void move_to_home(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
      532:	7f 92       	push	r7
      534:	8f 92       	push	r8
@@ -908,25 +884,24 @@ static void move_to_home(servo_t *s1, servo_t *s2,
     writeString("\r\n[HOME] Moviendo a posicion segura...\r\n");
      554:	82 e8       	ldi	r24, 0x82	; 130
      556:	91 e0       	ldi	r25, 0x01	; 1
-     558:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     558:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 
     uint8_t a1 = pwm_servo_get_angle(s1);
      55c:	c4 01       	movw	r24, r8
-     55e:	0e 94 b9 07 	call	0xf72	; 0xf72 <pwm_servo_get_angle>
+     55e:	0e 94 f0 07 	call	0xfe0	; 0xfe0 <pwm_servo_get_angle>
      562:	78 2e       	mov	r7, r24
     uint8_t a2 = pwm_servo_get_angle(s2);
      564:	c5 01       	movw	r24, r10
-     566:	0e 94 b9 07 	call	0xf72	; 0xf72 <pwm_servo_get_angle>
+     566:	0e 94 f0 07 	call	0xfe0	; 0xfe0 <pwm_servo_get_angle>
      56a:	18 2f       	mov	r17, r24
     uint8_t a3 = pwm_servo_t2_get_angle(s3);
      56c:	c6 01       	movw	r24, r12
-     56e:	0e 94 64 08 	call	0x10c8	; 0x10c8 <pwm_servo_t2_get_angle>
+     56e:	0e 94 9b 08 	call	0x1136	; 0x1136 <pwm_servo_t2_get_angle>
      572:	d8 2f       	mov	r29, r24
     uint8_t a4 = pwm_servo_t0_get_angle(s4);
      574:	c7 01       	movw	r24, r14
-     576:	0e 94 02 08 	call	0x1004	; 0x1004 <pwm_servo_t0_get_angle>
+     576:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t0_get_angle>
      57a:	c8 2f       	mov	r28, r24
-
     uint8_t done = 0;
      57c:	00 e0       	ldi	r16, 0x00	; 0
 
@@ -942,7 +917,7 @@ static void move_to_home(servo_t *s1, servo_t *s2,
      584:	7a 94       	dec	r7
      586:	80 2f       	mov	r24, r16
      588:	01 c0       	rjmp	.+2      	; 0x58c <move_to_home+0x5a>
-
+    uint8_t a4 = pwm_servo_t0_get_angle(s4);
     uint8_t done = 0;
 
     while (!done)
@@ -952,7 +927,6 @@ static void move_to_home(servo_t *s1, servo_t *s2,
 
         if (a1 < SERVO1_HOME_ANGLE)      { a1++; done = 0; }
         else if (a1 > SERVO1_HOME_ANGLE) { a1--; done = 0; }
-
         if (a2 < SERVO2_HOME_ANGLE)      { a2++; done = 0; }
      58c:	15 3a       	cpi	r17, 0xA5	; 165
      58e:	18 f4       	brcc	.+6      	; 0x596 <move_to_home+0x64>
@@ -964,7 +938,6 @@ static void move_to_home(servo_t *s1, servo_t *s2,
      598:	10 f0       	brcs	.+4      	; 0x59e <move_to_home+0x6c>
      59a:	11 50       	subi	r17, 0x01	; 1
      59c:	80 2f       	mov	r24, r16
-
         if (a3 < SERVO3_HOME_ANGLE)      { a3++; done = 0; }
      59e:	d6 39       	cpi	r29, 0x96	; 150
      5a0:	18 f4       	brcc	.+6      	; 0x5a8 <move_to_home+0x76>
@@ -976,7 +949,6 @@ static void move_to_home(servo_t *s1, servo_t *s2,
      5aa:	10 f0       	brcs	.+4      	; 0x5b0 <move_to_home+0x7e>
      5ac:	d1 50       	subi	r29, 0x01	; 1
      5ae:	80 2f       	mov	r24, r16
-
         if (a4 < SERVO4_HOME_ANGLE)      { a4++; done = 0; }
      5b0:	c5 30       	cpi	r28, 0x05	; 5
      5b2:	10 f4       	brcc	.+4      	; 0x5b8 <move_to_home+0x86>
@@ -992,28 +964,28 @@ static void move_to_home(servo_t *s1, servo_t *s2,
         pwm_servo_set_angle(s1, a1);
      5c2:	67 2d       	mov	r22, r7
      5c4:	c4 01       	movw	r24, r8
-     5c6:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     5c6:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
         pwm_servo_set_angle(s2, a2);
      5ca:	61 2f       	mov	r22, r17
      5cc:	c5 01       	movw	r24, r10
-     5ce:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     5ce:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
         pwm_servo_t2_set_angle(s3, a3);
      5d2:	6d 2f       	mov	r22, r29
      5d4:	c6 01       	movw	r24, r12
-     5d6:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t2_set_angle>
+     5d6:	0e 94 70 08 	call	0x10e0	; 0x10e0 <pwm_servo_t2_set_angle>
         pwm_servo_t0_set_angle(s4, a4);
      5da:	6c 2f       	mov	r22, r28
      5dc:	c7 01       	movw	r24, r14
-     5de:	0e 94 da 07 	call	0xfb4	; 0xfb4 <pwm_servo_t0_set_angle>
+     5de:	0e 94 11 08 	call	0x1022	; 0x1022 <pwm_servo_t0_set_angle>
      5e2:	8f e3       	ldi	r24, 0x3F	; 63
      5e4:	9c e9       	ldi	r25, 0x9C	; 156
      5e6:	01 97       	sbiw	r24, 0x01	; 1
      5e8:	f1 f7       	brne	.-4      	; 0x5e6 <move_to_home+0xb4>
      5ea:	00 c0       	rjmp	.+0      	; 0x5ec <move_to_home+0xba>
      5ec:	00 00       	nop
+    uint8_t a2 = pwm_servo_get_angle(s2);
     uint8_t a3 = pwm_servo_t2_get_angle(s3);
     uint8_t a4 = pwm_servo_t0_get_angle(s4);
-
     uint8_t done = 0;
 
     while (!done)
@@ -1027,7 +999,7 @@ static void move_to_home(servo_t *s1, servo_t *s2,
     writeString("[HOME] OK\r\n");
      5f2:	8b ea       	ldi	r24, 0xAB	; 171
      5f4:	91 e0       	ldi	r25, 0x01	; 1
-     5f6:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     5f6:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 }
      5fa:	df 91       	pop	r29
      5fc:	cf 91       	pop	r28
@@ -1045,11 +1017,11 @@ static void move_to_home(servo_t *s1, servo_t *s2,
      614:	08 95       	ret
 
 00000616 <procesar_comando_directo>:
- * Limites mecanicos reales aplicados aqui con clamp por ambos lados.
- */
-static void procesar_comando_directo(char *cmd,
-                                      servo_t *s1, servo_t *s2,
-                                      servo_t2_t *s3, servo_t0_t *s4)
+
+    writeString("[PLAYBACK] Reproduccion finalizada.\r\n");
+}
+
+static void procesar_comando_directo(char *cmd, servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
      616:	af 92       	push	r10
      618:	bf 92       	push	r11
@@ -1064,7 +1036,7 @@ static void procesar_comando_directo(char *cmd,
      62a:	6b 01       	movw	r12, r22
      62c:	7a 01       	movw	r14, r20
      62e:	59 01       	movw	r10, r18
-    if (strlen(cmd) < 4)
+    if (strlen(cmd) < 4) { writeString("\r\nComando invalido\r\n"); return; }
      630:	fc 01       	movw	r30, r24
      632:	01 90       	ld	r0, Z+
      634:	00 20       	and	r0, r0
@@ -1074,28 +1046,19 @@ static void procesar_comando_directo(char *cmd,
      63c:	f9 0b       	sbc	r31, r25
      63e:	34 97       	sbiw	r30, 0x04	; 4
      640:	28 f4       	brcc	.+10     	; 0x64c <procesar_comando_directo+0x36>
-    {
-        writeString("\r\nComando invalido\r\n");
      642:	87 eb       	ldi	r24, 0xB7	; 183
      644:	91 e0       	ldi	r25, 0x01	; 1
-     646:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-        return;
+     646:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
      64a:	61 c0       	rjmp	.+194    	; 0x70e <procesar_comando_directo+0xf8>
-    }
-
-    if (cmd[0] != 'S')
+    if (cmd[0] != 'S')   { writeString("\r\nFormato invalido\r\n"); return; }
      64c:	fc 01       	movw	r30, r24
      64e:	20 81       	ld	r18, Z
      650:	23 35       	cpi	r18, 0x53	; 83
      652:	29 f0       	breq	.+10     	; 0x65e <procesar_comando_directo+0x48>
-    {
-        writeString("\r\nFormato invalido\r\n");
      654:	8c ec       	ldi	r24, 0xCC	; 204
      656:	91 e0       	ldi	r25, 0x01	; 1
-     658:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-        return;
+     658:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
      65c:	58 c0       	rjmp	.+176    	; 0x70e <procesar_comando_directo+0xf8>
-    }
 
     uint8_t servo_id = cmd[1] - '0';
      65e:	fc 01       	movw	r30, r24
@@ -1105,24 +1068,20 @@ static void procesar_comando_directo(char *cmd,
     char   *ptr      = strchr(cmd, ':');
      666:	6a e3       	ldi	r22, 0x3A	; 58
      668:	70 e0       	ldi	r23, 0x00	; 0
-     66a:	0e 94 19 09 	call	0x1232	; 0x1232 <strchr>
+     66a:	0e 94 50 09 	call	0x12a0	; 0x12a0 <strchr>
 
-    if (ptr == NULL)
+    if (ptr == NULL) { writeString("\r\nFalta ':'\r\n"); return; }
      66e:	00 97       	sbiw	r24, 0x00	; 0
      670:	29 f4       	brne	.+10     	; 0x67c <procesar_comando_directo+0x66>
-    {
-        writeString("\r\nFalta ':'\r\n");
      672:	81 ee       	ldi	r24, 0xE1	; 225
      674:	91 e0       	ldi	r25, 0x01	; 1
-     676:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-        return;
+     676:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
      67a:	49 c0       	rjmp	.+146    	; 0x70e <procesar_comando_directo+0xf8>
-    }
 
     ptr++;
     uint8_t angulo = (uint8_t)atoi(ptr);
      67c:	01 96       	adiw	r24, 0x01	; 1
-     67e:	0e 94 fb 08 	call	0x11f6	; 0x11f6 <atoi>
+     67e:	0e 94 32 09 	call	0x1264	; 0x1264 <atoi>
      682:	c8 2f       	mov	r28, r24
 
     switch (servo_id)
@@ -1147,14 +1106,13 @@ static void procesar_comando_directo(char *cmd,
             pwm_servo_set_angle(s1, angulo);
      6a0:	6c 2f       	mov	r22, r28
      6a2:	c6 01       	movw	r24, r12
-     6a4:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     6a4:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
             enviar_feedback(1, angulo);
      6a8:	6c 2f       	mov	r22, r28
      6aa:	81 e0       	ldi	r24, 0x01	; 1
      6ac:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             break;
      6b0:	2e c0       	rjmp	.+92     	; 0x70e <procesar_comando_directo+0xf8>
-
         case 2:
             if (angulo < SERVO2_MIN_ANGLE) angulo = SERVO2_MIN_ANGLE;
      6b2:	8e 36       	cpi	r24, 0x6E	; 110
@@ -1167,14 +1125,13 @@ static void procesar_comando_directo(char *cmd,
             pwm_servo_set_angle(s2, angulo);
      6be:	6c 2f       	mov	r22, r28
      6c0:	c7 01       	movw	r24, r14
-     6c2:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     6c2:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
             enviar_feedback(2, angulo);
      6c6:	6c 2f       	mov	r22, r28
      6c8:	82 e0       	ldi	r24, 0x02	; 2
      6ca:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             break;
      6ce:	1f c0       	rjmp	.+62     	; 0x70e <procesar_comando_directo+0xf8>
-
         case 3:
             if (angulo < SERVO3_MIN_ANGLE) angulo = SERVO3_MIN_ANGLE;
      6d0:	8f 35       	cpi	r24, 0x5F	; 95
@@ -1187,14 +1144,13 @@ static void procesar_comando_directo(char *cmd,
             pwm_servo_t2_set_angle(s3, angulo);
      6dc:	6c 2f       	mov	r22, r28
      6de:	c5 01       	movw	r24, r10
-     6e0:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t2_set_angle>
+     6e0:	0e 94 70 08 	call	0x10e0	; 0x10e0 <pwm_servo_t2_set_angle>
             enviar_feedback(3, angulo);
      6e4:	6c 2f       	mov	r22, r28
      6e6:	83 e0       	ldi	r24, 0x03	; 3
      6e8:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             break;
      6ec:	10 c0       	rjmp	.+32     	; 0x70e <procesar_comando_directo+0xf8>
-
         case 4:
             if (angulo < SERVO4_MIN_ANGLE) angulo = SERVO4_MIN_ANGLE;
             if (angulo > SERVO4_MAX_ANGLE) angulo = SERVO4_MAX_ANGLE;
@@ -1204,19 +1160,18 @@ static void procesar_comando_directo(char *cmd,
             pwm_servo_t0_set_angle(s4, angulo);
      6f4:	6c 2f       	mov	r22, r28
      6f6:	c8 01       	movw	r24, r16
-     6f8:	0e 94 da 07 	call	0xfb4	; 0xfb4 <pwm_servo_t0_set_angle>
+     6f8:	0e 94 11 08 	call	0x1022	; 0x1022 <pwm_servo_t0_set_angle>
             enviar_feedback(4, angulo);
      6fc:	6c 2f       	mov	r22, r28
      6fe:	84 e0       	ldi	r24, 0x04	; 4
      700:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
             break;
      704:	04 c0       	rjmp	.+8      	; 0x70e <procesar_comando_directo+0xf8>
-
         default:
             writeString("\r\nServo invalido (1-4)\r\n");
      706:	8f ee       	ldi	r24, 0xEF	; 239
      708:	91 e0       	ldi	r25, 0x01	; 1
-     70a:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     70a:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
             break;
     }
 }
@@ -1233,11 +1188,11 @@ static void procesar_comando_directo(char *cmd,
      722:	08 95       	ret
 
 00000724 <run_mode_serial>:
+        }
+    }
+}
 
-/****************************************/
-// MODE_SERIAL
-static void run_mode_serial(servo_t *s1, servo_t *s2,
-                              servo_t2_t *s3, servo_t0_t *s4)
+static void run_mode_serial(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
      724:	8f 92       	push	r8
      726:	9f 92       	push	r9
@@ -1269,14 +1224,14 @@ static void run_mode_serial(servo_t *s1, servo_t *s2,
     writeString("\r\n[SERIAL] S1:0-180 S2:110-180 S3:95-160 S4:0-10\r\n");
      754:	88 e0       	ldi	r24, 0x08	; 8
      756:	92 e0       	ldi	r25, 0x02	; 2
-     758:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     758:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     writeString("         'q' o PC4 para salir.\r\n");
      75c:	8b e3       	ldi	r24, 0x3B	; 59
      75e:	92 e0       	ldi	r25, 0x02	; 2
-     760:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-// MODE_SERIAL
-static void run_mode_serial(servo_t *s1, servo_t *s2,
-                              servo_t2_t *s3, servo_t0_t *s4)
+     760:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+}
+
+static void run_mode_serial(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
     char    buffer[20];
     uint8_t index = 0;
@@ -1295,23 +1250,23 @@ static void run_mode_serial(servo_t *s1, servo_t *s2,
             writeString("\r\n[SERIAL] Saliendo...\r\n");
      770:	8c e5       	ldi	r24, 0x5C	; 92
      772:	92 e0       	ldi	r25, 0x02	; 2
-     774:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     774:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
             break;
      778:	3e c0       	rjmp	.+124    	; 0x7f6 <run_mode_serial+0xd2>
         }
 
         if (ExisteDato)
-     77a:	80 91 3b 05 	lds	r24, 0x053B	; 0x80053b <ExisteDato>
+     77a:	80 91 49 05 	lds	r24, 0x0549	; 0x800549 <ExisteDato>
      77e:	88 23       	and	r24, r24
      780:	91 f3       	breq	.-28     	; 0x766 <run_mode_serial+0x42>
         {
             char c = (char)datoRX;
-     782:	10 91 3c 05 	lds	r17, 0x053C	; 0x80053c <datoRX>
+     782:	10 91 4a 05 	lds	r17, 0x054A	; 0x80054a <datoRX>
             ExisteDato = 0;
-     786:	10 92 3b 05 	sts	0x053B, r1	; 0x80053b <ExisteDato>
+     786:	10 92 49 05 	sts	0x0549, r1	; 0x800549 <ExisteDato>
             writeChar(c);
      78a:	81 2f       	mov	r24, r17
-     78c:	0e 94 7c 08 	call	0x10f8	; 0x10f8 <writeChar>
+     78c:	0e 94 b3 08 	call	0x1166	; 0x1166 <writeChar>
 
             if (c == '\r')
      790:	1d 30       	cpi	r17, 0x0D	; 13
@@ -1331,21 +1286,21 @@ static void run_mode_serial(servo_t *s1, servo_t *s2,
      7a4:	72 e0       	ldi	r23, 0x02	; 2
      7a6:	ce 01       	movw	r24, r28
      7a8:	01 96       	adiw	r24, 0x01	; 1
-     7aa:	0e 94 24 09 	call	0x1248	; 0x1248 <strcmp>
+     7aa:	0e 94 5b 09 	call	0x12b6	; 0x12b6 <strcmp>
      7ae:	89 2b       	or	r24, r25
      7b0:	41 f0       	breq	.+16     	; 0x7c2 <run_mode_serial+0x9e>
      7b2:	67 e7       	ldi	r22, 0x77	; 119
      7b4:	72 e0       	ldi	r23, 0x02	; 2
      7b6:	ce 01       	movw	r24, r28
      7b8:	01 96       	adiw	r24, 0x01	; 1
-     7ba:	0e 94 24 09 	call	0x1248	; 0x1248 <strcmp>
+     7ba:	0e 94 5b 09 	call	0x12b6	; 0x12b6 <strcmp>
      7be:	89 2b       	or	r24, r25
      7c0:	29 f4       	brne	.+10     	; 0x7cc <run_mode_serial+0xa8>
                 {
                     writeString("\r\n[SERIAL] Saliendo...\r\n");
      7c2:	8c e5       	ldi	r24, 0x5C	; 92
      7c4:	92 e0       	ldi	r25, 0x02	; 2
-     7c6:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     7c6:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
                     break;
      7ca:	15 c0       	rjmp	.+42     	; 0x7f6 <run_mode_serial+0xd2>
                 }
@@ -1401,11 +1356,8 @@ static void run_mode_serial(servo_t *s1, servo_t *s2,
      81a:	08 95       	ret
 
 0000081c <run_mode_record>:
- *
- * Si se alcanzan 4 keyframes, se informa y se sale.
- */
-static void run_mode_record(servo_t *s1, servo_t *s2,
-                             servo_t2_t *s3, servo_t0_t *s4)
+
+static void run_mode_record(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
 {
      81c:	2f 92       	push	r2
      81e:	3f 92       	push	r3
@@ -1427,1668 +1379,1729 @@ static void run_mode_record(servo_t *s1, servo_t *s2,
      83e:	df 93       	push	r29
      840:	cd b7       	in	r28, 0x3d	; 61
      842:	de b7       	in	r29, 0x3e	; 62
-     844:	2c 97       	sbiw	r28, 0x0c	; 12
+     844:	60 97       	sbiw	r28, 0x10	; 16
      846:	0f b6       	in	r0, 0x3f	; 63
      848:	f8 94       	cli
      84a:	de bf       	out	0x3e, r29	; 62
      84c:	0f be       	out	0x3f, r0	; 63
      84e:	cd bf       	out	0x3d, r28	; 61
-     850:	2c 01       	movw	r4, r24
-     852:	3b 01       	movw	r6, r22
-     854:	5a 87       	std	Y+10, r21	; 0x0a
-     856:	49 87       	std	Y+9, r20	; 0x09
-     858:	3c 87       	std	Y+12, r19	; 0x0c
-     85a:	2b 87       	std	Y+11, r18	; 0x0b
-    writeString("\r\n[RECORD] Mueve pots. PC5=guardar pose. PC4=salir.\r\n");
-     85c:	89 e7       	ldi	r24, 0x79	; 121
-     85e:	92 e0       	ldi	r25, 0x02	; 2
-     860:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-    writeString("[RECORD] Max 4 keyframes. LED PB5 parpadea al guardar.\r\n");
-     864:	8f ea       	ldi	r24, 0xAF	; 175
-     866:	92 e0       	ldi	r25, 0x02	; 2
-     868:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     850:	9a 87       	std	Y+10, r25	; 0x0a
+     852:	89 87       	std	Y+9, r24	; 0x09
+     854:	7c 87       	std	Y+12, r23	; 0x0c
+     856:	6b 87       	std	Y+11, r22	; 0x0b
+     858:	5e 87       	std	Y+14, r21	; 0x0e
+     85a:	4d 87       	std	Y+13, r20	; 0x0d
+     85c:	38 8b       	std	Y+16, r19	; 0x10
+     85e:	2f 87       	std	Y+15, r18	; 0x0f
+	writeString("\r\n[RECORD] Mueve pots. PC5=guardar pose. PC4=salir.\r\n");
+     860:	89 e7       	ldi	r24, 0x79	; 121
+     862:	92 e0       	ldi	r25, 0x02	; 2
+     864:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+	writeString("[RECORD] Max 4 keyframes. LED PB5 parpadea mientras graba.\r\n");
+     868:	8f ea       	ldi	r24, 0xAF	; 175
+     86a:	92 e0       	ldi	r25, 0x02	; 2
+     86c:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 
-    uint8_t keyframe_count = 0;
-     86c:	21 2c       	mov	r2, r1
-    while (1)
-    {
-        // --- LECTURA ADC EN TIEMPO REAL ---
-        // El usuario mueve los potenciometros y ve el brazo moverse
-        uint8_t angle1 = (uint8_t)map_value(
-            (int32_t)adc_read(0), 0, 1023,
-     86e:	80 e0       	ldi	r24, 0x00	; 0
-     870:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-
-    while (1)
-    {
-        // --- LECTURA ADC EN TIEMPO REAL ---
-        // El usuario mueve los potenciometros y ve el brazo moverse
-        uint8_t angle1 = (uint8_t)map_value(
-     874:	bc 01       	movw	r22, r24
-     876:	80 e0       	ldi	r24, 0x00	; 0
-     878:	90 e0       	ldi	r25, 0x00	; 0
-     87a:	1f 92       	push	r1
-     87c:	1f 92       	push	r1
-     87e:	1f 92       	push	r1
-     880:	0f 2e       	mov	r0, r31
-     882:	f4 eb       	ldi	r31, 0xB4	; 180
-     884:	9f 2e       	mov	r9, r31
-     886:	f0 2d       	mov	r31, r0
-     888:	9f 92       	push	r9
-     88a:	a1 2c       	mov	r10, r1
-     88c:	b1 2c       	mov	r11, r1
-     88e:	65 01       	movw	r12, r10
-     890:	ee 24       	eor	r14, r14
-     892:	ea 94       	dec	r14
-     894:	13 e0       	ldi	r17, 0x03	; 3
-     896:	f1 2e       	mov	r15, r17
-     898:	00 e0       	ldi	r16, 0x00	; 0
-     89a:	10 e0       	ldi	r17, 0x00	; 0
-     89c:	20 e0       	ldi	r18, 0x00	; 0
-     89e:	30 e0       	ldi	r19, 0x00	; 0
-     8a0:	a9 01       	movw	r20, r18
-     8a2:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
-     8a6:	0f 90       	pop	r0
-     8a8:	0f 90       	pop	r0
-     8aa:	0f 90       	pop	r0
-     8ac:	0f 90       	pop	r0
-     8ae:	36 2e       	mov	r3, r22
-            (int32_t)adc_read(0), 0, 1023,
-            SERVO1_MIN_ANGLE, SERVO1_MAX_ANGLE);
-        pwm_servo_set_angle(s1, angle1);
-     8b0:	c2 01       	movw	r24, r4
-     8b2:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
-
-        uint8_t angle2 = (uint8_t)map_value(
-            (int32_t)adc_read(1), 0, 1023,
-     8b6:	81 e0       	ldi	r24, 0x01	; 1
-     8b8:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        uint8_t angle1 = (uint8_t)map_value(
-            (int32_t)adc_read(0), 0, 1023,
-            SERVO1_MIN_ANGLE, SERVO1_MAX_ANGLE);
-        pwm_servo_set_angle(s1, angle1);
-
-        uint8_t angle2 = (uint8_t)map_value(
-     8bc:	bc 01       	movw	r22, r24
-     8be:	80 e0       	ldi	r24, 0x00	; 0
-     8c0:	90 e0       	ldi	r25, 0x00	; 0
-     8c2:	1f 92       	push	r1
-     8c4:	1f 92       	push	r1
-     8c6:	1f 92       	push	r1
-     8c8:	9f 92       	push	r9
-     8ca:	0f 2e       	mov	r0, r31
-     8cc:	fe e6       	ldi	r31, 0x6E	; 110
-     8ce:	af 2e       	mov	r10, r31
-     8d0:	b1 2c       	mov	r11, r1
-     8d2:	c1 2c       	mov	r12, r1
-     8d4:	d1 2c       	mov	r13, r1
-     8d6:	f0 2d       	mov	r31, r0
-     8d8:	20 e0       	ldi	r18, 0x00	; 0
-     8da:	30 e0       	ldi	r19, 0x00	; 0
-     8dc:	a9 01       	movw	r20, r18
-     8de:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
-     8e2:	0f 90       	pop	r0
-     8e4:	0f 90       	pop	r0
-     8e6:	0f 90       	pop	r0
-     8e8:	0f 90       	pop	r0
-     8ea:	86 2e       	mov	r8, r22
-            (int32_t)adc_read(1), 0, 1023,
-            SERVO2_MIN_ANGLE, SERVO2_MAX_ANGLE);
-        pwm_servo_set_angle(s2, angle2);
-     8ec:	c3 01       	movw	r24, r6
-     8ee:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
-
-        uint8_t angle3 = (uint8_t)map_value(
-            (int32_t)adc_read(2), 0, 1023,
-     8f2:	82 e0       	ldi	r24, 0x02	; 2
-     8f4:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        uint8_t angle2 = (uint8_t)map_value(
-            (int32_t)adc_read(1), 0, 1023,
-            SERVO2_MIN_ANGLE, SERVO2_MAX_ANGLE);
-        pwm_servo_set_angle(s2, angle2);
-
-        uint8_t angle3 = (uint8_t)map_value(
-     8f8:	bc 01       	movw	r22, r24
-     8fa:	80 e0       	ldi	r24, 0x00	; 0
-     8fc:	90 e0       	ldi	r25, 0x00	; 0
-     8fe:	1f 92       	push	r1
-     900:	1f 92       	push	r1
-     902:	1f 92       	push	r1
-     904:	20 ea       	ldi	r18, 0xA0	; 160
-     906:	2f 93       	push	r18
-     908:	0f 2e       	mov	r0, r31
-     90a:	ff e5       	ldi	r31, 0x5F	; 95
-     90c:	af 2e       	mov	r10, r31
-     90e:	b1 2c       	mov	r11, r1
-     910:	c1 2c       	mov	r12, r1
-     912:	d1 2c       	mov	r13, r1
-     914:	f0 2d       	mov	r31, r0
-     916:	20 e0       	ldi	r18, 0x00	; 0
-     918:	30 e0       	ldi	r19, 0x00	; 0
-     91a:	a9 01       	movw	r20, r18
-     91c:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
-     920:	0f 90       	pop	r0
-     922:	0f 90       	pop	r0
-     924:	0f 90       	pop	r0
-     926:	0f 90       	pop	r0
-     928:	96 2e       	mov	r9, r22
-            (int32_t)adc_read(2), 0, 1023,
-            SERVO3_MIN_ANGLE, SERVO3_MAX_ANGLE);
-        pwm_servo_t2_set_angle(s3, angle3);
-     92a:	89 85       	ldd	r24, Y+9	; 0x09
-     92c:	9a 85       	ldd	r25, Y+10	; 0x0a
-     92e:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t2_set_angle>
-
-        uint8_t angle4 = (uint8_t)map_value(
-            (int32_t)adc_read(3), 0, 1023,
-     932:	83 e0       	ldi	r24, 0x03	; 3
-     934:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
-        uint8_t angle3 = (uint8_t)map_value(
-            (int32_t)adc_read(2), 0, 1023,
-            SERVO3_MIN_ANGLE, SERVO3_MAX_ANGLE);
-        pwm_servo_t2_set_angle(s3, angle3);
-
-        uint8_t angle4 = (uint8_t)map_value(
-     938:	bc 01       	movw	r22, r24
-     93a:	80 e0       	ldi	r24, 0x00	; 0
-     93c:	90 e0       	ldi	r25, 0x00	; 0
-     93e:	1f 92       	push	r1
-     940:	1f 92       	push	r1
-     942:	1f 92       	push	r1
-     944:	2a e0       	ldi	r18, 0x0A	; 10
-     946:	2f 93       	push	r18
-     948:	a1 2c       	mov	r10, r1
-     94a:	b1 2c       	mov	r11, r1
-     94c:	65 01       	movw	r12, r10
-     94e:	20 e0       	ldi	r18, 0x00	; 0
-     950:	30 e0       	ldi	r19, 0x00	; 0
-     952:	a9 01       	movw	r20, r18
-     954:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
-     958:	0f 90       	pop	r0
-     95a:	0f 90       	pop	r0
-     95c:	0f 90       	pop	r0
-     95e:	0f 90       	pop	r0
-     960:	16 2f       	mov	r17, r22
-            (int32_t)adc_read(3), 0, 1023,
-            SERVO4_MIN_ANGLE, SERVO4_MAX_ANGLE);
-        pwm_servo_t0_set_angle(s4, angle4);
-     962:	8b 85       	ldd	r24, Y+11	; 0x0b
-     964:	9c 85       	ldd	r25, Y+12	; 0x0c
-     966:	0e 94 da 07 	call	0xfb4	; 0xfb4 <pwm_servo_t0_set_angle>
-     96a:	2f ef       	ldi	r18, 0xFF	; 255
-     96c:	89 ef       	ldi	r24, 0xF9	; 249
-     96e:	90 e0       	ldi	r25, 0x00	; 0
-     970:	21 50       	subi	r18, 0x01	; 1
-     972:	80 40       	sbci	r24, 0x00	; 0
-     974:	90 40       	sbci	r25, 0x00	; 0
-     976:	e1 f7       	brne	.-8      	; 0x970 <__stack+0x71>
-     978:	00 c0       	rjmp	.+0      	; 0x97a <__stack+0x7b>
-     97a:	00 00       	nop
-
-        _delay_ms(20);
-
-        // --- SALIR CON PC4 ---
-        if (button_pressed(BTN_CHANGE_PIN))
-     97c:	84 e0       	ldi	r24, 0x04	; 4
-     97e:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
-     982:	88 23       	and	r24, r24
-     984:	c9 f0       	breq	.+50     	; 0x9b8 <__stack+0xb9>
-        {
-            writeString("\r\n[RECORD] Saliendo...\r\n");
-     986:	88 ee       	ldi	r24, 0xE8	; 232
-     988:	92 e0       	ldi	r25, 0x02	; 2
-     98a:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-            }
-        }
-    }
-
-    // Reporte final
-    writeString("[RECORD] Total keyframes guardados: ");
-     98e:	81 e0       	ldi	r24, 0x01	; 1
-     990:	93 e0       	ldi	r25, 0x03	; 3
-     992:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-    char total[4];
-    total[0] = '0' + keyframe_count;
-     996:	80 e3       	ldi	r24, 0x30	; 48
-     998:	82 0d       	add	r24, r2
-     99a:	89 83       	std	Y+1, r24	; 0x01
-    total[1] = '\r';
-     99c:	8d e0       	ldi	r24, 0x0D	; 13
-     99e:	8a 83       	std	Y+2, r24	; 0x02
-    total[2] = '\n';
-     9a0:	8a e0       	ldi	r24, 0x0A	; 10
-     9a2:	8b 83       	std	Y+3, r24	; 0x03
-    total[3] = '\0';
-     9a4:	1c 82       	std	Y+4, r1	; 0x04
-    writeString(total);
-     9a6:	ce 01       	movw	r24, r28
-     9a8:	01 96       	adiw	r24, 0x01	; 1
-     9aa:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-    writeString("[RECORD] Listo.\r\n");
-     9ae:	86 e2       	ldi	r24, 0x26	; 38
-     9b0:	93 e0       	ldi	r25, 0x03	; 3
-     9b2:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-}
-     9b6:	70 c0       	rjmp	.+224    	; 0xa98 <__stack+0x199>
-            writeString("\r\n[RECORD] Saliendo...\r\n");
-            break;
-        }
-
-        // --- GUARDAR KEYFRAME CON PC5 ---
-        if (button_pressed(BTN_ACTION_PIN))
-     9b8:	85 e0       	ldi	r24, 0x05	; 5
-     9ba:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
-     9be:	88 23       	and	r24, r24
-     9c0:	09 f4       	brne	.+2      	; 0x9c4 <__stack+0xc5>
-     9c2:	55 cf       	rjmp	.-342    	; 0x86e <run_mode_record+0x52>
-        {
-            if (keyframe_count >= MAX_KEYFRAMES)
-     9c4:	23 e0       	ldi	r18, 0x03	; 3
-     9c6:	22 15       	cp	r18, r2
-     9c8:	28 f4       	brcc	.+10     	; 0x9d4 <__stack+0xd5>
-            {
-                writeString("[RECORD] Ya hay 4 keyframes. Borra EEPROM para grabar mas.\r\n");
-     9ca:	88 e3       	ldi	r24, 0x38	; 56
-     9cc:	93 e0       	ldi	r25, 0x03	; 3
-     9ce:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-     9d2:	4d cf       	rjmp	.-358    	; 0x86e <run_mode_record+0x52>
-                continue;
-            }
-
-            uint16_t addr = KEYFRAME_BASE_ADDR + ((uint16_t)keyframe_count * KEYFRAME_SIZE);
-     9d4:	e2 2c       	mov	r14, r2
-     9d6:	f1 2c       	mov	r15, r1
-     9d8:	ee 0c       	add	r14, r14
-     9da:	ff 1c       	adc	r15, r15
-     9dc:	ee 0c       	add	r14, r14
-     9de:	ff 1c       	adc	r15, r15
-
-            eepromWrite(addr + 0, angle1);
-     9e0:	63 2d       	mov	r22, r3
-     9e2:	c7 01       	movw	r24, r14
-     9e4:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
-            eepromWrite(addr + 1, angle2);
-     9e8:	68 2d       	mov	r22, r8
-     9ea:	c7 01       	movw	r24, r14
-     9ec:	01 96       	adiw	r24, 0x01	; 1
-     9ee:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
-            eepromWrite(addr + 2, angle3);
-     9f2:	69 2d       	mov	r22, r9
-     9f4:	c7 01       	movw	r24, r14
-     9f6:	02 96       	adiw	r24, 0x02	; 2
-     9f8:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
-            eepromWrite(addr + 3, angle4);
-     9fc:	61 2f       	mov	r22, r17
-     9fe:	c7 01       	movw	r24, r14
-     a00:	03 96       	adiw	r24, 0x03	; 3
-     a02:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
-
-            // Parpadeo LED
-            PORTB |=  (1 << PB5);
-     a06:	85 b1       	in	r24, 0x05	; 5
-     a08:	80 62       	ori	r24, 0x20	; 32
-     a0a:	85 b9       	out	0x05, r24	; 5
-     a0c:	8f ef       	ldi	r24, 0xFF	; 255
-     a0e:	91 ee       	ldi	r25, 0xE1	; 225
-     a10:	24 e0       	ldi	r18, 0x04	; 4
-     a12:	81 50       	subi	r24, 0x01	; 1
-     a14:	90 40       	sbci	r25, 0x00	; 0
-     a16:	20 40       	sbci	r18, 0x00	; 0
-     a18:	e1 f7       	brne	.-8      	; 0xa12 <__stack+0x113>
-     a1a:	00 c0       	rjmp	.+0      	; 0xa1c <__stack+0x11d>
-     a1c:	00 00       	nop
-            _delay_ms(100);
-            PORTB &= ~(1 << PB5);
-     a1e:	85 b1       	in	r24, 0x05	; 5
-     a20:	8f 7d       	andi	r24, 0xDF	; 223
-     a22:	85 b9       	out	0x05, r24	; 5
-
-            // Reportar keyframe guardado
-            writeString("[RECORD] Keyframe ");
-     a24:	85 e7       	ldi	r24, 0x75	; 117
-     a26:	93 e0       	ldi	r25, 0x03	; 3
-     a28:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-            char kf[4];
-            kf[0] = '0' + (keyframe_count + 1);
-     a2c:	81 e3       	ldi	r24, 0x31	; 49
-     a2e:	82 0d       	add	r24, r2
-     a30:	8d 83       	std	Y+5, r24	; 0x05
-            kf[1] = '\r';
-     a32:	8d e0       	ldi	r24, 0x0D	; 13
-     a34:	8e 83       	std	Y+6, r24	; 0x06
-            kf[2] = '\n';
-     a36:	8a e0       	ldi	r24, 0x0A	; 10
-     a38:	8f 83       	std	Y+7, r24	; 0x07
-            kf[3] = '\0';
-     a3a:	18 86       	std	Y+8, r1	; 0x08
-            writeString(kf);
-     a3c:	ce 01       	movw	r24, r28
-     a3e:	05 96       	adiw	r24, 0x05	; 5
-     a40:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-
-            writeString("  S1=");
-     a44:	88 e8       	ldi	r24, 0x88	; 136
-     a46:	93 e0       	ldi	r25, 0x03	; 3
-     a48:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-            enviar_feedback(1, angle1);
-     a4c:	63 2d       	mov	r22, r3
-     a4e:	81 e0       	ldi	r24, 0x01	; 1
-     a50:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-            writeString("  S2=");
-     a54:	8e e8       	ldi	r24, 0x8E	; 142
-     a56:	93 e0       	ldi	r25, 0x03	; 3
-     a58:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-            enviar_feedback(2, angle2);
-     a5c:	68 2d       	mov	r22, r8
-     a5e:	82 e0       	ldi	r24, 0x02	; 2
-     a60:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-            writeString("  S3=");
-     a64:	84 e9       	ldi	r24, 0x94	; 148
-     a66:	93 e0       	ldi	r25, 0x03	; 3
-     a68:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-            enviar_feedback(3, angle3);
-     a6c:	69 2d       	mov	r22, r9
-     a6e:	83 e0       	ldi	r24, 0x03	; 3
-     a70:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-            writeString("  S4=");
-     a74:	8a e9       	ldi	r24, 0x9A	; 154
-     a76:	93 e0       	ldi	r25, 0x03	; 3
-     a78:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-            enviar_feedback(4, angle4);
-     a7c:	61 2f       	mov	r22, r17
-     a7e:	84 e0       	ldi	r24, 0x04	; 4
-     a80:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-
-            keyframe_count++;
-     a84:	23 94       	inc	r2
-
-            if (keyframe_count >= MAX_KEYFRAMES)
-     a86:	83 e0       	ldi	r24, 0x03	; 3
-     a88:	82 15       	cp	r24, r2
-     a8a:	08 f0       	brcs	.+2      	; 0xa8e <__stack+0x18f>
-     a8c:	f0 ce       	rjmp	.-544    	; 0x86e <run_mode_record+0x52>
-            {
-                writeString("[RECORD] 4/4 keyframes guardados.\r\n");
-     a8e:	80 ea       	ldi	r24, 0xA0	; 160
-     a90:	93 e0       	ldi	r25, 0x03	; 3
-     a92:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-     a96:	eb ce       	rjmp	.-554    	; 0x86e <run_mode_record+0x52>
-    total[1] = '\r';
-    total[2] = '\n';
-    total[3] = '\0';
-    writeString(total);
-    writeString("[RECORD] Listo.\r\n");
-}
-     a98:	2c 96       	adiw	r28, 0x0c	; 12
-     a9a:	0f b6       	in	r0, 0x3f	; 63
-     a9c:	f8 94       	cli
-     a9e:	de bf       	out	0x3e, r29	; 62
-     aa0:	0f be       	out	0x3f, r0	; 63
-     aa2:	cd bf       	out	0x3d, r28	; 61
-     aa4:	df 91       	pop	r29
-     aa6:	cf 91       	pop	r28
-     aa8:	1f 91       	pop	r17
-     aaa:	0f 91       	pop	r16
-     aac:	ff 90       	pop	r15
-     aae:	ef 90       	pop	r14
-     ab0:	df 90       	pop	r13
-     ab2:	cf 90       	pop	r12
-     ab4:	bf 90       	pop	r11
-     ab6:	af 90       	pop	r10
-     ab8:	9f 90       	pop	r9
-     aba:	8f 90       	pop	r8
-     abc:	7f 90       	pop	r7
-     abe:	6f 90       	pop	r6
-     ac0:	5f 90       	pop	r5
-     ac2:	4f 90       	pop	r4
-     ac4:	3f 90       	pop	r3
-     ac6:	2f 90       	pop	r2
-     ac8:	08 95       	ret
-
-00000aca <run_mode_playback>:
- * Se detiene al encontrar el marcador 0xFF (keyframe vacio)
- * o al alcanzar MAX_KEYFRAMES.
- */
-static void run_mode_playback(servo_t *s1, servo_t *s2,
-                               servo_t2_t *s3, servo_t0_t *s4)
+	// Borrar todos los keyframes anteriores al entrar al modo
+	for (uint8_t i = 0; i < MAX_KEYFRAMES; i++)
+     870:	10 e0       	ldi	r17, 0x00	; 0
+     872:	0a c0       	rjmp	.+20     	; 0x888 <run_mode_record+0x6c>
+	{
+		uint16_t addr = KEYFRAME_BASE_ADDR + ((uint16_t)i * KEYFRAME_SIZE);
+     874:	81 2f       	mov	r24, r17
+     876:	90 e0       	ldi	r25, 0x00	; 0
+		eepromWrite(addr, EEPROM_EMPTY_MARKER);
+     878:	6f ef       	ldi	r22, 0xFF	; 255
+     87a:	88 0f       	add	r24, r24
+     87c:	99 1f       	adc	r25, r25
+     87e:	88 0f       	add	r24, r24
+     880:	99 1f       	adc	r25, r25
+     882:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
 {
-     aca:	2f 92       	push	r2
-     acc:	3f 92       	push	r3
-     ace:	4f 92       	push	r4
-     ad0:	5f 92       	push	r5
-     ad2:	6f 92       	push	r6
-     ad4:	7f 92       	push	r7
-     ad6:	8f 92       	push	r8
-     ad8:	9f 92       	push	r9
-     ada:	af 92       	push	r10
-     adc:	bf 92       	push	r11
-     ade:	cf 92       	push	r12
-     ae0:	df 92       	push	r13
-     ae2:	ef 92       	push	r14
-     ae4:	ff 92       	push	r15
-     ae6:	0f 93       	push	r16
-     ae8:	1f 93       	push	r17
-     aea:	cf 93       	push	r28
-     aec:	df 93       	push	r29
-     aee:	cd b7       	in	r28, 0x3d	; 61
-     af0:	de b7       	in	r29, 0x3e	; 62
-     af2:	27 97       	sbiw	r28, 0x07	; 7
-     af4:	0f b6       	in	r0, 0x3f	; 63
-     af6:	f8 94       	cli
-     af8:	de bf       	out	0x3e, r29	; 62
-     afa:	0f be       	out	0x3f, r0	; 63
-     afc:	cd bf       	out	0x3d, r28	; 61
-     afe:	7c 01       	movw	r14, r24
-     b00:	7e 83       	std	Y+6, r23	; 0x06
-     b02:	6d 83       	std	Y+5, r22	; 0x05
-     b04:	6a 01       	movw	r12, r20
-     b06:	59 01       	movw	r10, r18
+	writeString("\r\n[RECORD] Mueve pots. PC5=guardar pose. PC4=salir.\r\n");
+	writeString("[RECORD] Max 4 keyframes. LED PB5 parpadea mientras graba.\r\n");
+
+	// Borrar todos los keyframes anteriores al entrar al modo
+	for (uint8_t i = 0; i < MAX_KEYFRAMES; i++)
+     886:	1f 5f       	subi	r17, 0xFF	; 255
+     888:	14 30       	cpi	r17, 0x04	; 4
+     88a:	a0 f3       	brcs	.-24     	; 0x874 <run_mode_record+0x58>
+     88c:	41 2c       	mov	r4, r1
+     88e:	61 2c       	mov	r6, r1
+     890:	71 2c       	mov	r7, r1
+     892:	31 2c       	mov	r3, r1
+     894:	51 2c       	mov	r5, r1
+	uint16_t blink_counter  = 0;
+	uint8_t  eeprom_llena   = 0;
+
+	while (1)
+	{
+		uint8_t angle1 = (uint8_t)map_value((int32_t)adc_read(0), 0, 1023, SERVO1_MIN_ANGLE, SERVO1_MAX_ANGLE);
+     896:	80 e0       	ldi	r24, 0x00	; 0
+     898:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
+     89c:	bc 01       	movw	r22, r24
+     89e:	80 e0       	ldi	r24, 0x00	; 0
+     8a0:	90 e0       	ldi	r25, 0x00	; 0
+     8a2:	1f 92       	push	r1
+     8a4:	1f 92       	push	r1
+     8a6:	1f 92       	push	r1
+     8a8:	0f 2e       	mov	r0, r31
+     8aa:	f4 eb       	ldi	r31, 0xB4	; 180
+     8ac:	9f 2e       	mov	r9, r31
+     8ae:	f0 2d       	mov	r31, r0
+     8b0:	9f 92       	push	r9
+     8b2:	a1 2c       	mov	r10, r1
+     8b4:	b1 2c       	mov	r11, r1
+     8b6:	65 01       	movw	r12, r10
+     8b8:	ee 24       	eor	r14, r14
+     8ba:	ea 94       	dec	r14
+     8bc:	13 e0       	ldi	r17, 0x03	; 3
+     8be:	f1 2e       	mov	r15, r17
+     8c0:	00 e0       	ldi	r16, 0x00	; 0
+     8c2:	10 e0       	ldi	r17, 0x00	; 0
+     8c4:	20 e0       	ldi	r18, 0x00	; 0
+     8c6:	30 e0       	ldi	r19, 0x00	; 0
+     8c8:	a9 01       	movw	r20, r18
+     8ca:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
+     8ce:	0f 90       	pop	r0
+     8d0:	0f 90       	pop	r0
+     8d2:	0f 90       	pop	r0
+     8d4:	0f 90       	pop	r0
+     8d6:	26 2e       	mov	r2, r22
+		uint8_t angle2 = (uint8_t)map_value((int32_t)adc_read(1), 0, 1023, SERVO2_MIN_ANGLE, SERVO2_MAX_ANGLE);
+     8d8:	81 e0       	ldi	r24, 0x01	; 1
+     8da:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
+     8de:	bc 01       	movw	r22, r24
+     8e0:	80 e0       	ldi	r24, 0x00	; 0
+     8e2:	90 e0       	ldi	r25, 0x00	; 0
+     8e4:	1f 92       	push	r1
+     8e6:	1f 92       	push	r1
+     8e8:	1f 92       	push	r1
+     8ea:	9f 92       	push	r9
+     8ec:	0f 2e       	mov	r0, r31
+     8ee:	fe e6       	ldi	r31, 0x6E	; 110
+     8f0:	af 2e       	mov	r10, r31
+     8f2:	b1 2c       	mov	r11, r1
+     8f4:	c1 2c       	mov	r12, r1
+     8f6:	d1 2c       	mov	r13, r1
+     8f8:	f0 2d       	mov	r31, r0
+     8fa:	20 e0       	ldi	r18, 0x00	; 0
+     8fc:	30 e0       	ldi	r19, 0x00	; 0
+     8fe:	a9 01       	movw	r20, r18
+     900:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
+     904:	0f 90       	pop	r0
+     906:	0f 90       	pop	r0
+     908:	0f 90       	pop	r0
+     90a:	0f 90       	pop	r0
+     90c:	86 2e       	mov	r8, r22
+		uint8_t angle3 = (uint8_t)map_value((int32_t)adc_read(2), 0, 1023, SERVO3_MIN_ANGLE, SERVO3_MAX_ANGLE);
+     90e:	82 e0       	ldi	r24, 0x02	; 2
+     910:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
+     914:	bc 01       	movw	r22, r24
+     916:	80 e0       	ldi	r24, 0x00	; 0
+     918:	90 e0       	ldi	r25, 0x00	; 0
+     91a:	1f 92       	push	r1
+     91c:	1f 92       	push	r1
+     91e:	1f 92       	push	r1
+     920:	20 ea       	ldi	r18, 0xA0	; 160
+     922:	2f 93       	push	r18
+     924:	0f 2e       	mov	r0, r31
+     926:	ff e5       	ldi	r31, 0x5F	; 95
+     928:	af 2e       	mov	r10, r31
+     92a:	b1 2c       	mov	r11, r1
+     92c:	c1 2c       	mov	r12, r1
+     92e:	d1 2c       	mov	r13, r1
+     930:	f0 2d       	mov	r31, r0
+     932:	20 e0       	ldi	r18, 0x00	; 0
+     934:	30 e0       	ldi	r19, 0x00	; 0
+     936:	a9 01       	movw	r20, r18
+     938:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
+     93c:	0f 90       	pop	r0
+     93e:	0f 90       	pop	r0
+     940:	0f 90       	pop	r0
+     942:	0f 90       	pop	r0
+     944:	96 2e       	mov	r9, r22
+		uint8_t angle4 = (uint8_t)map_value((int32_t)adc_read(3), 0, 1023, SERVO4_MIN_ANGLE, SERVO4_MAX_ANGLE);
+     946:	83 e0       	ldi	r24, 0x03	; 3
+     948:	0e 94 9f 00 	call	0x13e	; 0x13e <adc_read>
+     94c:	bc 01       	movw	r22, r24
+     94e:	80 e0       	ldi	r24, 0x00	; 0
+     950:	90 e0       	ldi	r25, 0x00	; 0
+     952:	1f 92       	push	r1
+     954:	1f 92       	push	r1
+     956:	1f 92       	push	r1
+     958:	2a e0       	ldi	r18, 0x0A	; 10
+     95a:	2f 93       	push	r18
+     95c:	a1 2c       	mov	r10, r1
+     95e:	b1 2c       	mov	r11, r1
+     960:	65 01       	movw	r12, r10
+     962:	20 e0       	ldi	r18, 0x00	; 0
+     964:	30 e0       	ldi	r19, 0x00	; 0
+     966:	a9 01       	movw	r20, r18
+     968:	0e 94 b4 00 	call	0x168	; 0x168 <map_value>
+     96c:	0f 90       	pop	r0
+     96e:	0f 90       	pop	r0
+     970:	0f 90       	pop	r0
+     972:	0f 90       	pop	r0
+     974:	16 2f       	mov	r17, r22
+
+		pwm_servo_set_angle(s1, angle1);
+     976:	62 2d       	mov	r22, r2
+     978:	89 85       	ldd	r24, Y+9	; 0x09
+     97a:	9a 85       	ldd	r25, Y+10	; 0x0a
+     97c:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
+		pwm_servo_set_angle(s2, angle2);
+     980:	68 2d       	mov	r22, r8
+     982:	8b 85       	ldd	r24, Y+11	; 0x0b
+     984:	9c 85       	ldd	r25, Y+12	; 0x0c
+     986:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
+		pwm_servo_t2_set_angle(s3, angle3);
+     98a:	69 2d       	mov	r22, r9
+     98c:	8d 85       	ldd	r24, Y+13	; 0x0d
+     98e:	9e 85       	ldd	r25, Y+14	; 0x0e
+     990:	0e 94 70 08 	call	0x10e0	; 0x10e0 <pwm_servo_t2_set_angle>
+		pwm_servo_t0_set_angle(s4, angle4);
+     994:	61 2f       	mov	r22, r17
+     996:	8f 85       	ldd	r24, Y+15	; 0x0f
+     998:	98 89       	ldd	r25, Y+16	; 0x10
+     99a:	0e 94 11 08 	call	0x1022	; 0x1022 <pwm_servo_t0_set_angle>
+     99e:	2f ef       	ldi	r18, 0xFF	; 255
+     9a0:	39 ef       	ldi	r19, 0xF9	; 249
+     9a2:	80 e0       	ldi	r24, 0x00	; 0
+     9a4:	21 50       	subi	r18, 0x01	; 1
+     9a6:	30 40       	sbci	r19, 0x00	; 0
+     9a8:	80 40       	sbci	r24, 0x00	; 0
+     9aa:	e1 f7       	brne	.-8      	; 0x9a4 <__stack+0xa5>
+     9ac:	00 c0       	rjmp	.+0      	; 0x9ae <__stack+0xaf>
+     9ae:	00 00       	nop
+
+		_delay_ms(20);
+
+		// Parpadeo LED PB5 si no esta llena
+		if (!eeprom_llena)
+     9b0:	41 10       	cpse	r4, r1
+     9b2:	15 c0       	rjmp	.+42     	; 0x9de <__stack+0xdf>
+		{
+			blink_counter++;
+     9b4:	9f ef       	ldi	r25, 0xFF	; 255
+     9b6:	69 1a       	sub	r6, r25
+     9b8:	79 0a       	sbc	r7, r25
+			if (blink_counter >= 15)
+     9ba:	2f e0       	ldi	r18, 0x0F	; 15
+     9bc:	62 16       	cp	r6, r18
+     9be:	71 04       	cpc	r7, r1
+     9c0:	70 f0       	brcs	.+28     	; 0x9de <__stack+0xdf>
+			{
+				blink_counter = 0;
+				blink_state ^= 1;
+     9c2:	81 e0       	ldi	r24, 0x01	; 1
+     9c4:	38 26       	eor	r3, r24
+				if (blink_state) PORTB |=  (1 << PB5);
+     9c6:	31 f0       	breq	.+12     	; 0x9d4 <__stack+0xd5>
+     9c8:	85 b1       	in	r24, 0x05	; 5
+     9ca:	80 62       	ori	r24, 0x20	; 32
+     9cc:	85 b9       	out	0x05, r24	; 5
+		if (!eeprom_llena)
+		{
+			blink_counter++;
+			if (blink_counter >= 15)
+			{
+				blink_counter = 0;
+     9ce:	61 2c       	mov	r6, r1
+     9d0:	71 2c       	mov	r7, r1
+     9d2:	05 c0       	rjmp	.+10     	; 0x9de <__stack+0xdf>
+				blink_state ^= 1;
+				if (blink_state) PORTB |=  (1 << PB5);
+				else             PORTB &= ~(1 << PB5);
+     9d4:	85 b1       	in	r24, 0x05	; 5
+     9d6:	8f 7d       	andi	r24, 0xDF	; 223
+     9d8:	85 b9       	out	0x05, r24	; 5
+		if (!eeprom_llena)
+		{
+			blink_counter++;
+			if (blink_counter >= 15)
+			{
+				blink_counter = 0;
+     9da:	61 2c       	mov	r6, r1
+     9dc:	71 2c       	mov	r7, r1
+				if (blink_state) PORTB |=  (1 << PB5);
+				else             PORTB &= ~(1 << PB5);
+			}
+		}
+
+		if (button_pressed(BTN_CHANGE_PIN))
+     9de:	84 e0       	ldi	r24, 0x04	; 4
+     9e0:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
+     9e4:	88 23       	and	r24, r24
+     9e6:	e1 f0       	breq	.+56     	; 0xa20 <__stack+0x121>
+		{
+			PORTB &= ~((1 << PB5) | (1 << PB4));
+     9e8:	85 b1       	in	r24, 0x05	; 5
+     9ea:	8f 7c       	andi	r24, 0xCF	; 207
+     9ec:	85 b9       	out	0x05, r24	; 5
+			writeString("\r\n[RECORD] Saliendo...\r\n");
+     9ee:	8c ee       	ldi	r24, 0xEC	; 236
+     9f0:	92 e0       	ldi	r25, 0x02	; 2
+     9f2:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+				writeString("[RECORD] PC4 para salir.\r\n");
+			}
+		}
+	}
+
+	writeString("[RECORD] Total keyframes guardados: ");
+     9f6:	85 e0       	ldi	r24, 0x05	; 5
+     9f8:	93 e0       	ldi	r25, 0x03	; 3
+     9fa:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+	char total[4];
+	total[0] = '0' + keyframe_count;
+     9fe:	80 e3       	ldi	r24, 0x30	; 48
+     a00:	85 0d       	add	r24, r5
+     a02:	89 83       	std	Y+1, r24	; 0x01
+	total[1] = '\r';
+     a04:	8d e0       	ldi	r24, 0x0D	; 13
+     a06:	8a 83       	std	Y+2, r24	; 0x02
+	total[2] = '\n';
+     a08:	8a e0       	ldi	r24, 0x0A	; 10
+     a0a:	8b 83       	std	Y+3, r24	; 0x03
+	total[3] = '\0';
+     a0c:	1c 82       	std	Y+4, r1	; 0x04
+	writeString(total);
+     a0e:	ce 01       	movw	r24, r28
+     a10:	01 96       	adiw	r24, 0x01	; 1
+     a12:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+	writeString("[RECORD] Listo.\r\n");
+     a16:	8a e2       	ldi	r24, 0x2A	; 42
+     a18:	93 e0       	ldi	r25, 0x03	; 3
+     a1a:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+}
+     a1e:	83 c0       	rjmp	.+262    	; 0xb26 <__stack+0x227>
+			PORTB &= ~((1 << PB5) | (1 << PB4));
+			writeString("\r\n[RECORD] Saliendo...\r\n");
+			break;
+		}
+
+		if (button_pressed(BTN_ACTION_PIN))
+     a20:	85 e0       	ldi	r24, 0x05	; 5
+     a22:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
+     a26:	88 23       	and	r24, r24
+     a28:	09 f4       	brne	.+2      	; 0xa2c <__stack+0x12d>
+     a2a:	35 cf       	rjmp	.-406    	; 0x896 <run_mode_record+0x7a>
+		{
+			if (eeprom_llena)
+     a2c:	44 20       	and	r4, r4
+     a2e:	29 f0       	breq	.+10     	; 0xa3a <__stack+0x13b>
+			{
+				writeString("[RECORD] EEPROM llena. PC4 para salir.\r\n");
+     a30:	8c e3       	ldi	r24, 0x3C	; 60
+     a32:	93 e0       	ldi	r25, 0x03	; 3
+     a34:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+     a38:	2e cf       	rjmp	.-420    	; 0x896 <run_mode_record+0x7a>
+				continue;
+			}
+
+			uint16_t addr = KEYFRAME_BASE_ADDR + ((uint16_t)keyframe_count * KEYFRAME_SIZE);
+     a3a:	e5 2c       	mov	r14, r5
+     a3c:	f1 2c       	mov	r15, r1
+     a3e:	ee 0c       	add	r14, r14
+     a40:	ff 1c       	adc	r15, r15
+     a42:	ee 0c       	add	r14, r14
+     a44:	ff 1c       	adc	r15, r15
+			eepromWrite(addr + 0, angle1);
+     a46:	62 2d       	mov	r22, r2
+     a48:	c7 01       	movw	r24, r14
+     a4a:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
+			eepromWrite(addr + 1, angle2);
+     a4e:	68 2d       	mov	r22, r8
+     a50:	c7 01       	movw	r24, r14
+     a52:	01 96       	adiw	r24, 0x01	; 1
+     a54:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
+			eepromWrite(addr + 2, angle3);
+     a58:	69 2d       	mov	r22, r9
+     a5a:	c7 01       	movw	r24, r14
+     a5c:	02 96       	adiw	r24, 0x02	; 2
+     a5e:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
+			eepromWrite(addr + 3, angle4);
+     a62:	61 2f       	mov	r22, r17
+     a64:	c7 01       	movw	r24, r14
+     a66:	03 96       	adiw	r24, 0x03	; 3
+     a68:	0e 94 53 00 	call	0xa6	; 0xa6 <eepromWrite>
+
+			// Flash doble al guardar
+			PORTB &= ~(1 << PB5);
+     a6c:	85 b1       	in	r24, 0x05	; 5
+     a6e:	8f 7d       	andi	r24, 0xDF	; 223
+     a70:	85 b9       	out	0x05, r24	; 5
+			for (uint8_t i = 0; i < 2; i++)
+     a72:	90 e0       	ldi	r25, 0x00	; 0
+     a74:	19 c0       	rjmp	.+50     	; 0xaa8 <__stack+0x1a9>
+			{
+				PORTB |=  (1 << PB5); _delay_ms(60);
+     a76:	85 b1       	in	r24, 0x05	; 5
+     a78:	80 62       	ori	r24, 0x20	; 32
+     a7a:	85 b9       	out	0x05, r24	; 5
+     a7c:	3f ef       	ldi	r19, 0xFF	; 255
+     a7e:	8d ee       	ldi	r24, 0xED	; 237
+     a80:	22 e0       	ldi	r18, 0x02	; 2
+     a82:	31 50       	subi	r19, 0x01	; 1
+     a84:	80 40       	sbci	r24, 0x00	; 0
+     a86:	20 40       	sbci	r18, 0x00	; 0
+     a88:	e1 f7       	brne	.-8      	; 0xa82 <__stack+0x183>
+     a8a:	00 c0       	rjmp	.+0      	; 0xa8c <__stack+0x18d>
+     a8c:	00 00       	nop
+				PORTB &= ~(1 << PB5); _delay_ms(60);
+     a8e:	85 b1       	in	r24, 0x05	; 5
+     a90:	8f 7d       	andi	r24, 0xDF	; 223
+     a92:	85 b9       	out	0x05, r24	; 5
+     a94:	3f ef       	ldi	r19, 0xFF	; 255
+     a96:	8d ee       	ldi	r24, 0xED	; 237
+     a98:	22 e0       	ldi	r18, 0x02	; 2
+     a9a:	31 50       	subi	r19, 0x01	; 1
+     a9c:	80 40       	sbci	r24, 0x00	; 0
+     a9e:	20 40       	sbci	r18, 0x00	; 0
+     aa0:	e1 f7       	brne	.-8      	; 0xa9a <__stack+0x19b>
+     aa2:	00 c0       	rjmp	.+0      	; 0xaa4 <__stack+0x1a5>
+     aa4:	00 00       	nop
+			eepromWrite(addr + 2, angle3);
+			eepromWrite(addr + 3, angle4);
+
+			// Flash doble al guardar
+			PORTB &= ~(1 << PB5);
+			for (uint8_t i = 0; i < 2; i++)
+     aa6:	9f 5f       	subi	r25, 0xFF	; 255
+     aa8:	92 30       	cpi	r25, 0x02	; 2
+     aaa:	28 f3       	brcs	.-54     	; 0xa76 <__stack+0x177>
+			{
+				PORTB |=  (1 << PB5); _delay_ms(60);
+				PORTB &= ~(1 << PB5); _delay_ms(60);
+			}
+
+			keyframe_count++;
+     aac:	01 e0       	ldi	r16, 0x01	; 1
+     aae:	05 0d       	add	r16, r5
+
+			writeString("[RECORD] Keyframe ");
+     ab0:	85 e6       	ldi	r24, 0x65	; 101
+     ab2:	93 e0       	ldi	r25, 0x03	; 3
+     ab4:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+			char kf[4];
+			kf[0] = '0' + keyframe_count;
+     ab8:	81 e3       	ldi	r24, 0x31	; 49
+     aba:	85 0d       	add	r24, r5
+     abc:	8d 83       	std	Y+5, r24	; 0x05
+			kf[1] = '/';
+     abe:	8f e2       	ldi	r24, 0x2F	; 47
+     ac0:	8e 83       	std	Y+6, r24	; 0x06
+			kf[2] = '4';
+     ac2:	84 e3       	ldi	r24, 0x34	; 52
+     ac4:	8f 83       	std	Y+7, r24	; 0x07
+			kf[3] = '\0';
+     ac6:	18 86       	std	Y+8, r1	; 0x08
+			writeString(kf);
+     ac8:	ce 01       	movw	r24, r28
+     aca:	05 96       	adiw	r24, 0x05	; 5
+     acc:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+			writeString(" guardado.\r\n");
+     ad0:	88 e7       	ldi	r24, 0x78	; 120
+     ad2:	93 e0       	ldi	r25, 0x03	; 3
+     ad4:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+
+			enviar_feedback(1, angle1);
+     ad8:	62 2d       	mov	r22, r2
+     ada:	81 e0       	ldi	r24, 0x01	; 1
+     adc:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
+			enviar_feedback(2, angle2);
+     ae0:	68 2d       	mov	r22, r8
+     ae2:	82 e0       	ldi	r24, 0x02	; 2
+     ae4:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
+			enviar_feedback(3, angle3);
+     ae8:	69 2d       	mov	r22, r9
+     aea:	83 e0       	ldi	r24, 0x03	; 3
+     aec:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
+			enviar_feedback(4, angle4);
+     af0:	61 2f       	mov	r22, r17
+     af2:	84 e0       	ldi	r24, 0x04	; 4
+     af4:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
+
+			if (keyframe_count >= MAX_KEYFRAMES)
+     af8:	04 30       	cpi	r16, 0x04	; 4
+     afa:	98 f0       	brcs	.+38     	; 0xb22 <__stack+0x223>
+			{
+				eeprom_llena = 1;
+				PORTB &= ~(1 << PB5);   // Apagar LED PB5 (parpadeo)
+     afc:	85 b1       	in	r24, 0x05	; 5
+     afe:	8f 7d       	andi	r24, 0xDF	; 223
+     b00:	85 b9       	out	0x05, r24	; 5
+				PORTB |=  (1<<PB5);
+     b02:	85 b1       	in	r24, 0x05	; 5
+     b04:	80 62       	ori	r24, 0x20	; 32
+     b06:	85 b9       	out	0x05, r24	; 5
+				PORTB |=  (1 << PB4);   // Encender LED PB4 (lleno)
+     b08:	85 b1       	in	r24, 0x05	; 5
+     b0a:	80 61       	ori	r24, 0x10	; 16
+     b0c:	85 b9       	out	0x05, r24	; 5
+				writeString("[RECORD] 4/4 keyframes guardados. EEPROM llena.\r\n");
+     b0e:	85 e8       	ldi	r24, 0x85	; 133
+     b10:	93 e0       	ldi	r25, 0x03	; 3
+     b12:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+				writeString("[RECORD] PC4 para salir.\r\n");
+     b16:	87 eb       	ldi	r24, 0xB7	; 183
+     b18:	93 e0       	ldi	r25, 0x03	; 3
+     b1a:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+			enviar_feedback(3, angle3);
+			enviar_feedback(4, angle4);
+
+			if (keyframe_count >= MAX_KEYFRAMES)
+			{
+				eeprom_llena = 1;
+     b1e:	44 24       	eor	r4, r4
+     b20:	43 94       	inc	r4
+			{
+				PORTB |=  (1 << PB5); _delay_ms(60);
+				PORTB &= ~(1 << PB5); _delay_ms(60);
+			}
+
+			keyframe_count++;
+     b22:	50 2e       	mov	r5, r16
+     b24:	b8 ce       	rjmp	.-656    	; 0x896 <run_mode_record+0x7a>
+	total[1] = '\r';
+	total[2] = '\n';
+	total[3] = '\0';
+	writeString(total);
+	writeString("[RECORD] Listo.\r\n");
+}
+     b26:	60 96       	adiw	r28, 0x10	; 16
+     b28:	0f b6       	in	r0, 0x3f	; 63
+     b2a:	f8 94       	cli
+     b2c:	de bf       	out	0x3e, r29	; 62
+     b2e:	0f be       	out	0x3f, r0	; 63
+     b30:	cd bf       	out	0x3d, r28	; 61
+     b32:	df 91       	pop	r29
+     b34:	cf 91       	pop	r28
+     b36:	1f 91       	pop	r17
+     b38:	0f 91       	pop	r16
+     b3a:	ff 90       	pop	r15
+     b3c:	ef 90       	pop	r14
+     b3e:	df 90       	pop	r13
+     b40:	cf 90       	pop	r12
+     b42:	bf 90       	pop	r11
+     b44:	af 90       	pop	r10
+     b46:	9f 90       	pop	r9
+     b48:	8f 90       	pop	r8
+     b4a:	7f 90       	pop	r7
+     b4c:	6f 90       	pop	r6
+     b4e:	5f 90       	pop	r5
+     b50:	4f 90       	pop	r4
+     b52:	3f 90       	pop	r3
+     b54:	2f 90       	pop	r2
+     b56:	08 95       	ret
+
+00000b58 <run_mode_playback>:
+
+static void run_mode_playback(servo_t *s1, servo_t *s2, servo_t2_t *s3, servo_t0_t *s4)
+{
+     b58:	2f 92       	push	r2
+     b5a:	3f 92       	push	r3
+     b5c:	4f 92       	push	r4
+     b5e:	5f 92       	push	r5
+     b60:	6f 92       	push	r6
+     b62:	7f 92       	push	r7
+     b64:	8f 92       	push	r8
+     b66:	9f 92       	push	r9
+     b68:	af 92       	push	r10
+     b6a:	bf 92       	push	r11
+     b6c:	cf 92       	push	r12
+     b6e:	df 92       	push	r13
+     b70:	ef 92       	push	r14
+     b72:	ff 92       	push	r15
+     b74:	0f 93       	push	r16
+     b76:	1f 93       	push	r17
+     b78:	cf 93       	push	r28
+     b7a:	df 93       	push	r29
+     b7c:	cd b7       	in	r28, 0x3d	; 61
+     b7e:	de b7       	in	r29, 0x3e	; 62
+     b80:	27 97       	sbiw	r28, 0x07	; 7
+     b82:	0f b6       	in	r0, 0x3f	; 63
+     b84:	f8 94       	cli
+     b86:	de bf       	out	0x3e, r29	; 62
+     b88:	0f be       	out	0x3f, r0	; 63
+     b8a:	cd bf       	out	0x3d, r28	; 61
+     b8c:	7c 01       	movw	r14, r24
+     b8e:	7e 83       	std	Y+6, r23	; 0x06
+     b90:	6d 83       	std	Y+5, r22	; 0x05
+     b92:	6a 01       	movw	r12, r20
+     b94:	59 01       	movw	r10, r18
     writeString("\r\n[PLAYBACK] Iniciando reproduccion...\r\n");
-     b08:	84 ec       	ldi	r24, 0xC4	; 196
-     b0a:	93 e0       	ldi	r25, 0x03	; 3
-     b0c:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     b96:	82 ed       	ldi	r24, 0xD2	; 210
+     b98:	93 e0       	ldi	r25, 0x03	; 3
+     b9a:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     writeString("[PLAYBACK] PC4 para cancelar.\r\n");
-     b10:	8d ee       	ldi	r24, 0xED	; 237
-     b12:	93 e0       	ldi	r25, 0x03	; 3
-     b14:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     b9e:	8b ef       	ldi	r24, 0xFB	; 251
+     ba0:	93 e0       	ldi	r25, 0x03	; 3
+     ba2:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 
-    // 1. Volver a HOME
     move_to_home(s1, s2, s3, s4);
-     b18:	95 01       	movw	r18, r10
-     b1a:	a6 01       	movw	r20, r12
-     b1c:	6d 81       	ldd	r22, Y+5	; 0x05
-     b1e:	7e 81       	ldd	r23, Y+6	; 0x06
-     b20:	c7 01       	movw	r24, r14
-     b22:	0e 94 99 02 	call	0x532	; 0x532 <move_to_home>
+     ba6:	95 01       	movw	r18, r10
+     ba8:	a6 01       	movw	r20, r12
+     baa:	6d 81       	ldd	r22, Y+5	; 0x05
+     bac:	7e 81       	ldd	r23, Y+6	; 0x06
+     bae:	c7 01       	movw	r24, r14
+     bb0:	0e 94 99 02 	call	0x532	; 0x532 <move_to_home>
+
     uint8_t current_a1 = SERVO1_HOME_ANGLE;
     uint8_t current_a2 = SERVO2_HOME_ANGLE;
     uint8_t current_a3 = SERVO3_HOME_ANGLE;
     uint8_t current_a4 = SERVO4_HOME_ANGLE;
-
     uint8_t keyframe_index = 0;
-     b26:	1f 82       	std	Y+7, r1	; 0x07
+     bb4:	1f 82       	std	Y+7, r1	; 0x07
     move_to_home(s1, s2, s3, s4);
 
     uint8_t current_a1 = SERVO1_HOME_ANGLE;
     uint8_t current_a2 = SERVO2_HOME_ANGLE;
     uint8_t current_a3 = SERVO3_HOME_ANGLE;
     uint8_t current_a4 = SERVO4_HOME_ANGLE;
-     b28:	0f 2e       	mov	r0, r31
-     b2a:	f5 e0       	ldi	r31, 0x05	; 5
-     b2c:	6f 2e       	mov	r6, r31
-     b2e:	f0 2d       	mov	r31, r0
-    // 1. Volver a HOME
+     bb6:	0f 2e       	mov	r0, r31
+     bb8:	f5 e0       	ldi	r31, 0x05	; 5
+     bba:	6f 2e       	mov	r6, r31
+     bbc:	f0 2d       	mov	r31, r0
+
     move_to_home(s1, s2, s3, s4);
 
     uint8_t current_a1 = SERVO1_HOME_ANGLE;
     uint8_t current_a2 = SERVO2_HOME_ANGLE;
     uint8_t current_a3 = SERVO3_HOME_ANGLE;
-     b30:	0f 2e       	mov	r0, r31
-     b32:	f6 e9       	ldi	r31, 0x96	; 150
-     b34:	7f 2e       	mov	r7, r31
-     b36:	f0 2d       	mov	r31, r0
-
-    // 1. Volver a HOME
-    move_to_home(s1, s2, s3, s4);
-
-    uint8_t current_a1 = SERVO1_HOME_ANGLE;
-    uint8_t current_a2 = SERVO2_HOME_ANGLE;
-     b38:	05 ea       	ldi	r16, 0xA5	; 165
+     bbe:	0f 2e       	mov	r0, r31
+     bc0:	f6 e9       	ldi	r31, 0x96	; 150
+     bc2:	7f 2e       	mov	r7, r31
+     bc4:	f0 2d       	mov	r31, r0
     writeString("[PLAYBACK] PC4 para cancelar.\r\n");
 
-    // 1. Volver a HOME
     move_to_home(s1, s2, s3, s4);
 
     uint8_t current_a1 = SERVO1_HOME_ANGLE;
-     b3a:	10 e0       	ldi	r17, 0x00	; 0
+    uint8_t current_a2 = SERVO2_HOME_ANGLE;
+     bc6:	05 ea       	ldi	r16, 0xA5	; 165
+    writeString("\r\n[PLAYBACK] Iniciando reproduccion...\r\n");
+    writeString("[PLAYBACK] PC4 para cancelar.\r\n");
+
+    move_to_home(s1, s2, s3, s4);
+
+    uint8_t current_a1 = SERVO1_HOME_ANGLE;
+     bc8:	10 e0       	ldi	r17, 0x00	; 0
+    uint8_t current_a2 = SERVO2_HOME_ANGLE;
     uint8_t current_a3 = SERVO3_HOME_ANGLE;
     uint8_t current_a4 = SERVO4_HOME_ANGLE;
-
     uint8_t keyframe_index = 0;
 
     while (keyframe_index < MAX_KEYFRAMES)
-     b3c:	ae c0       	rjmp	.+348    	; 0xc9a <run_mode_playback+0x1d0>
+     bca:	9e c0       	rjmp	.+316    	; 0xd08 <run_mode_playback+0x1b0>
     {
-        // Permitir cancelacion
         if (button_pressed(BTN_CHANGE_PIN))
-     b3e:	84 e0       	ldi	r24, 0x04	; 4
-     b40:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
-     b44:	88 23       	and	r24, r24
-     b46:	29 f0       	breq	.+10     	; 0xb52 <run_mode_playback+0x88>
+     bcc:	84 e0       	ldi	r24, 0x04	; 4
+     bce:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
+     bd2:	88 23       	and	r24, r24
+     bd4:	29 f0       	breq	.+10     	; 0xbe0 <run_mode_playback+0x88>
         {
             writeString("\r\n[PLAYBACK] Cancelado por usuario.\r\n");
-     b48:	8d e0       	ldi	r24, 0x0D	; 13
-     b4a:	94 e0       	ldi	r25, 0x04	; 4
-     b4c:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     bd6:	8b e1       	ldi	r24, 0x1B	; 27
+     bd8:	94 e0       	ldi	r25, 0x04	; 4
+     bda:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
             break;
-     b50:	a8 c0       	rjmp	.+336    	; 0xca2 <run_mode_playback+0x1d8>
+     bde:	98 c0       	rjmp	.+304    	; 0xd10 <run_mode_playback+0x1b8>
         }
 
-        // Leer keyframe de EEPROM
         uint16_t addr = KEYFRAME_BASE_ADDR + ((uint16_t)keyframe_index * KEYFRAME_SIZE);
-     b52:	8f 81       	ldd	r24, Y+7	; 0x07
-     b54:	88 2e       	mov	r8, r24
-     b56:	91 2c       	mov	r9, r1
-     b58:	88 0c       	add	r8, r8
-     b5a:	99 1c       	adc	r9, r9
-     b5c:	88 0c       	add	r8, r8
-     b5e:	99 1c       	adc	r9, r9
+     be0:	8f 81       	ldd	r24, Y+7	; 0x07
+     be2:	88 2e       	mov	r8, r24
+     be4:	91 2c       	mov	r9, r1
+     be6:	88 0c       	add	r8, r8
+     be8:	99 1c       	adc	r9, r9
+     bea:	88 0c       	add	r8, r8
+     bec:	99 1c       	adc	r9, r9
         uint8_t  marker = eepromRead(addr);
-     b60:	c4 01       	movw	r24, r8
-     b62:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
+     bee:	c4 01       	movw	r24, r8
+     bf0:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
 
-        // Keyframe vacio = fin de secuencia
         if (marker == EEPROM_EMPTY_MARKER)
-     b66:	8f 3f       	cpi	r24, 0xFF	; 255
-     b68:	29 f4       	brne	.+10     	; 0xb74 <run_mode_playback+0xaa>
+     bf4:	8f 3f       	cpi	r24, 0xFF	; 255
+     bf6:	29 f4       	brne	.+10     	; 0xc02 <run_mode_playback+0xaa>
         {
             writeString("[PLAYBACK] Fin de keyframes grabados.\r\n");
-     b6a:	83 e3       	ldi	r24, 0x33	; 51
-     b6c:	94 e0       	ldi	r25, 0x04	; 4
-     b6e:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     bf8:	81 e4       	ldi	r24, 0x41	; 65
+     bfa:	94 e0       	ldi	r25, 0x04	; 4
+     bfc:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
             break;
-     b72:	97 c0       	rjmp	.+302    	; 0xca2 <run_mode_playback+0x1d8>
+     c00:	87 c0       	rjmp	.+270    	; 0xd10 <run_mode_playback+0x1b8>
         }
 
         uint8_t target_a1 = eepromRead(addr + 0);
-     b74:	c4 01       	movw	r24, r8
-     b76:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
-     b7a:	38 2e       	mov	r3, r24
+     c02:	c4 01       	movw	r24, r8
+     c04:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
+     c08:	38 2e       	mov	r3, r24
         uint8_t target_a2 = eepromRead(addr + 1);
-     b7c:	c4 01       	movw	r24, r8
-     b7e:	01 96       	adiw	r24, 0x01	; 1
-     b80:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
-     b84:	48 2e       	mov	r4, r24
+     c0a:	c4 01       	movw	r24, r8
+     c0c:	01 96       	adiw	r24, 0x01	; 1
+     c0e:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
+     c12:	48 2e       	mov	r4, r24
         uint8_t target_a3 = eepromRead(addr + 2);
-     b86:	c4 01       	movw	r24, r8
-     b88:	02 96       	adiw	r24, 0x02	; 2
-     b8a:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
-     b8e:	58 2e       	mov	r5, r24
+     c14:	c4 01       	movw	r24, r8
+     c16:	02 96       	adiw	r24, 0x02	; 2
+     c18:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
+     c1c:	58 2e       	mov	r5, r24
         uint8_t target_a4 = eepromRead(addr + 3);
-     b90:	c4 01       	movw	r24, r8
-     b92:	03 96       	adiw	r24, 0x03	; 3
-     b94:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
-     b98:	28 2e       	mov	r2, r24
+     c1e:	c4 01       	movw	r24, r8
+     c20:	03 96       	adiw	r24, 0x03	; 3
+     c22:	0e 94 5f 00 	call	0xbe	; 0xbe <eepromRead>
+     c26:	28 2e       	mov	r2, r24
 
-        // Mostrar keyframe actual
         writeString("[PLAYBACK] Keyframe ");
-     b9a:	8b e5       	ldi	r24, 0x5B	; 91
-     b9c:	94 e0       	ldi	r25, 0x04	; 4
-     b9e:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     c28:	89 e6       	ldi	r24, 0x69	; 105
+     c2a:	94 e0       	ldi	r25, 0x04	; 4
+     c2c:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
         char kf[4];
         kf[0] = '0' + (keyframe_index + 1);
-     ba2:	8f 81       	ldd	r24, Y+7	; 0x07
-     ba4:	8f 5c       	subi	r24, 0xCF	; 207
-     ba6:	89 83       	std	Y+1, r24	; 0x01
+     c30:	8f 81       	ldd	r24, Y+7	; 0x07
+     c32:	8f 5c       	subi	r24, 0xCF	; 207
+     c34:	89 83       	std	Y+1, r24	; 0x01
         kf[1] = '/';
-     ba8:	8f e2       	ldi	r24, 0x2F	; 47
-     baa:	8a 83       	std	Y+2, r24	; 0x02
+     c36:	8f e2       	ldi	r24, 0x2F	; 47
+     c38:	8a 83       	std	Y+2, r24	; 0x02
         kf[2] = '4';
-     bac:	84 e3       	ldi	r24, 0x34	; 52
-     bae:	8b 83       	std	Y+3, r24	; 0x03
+     c3a:	84 e3       	ldi	r24, 0x34	; 52
+     c3c:	8b 83       	std	Y+3, r24	; 0x03
         kf[3] = '\0';
-     bb0:	1c 82       	std	Y+4, r1	; 0x04
+     c3e:	1c 82       	std	Y+4, r1	; 0x04
         writeString(kf);
-     bb2:	ce 01       	movw	r24, r28
-     bb4:	01 96       	adiw	r24, 0x01	; 1
-     bb6:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     c40:	ce 01       	movw	r24, r28
+     c42:	01 96       	adiw	r24, 0x01	; 1
+     c44:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 
-        writeString("  S1=");
-     bba:	88 e8       	ldi	r24, 0x88	; 136
-     bbc:	93 e0       	ldi	r25, 0x03	; 3
-     bbe:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
         enviar_feedback(1, target_a1);
-     bc2:	63 2d       	mov	r22, r3
-     bc4:	81 e0       	ldi	r24, 0x01	; 1
-     bc6:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-        writeString("  S2=");
-     bca:	8e e8       	ldi	r24, 0x8E	; 142
-     bcc:	93 e0       	ldi	r25, 0x03	; 3
-     bce:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     c48:	63 2d       	mov	r22, r3
+     c4a:	81 e0       	ldi	r24, 0x01	; 1
+     c4c:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
         enviar_feedback(2, target_a2);
-     bd2:	64 2d       	mov	r22, r4
-     bd4:	82 e0       	ldi	r24, 0x02	; 2
-     bd6:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-        writeString("  S3=");
-     bda:	84 e9       	ldi	r24, 0x94	; 148
-     bdc:	93 e0       	ldi	r25, 0x03	; 3
-     bde:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     c50:	64 2d       	mov	r22, r4
+     c52:	82 e0       	ldi	r24, 0x02	; 2
+     c54:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
         enviar_feedback(3, target_a3);
-     be2:	65 2d       	mov	r22, r5
-     be4:	83 e0       	ldi	r24, 0x03	; 3
-     be6:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
-        writeString("  S4=");
-     bea:	8a e9       	ldi	r24, 0x9A	; 154
-     bec:	93 e0       	ldi	r25, 0x03	; 3
-     bee:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     c58:	65 2d       	mov	r22, r5
+     c5a:	83 e0       	ldi	r24, 0x03	; 3
+     c5c:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
         enviar_feedback(4, target_a4);
-     bf2:	62 2d       	mov	r22, r2
-     bf4:	84 e0       	ldi	r24, 0x04	; 4
-     bf6:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
+     c60:	62 2d       	mov	r22, r2
+     c62:	84 e0       	ldi	r24, 0x04	; 4
+     c64:	0e 94 f5 00 	call	0x1ea	; 0x1ea <enviar_feedback>
 
-        // --- INTERPOLACION PASO A PASO ---
         uint8_t arrived = 0;
-     bfa:	91 2c       	mov	r9, r1
+     c68:	91 2c       	mov	r9, r1
         while (!arrived)
-     bfc:	48 c0       	rjmp	.+144    	; 0xc8e <run_mode_playback+0x1c4>
+     c6a:	48 c0       	rjmp	.+144    	; 0xcfc <run_mode_playback+0x1a4>
         {
             if (button_pressed(BTN_CHANGE_PIN))
-     bfe:	84 e0       	ldi	r24, 0x04	; 4
-     c00:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
-     c04:	88 23       	and	r24, r24
-     c06:	29 f0       	breq	.+10     	; 0xc12 <run_mode_playback+0x148>
+     c6c:	84 e0       	ldi	r24, 0x04	; 4
+     c6e:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
+     c72:	88 23       	and	r24, r24
+     c74:	29 f0       	breq	.+10     	; 0xc80 <run_mode_playback+0x128>
             {
                 writeString("\r\n[PLAYBACK] Cancelado durante movimiento.\r\n");
-     c08:	80 e7       	ldi	r24, 0x70	; 112
-     c0a:	94 e0       	ldi	r25, 0x04	; 4
-     c0c:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
-     c10:	4c c0       	rjmp	.+152    	; 0xcaa <run_mode_playback+0x1e0>
+     c76:	8e e7       	ldi	r24, 0x7E	; 126
+     c78:	94 e0       	ldi	r25, 0x04	; 4
+     c7a:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
+     c7e:	4c c0       	rjmp	.+152    	; 0xd18 <run_mode_playback+0x1c0>
                 return;
             }
 
             arrived = 1;
 
             if (current_a1 < target_a1)      { current_a1++; arrived = 0; }
-     c12:	13 15       	cp	r17, r3
-     c14:	18 f4       	brcc	.+6      	; 0xc1c <run_mode_playback+0x152>
-     c16:	1f 5f       	subi	r17, 0xFF	; 255
-     c18:	89 2c       	mov	r8, r9
-     c1a:	07 c0       	rjmp	.+14     	; 0xc2a <run_mode_playback+0x160>
+     c80:	13 15       	cp	r17, r3
+     c82:	18 f4       	brcc	.+6      	; 0xc8a <run_mode_playback+0x132>
+     c84:	1f 5f       	subi	r17, 0xFF	; 255
+     c86:	89 2c       	mov	r8, r9
+     c88:	07 c0       	rjmp	.+14     	; 0xc98 <run_mode_playback+0x140>
             else if (current_a1 > target_a1) { current_a1--; arrived = 0; }
-     c1c:	31 16       	cp	r3, r17
-     c1e:	18 f4       	brcc	.+6      	; 0xc26 <run_mode_playback+0x15c>
-     c20:	11 50       	subi	r17, 0x01	; 1
-     c22:	89 2c       	mov	r8, r9
-     c24:	02 c0       	rjmp	.+4      	; 0xc2a <run_mode_playback+0x160>
+     c8a:	31 16       	cp	r3, r17
+     c8c:	18 f4       	brcc	.+6      	; 0xc94 <run_mode_playback+0x13c>
+     c8e:	11 50       	subi	r17, 0x01	; 1
+     c90:	89 2c       	mov	r8, r9
+     c92:	02 c0       	rjmp	.+4      	; 0xc98 <run_mode_playback+0x140>
             {
                 writeString("\r\n[PLAYBACK] Cancelado durante movimiento.\r\n");
                 return;
             }
 
             arrived = 1;
-     c26:	88 24       	eor	r8, r8
-     c28:	83 94       	inc	r8
+     c94:	88 24       	eor	r8, r8
+     c96:	83 94       	inc	r8
 
             if (current_a1 < target_a1)      { current_a1++; arrived = 0; }
             else if (current_a1 > target_a1) { current_a1--; arrived = 0; }
             pwm_servo_set_angle(s1, current_a1);
-     c2a:	61 2f       	mov	r22, r17
-     c2c:	c7 01       	movw	r24, r14
-     c2e:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     c98:	61 2f       	mov	r22, r17
+     c9a:	c7 01       	movw	r24, r14
+     c9c:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
 
             if (current_a2 < target_a2)      { current_a2++; arrived = 0; }
-     c32:	04 15       	cp	r16, r4
-     c34:	18 f4       	brcc	.+6      	; 0xc3c <run_mode_playback+0x172>
-     c36:	0f 5f       	subi	r16, 0xFF	; 255
-     c38:	89 2c       	mov	r8, r9
-     c3a:	04 c0       	rjmp	.+8      	; 0xc44 <run_mode_playback+0x17a>
+     ca0:	04 15       	cp	r16, r4
+     ca2:	18 f4       	brcc	.+6      	; 0xcaa <run_mode_playback+0x152>
+     ca4:	0f 5f       	subi	r16, 0xFF	; 255
+     ca6:	89 2c       	mov	r8, r9
+     ca8:	04 c0       	rjmp	.+8      	; 0xcb2 <run_mode_playback+0x15a>
             else if (current_a2 > target_a2) { current_a2--; arrived = 0; }
-     c3c:	40 16       	cp	r4, r16
-     c3e:	10 f4       	brcc	.+4      	; 0xc44 <run_mode_playback+0x17a>
-     c40:	01 50       	subi	r16, 0x01	; 1
-     c42:	89 2c       	mov	r8, r9
+     caa:	40 16       	cp	r4, r16
+     cac:	10 f4       	brcc	.+4      	; 0xcb2 <run_mode_playback+0x15a>
+     cae:	01 50       	subi	r16, 0x01	; 1
+     cb0:	89 2c       	mov	r8, r9
             pwm_servo_set_angle(s2, current_a2);
-     c44:	60 2f       	mov	r22, r16
-     c46:	8d 81       	ldd	r24, Y+5	; 0x05
-     c48:	9e 81       	ldd	r25, Y+6	; 0x06
-     c4a:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     cb2:	60 2f       	mov	r22, r16
+     cb4:	8d 81       	ldd	r24, Y+5	; 0x05
+     cb6:	9e 81       	ldd	r25, Y+6	; 0x06
+     cb8:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
 
             if (current_a3 < target_a3)      { current_a3++; arrived = 0; }
-     c4e:	75 14       	cp	r7, r5
-     c50:	18 f4       	brcc	.+6      	; 0xc58 <run_mode_playback+0x18e>
-     c52:	73 94       	inc	r7
-     c54:	89 2c       	mov	r8, r9
-     c56:	04 c0       	rjmp	.+8      	; 0xc60 <run_mode_playback+0x196>
+     cbc:	75 14       	cp	r7, r5
+     cbe:	18 f4       	brcc	.+6      	; 0xcc6 <run_mode_playback+0x16e>
+     cc0:	73 94       	inc	r7
+     cc2:	89 2c       	mov	r8, r9
+     cc4:	04 c0       	rjmp	.+8      	; 0xcce <run_mode_playback+0x176>
             else if (current_a3 > target_a3) { current_a3--; arrived = 0; }
-     c58:	57 14       	cp	r5, r7
-     c5a:	10 f4       	brcc	.+4      	; 0xc60 <run_mode_playback+0x196>
-     c5c:	7a 94       	dec	r7
-     c5e:	89 2c       	mov	r8, r9
+     cc6:	57 14       	cp	r5, r7
+     cc8:	10 f4       	brcc	.+4      	; 0xcce <run_mode_playback+0x176>
+     cca:	7a 94       	dec	r7
+     ccc:	89 2c       	mov	r8, r9
             pwm_servo_t2_set_angle(s3, current_a3);
-     c60:	67 2d       	mov	r22, r7
-     c62:	c6 01       	movw	r24, r12
-     c64:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t2_set_angle>
+     cce:	67 2d       	mov	r22, r7
+     cd0:	c6 01       	movw	r24, r12
+     cd2:	0e 94 70 08 	call	0x10e0	; 0x10e0 <pwm_servo_t2_set_angle>
 
             if (current_a4 < target_a4)      { current_a4++; arrived = 0; }
-     c68:	62 14       	cp	r6, r2
-     c6a:	10 f4       	brcc	.+4      	; 0xc70 <run_mode_playback+0x1a6>
-     c6c:	63 94       	inc	r6
-     c6e:	05 c0       	rjmp	.+10     	; 0xc7a <run_mode_playback+0x1b0>
+     cd6:	62 14       	cp	r6, r2
+     cd8:	10 f4       	brcc	.+4      	; 0xcde <run_mode_playback+0x186>
+     cda:	63 94       	inc	r6
+     cdc:	05 c0       	rjmp	.+10     	; 0xce8 <run_mode_playback+0x190>
             else if (current_a4 > target_a4) { current_a4--; arrived = 0; }
-     c70:	26 14       	cp	r2, r6
-     c72:	10 f4       	brcc	.+4      	; 0xc78 <run_mode_playback+0x1ae>
-     c74:	6a 94       	dec	r6
-     c76:	01 c0       	rjmp	.+2      	; 0xc7a <run_mode_playback+0x1b0>
-     c78:	98 2c       	mov	r9, r8
+     cde:	26 14       	cp	r2, r6
+     ce0:	10 f4       	brcc	.+4      	; 0xce6 <run_mode_playback+0x18e>
+     ce2:	6a 94       	dec	r6
+     ce4:	01 c0       	rjmp	.+2      	; 0xce8 <run_mode_playback+0x190>
+     ce6:	98 2c       	mov	r9, r8
             pwm_servo_t0_set_angle(s4, current_a4);
-     c7a:	66 2d       	mov	r22, r6
-     c7c:	c5 01       	movw	r24, r10
-     c7e:	0e 94 da 07 	call	0xfb4	; 0xfb4 <pwm_servo_t0_set_angle>
-     c82:	8f e3       	ldi	r24, 0x3F	; 63
-     c84:	9c e9       	ldi	r25, 0x9C	; 156
-     c86:	01 97       	sbiw	r24, 0x01	; 1
-     c88:	f1 f7       	brne	.-4      	; 0xc86 <run_mode_playback+0x1bc>
-     c8a:	00 c0       	rjmp	.+0      	; 0xc8c <run_mode_playback+0x1c2>
-     c8c:	00 00       	nop
-        writeString("  S4=");
+     ce8:	66 2d       	mov	r22, r6
+     cea:	c5 01       	movw	r24, r10
+     cec:	0e 94 11 08 	call	0x1022	; 0x1022 <pwm_servo_t0_set_angle>
+     cf0:	8f e3       	ldi	r24, 0x3F	; 63
+     cf2:	9c e9       	ldi	r25, 0x9C	; 156
+     cf4:	01 97       	sbiw	r24, 0x01	; 1
+     cf6:	f1 f7       	brne	.-4      	; 0xcf4 <run_mode_playback+0x19c>
+     cf8:	00 c0       	rjmp	.+0      	; 0xcfa <run_mode_playback+0x1a2>
+     cfa:	00 00       	nop
+        enviar_feedback(2, target_a2);
+        enviar_feedback(3, target_a3);
         enviar_feedback(4, target_a4);
 
-        // --- INTERPOLACION PASO A PASO ---
         uint8_t arrived = 0;
         while (!arrived)
-     c8e:	99 20       	and	r9, r9
-     c90:	09 f4       	brne	.+2      	; 0xc94 <run_mode_playback+0x1ca>
-     c92:	b5 cf       	rjmp	.-150    	; 0xbfe <run_mode_playback+0x134>
+     cfc:	99 20       	and	r9, r9
+     cfe:	09 f4       	brne	.+2      	; 0xd02 <run_mode_playback+0x1aa>
+     d00:	b5 cf       	rjmp	.-150    	; 0xc6c <run_mode_playback+0x114>
             pwm_servo_t0_set_angle(s4, current_a4);
 
             _delay_ms(PLAYBACK_STEP_DELAY_MS);
         }
 
         keyframe_index++;
-     c94:	9f 81       	ldd	r25, Y+7	; 0x07
-     c96:	9f 5f       	subi	r25, 0xFF	; 255
-     c98:	9f 83       	std	Y+7, r25	; 0x07
+     d02:	9f 81       	ldd	r25, Y+7	; 0x07
+     d04:	9f 5f       	subi	r25, 0xFF	; 255
+     d06:	9f 83       	std	Y+7, r25	; 0x07
+    uint8_t current_a2 = SERVO2_HOME_ANGLE;
     uint8_t current_a3 = SERVO3_HOME_ANGLE;
     uint8_t current_a4 = SERVO4_HOME_ANGLE;
-
     uint8_t keyframe_index = 0;
 
     while (keyframe_index < MAX_KEYFRAMES)
-     c9a:	8f 81       	ldd	r24, Y+7	; 0x07
-     c9c:	84 30       	cpi	r24, 0x04	; 4
-     c9e:	08 f4       	brcc	.+2      	; 0xca2 <run_mode_playback+0x1d8>
-     ca0:	4e cf       	rjmp	.-356    	; 0xb3e <run_mode_playback+0x74>
+     d08:	8f 81       	ldd	r24, Y+7	; 0x07
+     d0a:	84 30       	cpi	r24, 0x04	; 4
+     d0c:	08 f4       	brcc	.+2      	; 0xd10 <run_mode_playback+0x1b8>
+     d0e:	5e cf       	rjmp	.-324    	; 0xbcc <run_mode_playback+0x74>
         }
 
         keyframe_index++;
     }
 
     writeString("[PLAYBACK] Reproduccion finalizada.\r\n");
-     ca2:	8d e9       	ldi	r24, 0x9D	; 157
-     ca4:	94 e0       	ldi	r25, 0x04	; 4
-     ca6:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     d10:	8b ea       	ldi	r24, 0xAB	; 171
+     d12:	94 e0       	ldi	r25, 0x04	; 4
+     d14:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
 }
-     caa:	27 96       	adiw	r28, 0x07	; 7
-     cac:	0f b6       	in	r0, 0x3f	; 63
-     cae:	f8 94       	cli
-     cb0:	de bf       	out	0x3e, r29	; 62
-     cb2:	0f be       	out	0x3f, r0	; 63
-     cb4:	cd bf       	out	0x3d, r28	; 61
-     cb6:	df 91       	pop	r29
-     cb8:	cf 91       	pop	r28
-     cba:	1f 91       	pop	r17
-     cbc:	0f 91       	pop	r16
-     cbe:	ff 90       	pop	r15
-     cc0:	ef 90       	pop	r14
-     cc2:	df 90       	pop	r13
-     cc4:	cf 90       	pop	r12
-     cc6:	bf 90       	pop	r11
-     cc8:	af 90       	pop	r10
-     cca:	9f 90       	pop	r9
-     ccc:	8f 90       	pop	r8
-     cce:	7f 90       	pop	r7
-     cd0:	6f 90       	pop	r6
-     cd2:	5f 90       	pop	r5
-     cd4:	4f 90       	pop	r4
-     cd6:	3f 90       	pop	r3
-     cd8:	2f 90       	pop	r2
-     cda:	08 95       	ret
+     d18:	27 96       	adiw	r28, 0x07	; 7
+     d1a:	0f b6       	in	r0, 0x3f	; 63
+     d1c:	f8 94       	cli
+     d1e:	de bf       	out	0x3e, r29	; 62
+     d20:	0f be       	out	0x3f, r0	; 63
+     d22:	cd bf       	out	0x3d, r28	; 61
+     d24:	df 91       	pop	r29
+     d26:	cf 91       	pop	r28
+     d28:	1f 91       	pop	r17
+     d2a:	0f 91       	pop	r16
+     d2c:	ff 90       	pop	r15
+     d2e:	ef 90       	pop	r14
+     d30:	df 90       	pop	r13
+     d32:	cf 90       	pop	r12
+     d34:	bf 90       	pop	r11
+     d36:	af 90       	pop	r10
+     d38:	9f 90       	pop	r9
+     d3a:	8f 90       	pop	r8
+     d3c:	7f 90       	pop	r7
+     d3e:	6f 90       	pop	r6
+     d40:	5f 90       	pop	r5
+     d42:	4f 90       	pop	r4
+     d44:	3f 90       	pop	r3
+     d46:	2f 90       	pop	r2
+     d48:	08 95       	ret
 
-00000cdc <main>:
-app_mode_t current_mode = MODE_ADC;
+00000d4a <main>:
+app_mode_t       current_mode = MODE_ADC;
 
 /****************************************/
-// Main
+// Main Function
 int main(void)
 {
-     cdc:	cf 93       	push	r28
-     cde:	df 93       	push	r29
-     ce0:	cd b7       	in	r28, 0x3d	; 61
-     ce2:	de b7       	in	r29, 0x3e	; 62
-     ce4:	2d 97       	sbiw	r28, 0x0d	; 13
-     ce6:	0f b6       	in	r0, 0x3f	; 63
-     ce8:	f8 94       	cli
-     cea:	de bf       	out	0x3e, r29	; 62
-     cec:	0f be       	out	0x3f, r0	; 63
-     cee:	cd bf       	out	0x3d, r28	; 61
+     d4a:	cf 93       	push	r28
+     d4c:	df 93       	push	r29
+     d4e:	cd b7       	in	r28, 0x3d	; 61
+     d50:	de b7       	in	r29, 0x3e	; 62
+     d52:	2d 97       	sbiw	r28, 0x0d	; 13
+     d54:	0f b6       	in	r0, 0x3f	; 63
+     d56:	f8 94       	cli
+     d58:	de bf       	out	0x3e, r29	; 62
+     d5a:	0f be       	out	0x3f, r0	; 63
+     d5c:	cd bf       	out	0x3d, r28	; 61
     cli();
-     cf0:	f8 94       	cli
+     d5e:	f8 94       	cli
 
     servo_t    servo1, servo2;
     servo_t2_t servo3;
     servo_t0_t servo4;
 
     adc_init();
-     cf2:	0e 94 90 00 	call	0x120	; 0x120 <adc_init>
+     d60:	0e 94 90 00 	call	0x120	; 0x120 <adc_init>
 
-    // Inicializar todos los servos en HOME directamente
     pwm_servo_init(&servo1, PWM_CHANNEL_A);
-     cf6:	60 e0       	ldi	r22, 0x00	; 0
-     cf8:	ce 01       	movw	r24, r28
-     cfa:	01 96       	adiw	r24, 0x01	; 1
-     cfc:	0e 94 39 07 	call	0xe72	; 0xe72 <pwm_servo_init>
+     d64:	60 e0       	ldi	r22, 0x00	; 0
+     d66:	ce 01       	movw	r24, r28
+     d68:	01 96       	adiw	r24, 0x01	; 1
+     d6a:	0e 94 70 07 	call	0xee0	; 0xee0 <pwm_servo_init>
     pwm_servo_init(&servo2, PWM_CHANNEL_B);
-     d00:	61 e0       	ldi	r22, 0x01	; 1
-     d02:	ce 01       	movw	r24, r28
-     d04:	05 96       	adiw	r24, 0x05	; 5
-     d06:	0e 94 39 07 	call	0xe72	; 0xe72 <pwm_servo_init>
+     d6e:	61 e0       	ldi	r22, 0x01	; 1
+     d70:	ce 01       	movw	r24, r28
+     d72:	05 96       	adiw	r24, 0x05	; 5
+     d74:	0e 94 70 07 	call	0xee0	; 0xee0 <pwm_servo_init>
     pwm_servo_t2_init_at(&servo3, SERVO3_HOME_ANGLE);
-     d0a:	66 e9       	ldi	r22, 0x96	; 150
-     d0c:	ce 01       	movw	r24, r28
-     d0e:	09 96       	adiw	r24, 0x09	; 9
-     d10:	0e 94 55 08 	call	0x10aa	; 0x10aa <pwm_servo_t2_init_at>
+     d78:	66 e9       	ldi	r22, 0x96	; 150
+     d7a:	ce 01       	movw	r24, r28
+     d7c:	09 96       	adiw	r24, 0x09	; 9
+     d7e:	0e 94 8c 08 	call	0x1118	; 0x1118 <pwm_servo_t2_init_at>
     pwm_servo_t0_init_at(&servo4, SERVO4_HOME_ANGLE);
-     d14:	65 e0       	ldi	r22, 0x05	; 5
-     d16:	ce 01       	movw	r24, r28
-     d18:	0c 96       	adiw	r24, 0x0c	; 12
-     d1a:	0e 94 f3 07 	call	0xfe6	; 0xfe6 <pwm_servo_t0_init_at>
-
-    // Mover s1 y s2 a home explicitamente
+     d82:	65 e0       	ldi	r22, 0x05	; 5
+     d84:	ce 01       	movw	r24, r28
+     d86:	0c 96       	adiw	r24, 0x0c	; 12
+     d88:	0e 94 2a 08 	call	0x1054	; 0x1054 <pwm_servo_t0_init_at>
     pwm_servo_set_angle(&servo1, SERVO1_HOME_ANGLE);
-     d1e:	60 e0       	ldi	r22, 0x00	; 0
-     d20:	ce 01       	movw	r24, r28
-     d22:	01 96       	adiw	r24, 0x01	; 1
-     d24:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     d8c:	60 e0       	ldi	r22, 0x00	; 0
+     d8e:	ce 01       	movw	r24, r28
+     d90:	01 96       	adiw	r24, 0x01	; 1
+     d92:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
     pwm_servo_set_angle(&servo2, SERVO2_HOME_ANGLE);
-     d28:	65 ea       	ldi	r22, 0xA5	; 165
-     d2a:	ce 01       	movw	r24, r28
-     d2c:	05 96       	adiw	r24, 0x05	; 5
-     d2e:	0e 94 9d 07 	call	0xf3a	; 0xf3a <pwm_servo_set_angle>
+     d96:	65 ea       	ldi	r22, 0xA5	; 165
+     d98:	ce 01       	movw	r24, r28
+     d9a:	05 96       	adiw	r24, 0x05	; 5
+     d9c:	0e 94 d4 07 	call	0xfa8	; 0xfa8 <pwm_servo_set_angle>
 
     initUART();
-     d32:	0e 94 67 08 	call	0x10ce	; 0x10ce <initUART>
+     da0:	0e 94 9e 08 	call	0x113c	; 0x113c <initUART>
     buttons_init();
-     d36:	0e 94 68 00 	call	0xd0	; 0xd0 <buttons_init>
+     da4:	0e 94 68 00 	call	0xd0	; 0xd0 <buttons_init>
 
-    // LEDs: PD2, PB4, PB5
     DDRD  |=  (1 << PD2);
-     d3a:	8a b1       	in	r24, 0x0a	; 10
-     d3c:	84 60       	ori	r24, 0x04	; 4
-     d3e:	8a b9       	out	0x0a, r24	; 10
+     da8:	8a b1       	in	r24, 0x0a	; 10
+     daa:	84 60       	ori	r24, 0x04	; 4
+     dac:	8a b9       	out	0x0a, r24	; 10
     PORTD &= ~(1 << PD2);
-     d40:	8b b1       	in	r24, 0x0b	; 11
-     d42:	8b 7f       	andi	r24, 0xFB	; 251
-     d44:	8b b9       	out	0x0b, r24	; 11
+     dae:	8b b1       	in	r24, 0x0b	; 11
+     db0:	8b 7f       	andi	r24, 0xFB	; 251
+     db2:	8b b9       	out	0x0b, r24	; 11
     DDRB  |=  (1 << PB4) | (1 << PB5);
-     d46:	84 b1       	in	r24, 0x04	; 4
-     d48:	80 63       	ori	r24, 0x30	; 48
-     d4a:	84 b9       	out	0x04, r24	; 4
+     db4:	84 b1       	in	r24, 0x04	; 4
+     db6:	80 63       	ori	r24, 0x30	; 48
+     db8:	84 b9       	out	0x04, r24	; 4
     PORTB &= ~((1 << PB4) | (1 << PB5));
-     d4c:	85 b1       	in	r24, 0x05	; 5
-     d4e:	8f 7c       	andi	r24, 0xCF	; 207
-     d50:	85 b9       	out	0x05, r24	; 5
+     dba:	85 b1       	in	r24, 0x05	; 5
+     dbc:	8f 7c       	andi	r24, 0xCF	; 207
+     dbe:	85 b9       	out	0x05, r24	; 5
 
     sei();
-     d52:	78 94       	sei
+     dc0:	78 94       	sei
 
     set_mode_leds(current_mode);
-     d54:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     d58:	0e 94 6f 00 	call	0xde	; 0xde <set_mode_leds>
+     dc2:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     dc6:	0e 94 6f 00 	call	0xde	; 0xde <set_mode_leds>
     writeString("\r\n=== Brazo robotico iniciado ===\r\n");
-     d5c:	83 ec       	ldi	r24, 0xC3	; 195
-     d5e:	94 e0       	ldi	r25, 0x04	; 4
-     d60:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     dca:	81 ed       	ldi	r24, 0xD1	; 209
+     dcc:	94 e0       	ldi	r25, 0x04	; 4
+     dce:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     writeString("S1:0-180  S2:110-180  S3:95-160  S4:0-10\r\n");
-     d64:	87 ee       	ldi	r24, 0xE7	; 231
-     d66:	94 e0       	ldi	r25, 0x04	; 4
-     d68:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     dd2:	85 ef       	ldi	r24, 0xF5	; 245
+     dd4:	94 e0       	ldi	r25, 0x04	; 4
+     dd6:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     writeString("BTN PC4 = modo  |  BTN PC5 = ejecutar\r\n");
-     d6c:	82 e1       	ldi	r24, 0x12	; 18
-     d6e:	95 e0       	ldi	r25, 0x05	; 5
-     d70:	0e 94 83 08 	call	0x1106	; 0x1106 <writeString>
+     dda:	80 e2       	ldi	r24, 0x20	; 32
+     ddc:	95 e0       	ldi	r25, 0x05	; 5
+     dde:	0e 94 ba 08 	call	0x1174	; 0x1174 <writeString>
     print_mode_name(current_mode);
-     d74:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     d78:	0e 94 64 01 	call	0x2c8	; 0x2c8 <print_mode_name>
+     de2:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     de6:	0e 94 64 01 	call	0x2c8	; 0x2c8 <print_mode_name>
 
     while (1)
     {
         if (button_pressed(BTN_CHANGE_PIN))
-     d7c:	84 e0       	ldi	r24, 0x04	; 4
-     d7e:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
-     d82:	88 23       	and	r24, r24
-     d84:	a1 f0       	breq	.+40     	; 0xdae <main+0xd2>
+     dea:	84 e0       	ldi	r24, 0x04	; 4
+     dec:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
+     df0:	88 23       	and	r24, r24
+     df2:	a1 f0       	breq	.+40     	; 0xe1c <main+0xd2>
         {
             current_mode = (app_mode_t)((current_mode + 1) % 4);
-     d86:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     d8a:	90 e0       	ldi	r25, 0x00	; 0
-     d8c:	01 96       	adiw	r24, 0x01	; 1
-     d8e:	83 70       	andi	r24, 0x03	; 3
-     d90:	90 78       	andi	r25, 0x80	; 128
-     d92:	99 23       	and	r25, r25
-     d94:	24 f4       	brge	.+8      	; 0xd9e <main+0xc2>
-     d96:	01 97       	sbiw	r24, 0x01	; 1
-     d98:	8c 6f       	ori	r24, 0xFC	; 252
-     d9a:	9f 6f       	ori	r25, 0xFF	; 255
-     d9c:	01 96       	adiw	r24, 0x01	; 1
-     d9e:	80 93 3a 05 	sts	0x053A, r24	; 0x80053a <__data_end>
+     df4:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     df8:	90 e0       	ldi	r25, 0x00	; 0
+     dfa:	01 96       	adiw	r24, 0x01	; 1
+     dfc:	83 70       	andi	r24, 0x03	; 3
+     dfe:	90 78       	andi	r25, 0x80	; 128
+     e00:	99 23       	and	r25, r25
+     e02:	24 f4       	brge	.+8      	; 0xe0c <main+0xc2>
+     e04:	01 97       	sbiw	r24, 0x01	; 1
+     e06:	8c 6f       	ori	r24, 0xFC	; 252
+     e08:	9f 6f       	ori	r25, 0xFF	; 255
+     e0a:	01 96       	adiw	r24, 0x01	; 1
+     e0c:	80 93 48 05 	sts	0x0548, r24	; 0x800548 <__data_end>
             set_mode_leds(current_mode);
-     da2:	0e 94 6f 00 	call	0xde	; 0xde <set_mode_leds>
+     e10:	0e 94 6f 00 	call	0xde	; 0xde <set_mode_leds>
             print_mode_name(current_mode);
-     da6:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     daa:	0e 94 64 01 	call	0x2c8	; 0x2c8 <print_mode_name>
+     e14:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     e18:	0e 94 64 01 	call	0x2c8	; 0x2c8 <print_mode_name>
         }
 
         if (button_pressed(BTN_ACTION_PIN))
-     dae:	85 e0       	ldi	r24, 0x05	; 5
-     db0:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
-     db4:	88 23       	and	r24, r24
-     db6:	11 f3       	breq	.-60     	; 0xd7c <main+0xa0>
+     e1c:	85 e0       	ldi	r24, 0x05	; 5
+     e1e:	0e 94 8b 01 	call	0x316	; 0x316 <button_pressed>
+     e22:	88 23       	and	r24, r24
+     e24:	11 f3       	breq	.-60     	; 0xdea <main+0xa0>
         {
             switch (current_mode)
-     db8:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     dbc:	81 30       	cpi	r24, 0x01	; 1
-     dbe:	a1 f0       	breq	.+40     	; 0xde8 <main+0x10c>
-     dc0:	28 f0       	brcs	.+10     	; 0xdcc <main+0xf0>
-     dc2:	82 30       	cpi	r24, 0x02	; 2
-     dc4:	f9 f0       	breq	.+62     	; 0xe04 <main+0x128>
-     dc6:	83 30       	cpi	r24, 0x03	; 3
-     dc8:	59 f1       	breq	.+86     	; 0xe20 <main+0x144>
-     dca:	37 c0       	rjmp	.+110    	; 0xe3a <main+0x15e>
+     e26:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     e2a:	81 30       	cpi	r24, 0x01	; 1
+     e2c:	a1 f0       	breq	.+40     	; 0xe56 <main+0x10c>
+     e2e:	28 f0       	brcs	.+10     	; 0xe3a <main+0xf0>
+     e30:	82 30       	cpi	r24, 0x02	; 2
+     e32:	f9 f0       	breq	.+62     	; 0xe72 <main+0x128>
+     e34:	83 30       	cpi	r24, 0x03	; 3
+     e36:	59 f1       	breq	.+86     	; 0xe8e <main+0x144>
+     e38:	37 c0       	rjmp	.+110    	; 0xea8 <main+0x15e>
             {
-                case MODE_ADC:
-                    run_mode_adc(&servo1, &servo2, &servo3, &servo4);
-     dcc:	9e 01       	movw	r18, r28
-     dce:	24 5f       	subi	r18, 0xF4	; 244
-     dd0:	3f 4f       	sbci	r19, 0xFF	; 255
-     dd2:	ae 01       	movw	r20, r28
-     dd4:	47 5f       	subi	r20, 0xF7	; 247
-     dd6:	5f 4f       	sbci	r21, 0xFF	; 255
-     dd8:	be 01       	movw	r22, r28
-     dda:	6b 5f       	subi	r22, 0xFB	; 251
-     ddc:	7f 4f       	sbci	r23, 0xFF	; 255
-     dde:	ce 01       	movw	r24, r28
-     de0:	01 96       	adiw	r24, 0x01	; 1
-     de2:	0e 94 c2 01 	call	0x384	; 0x384 <run_mode_adc>
-                    break;
-     de6:	29 c0       	rjmp	.+82     	; 0xe3a <main+0x15e>
-                case MODE_SERIAL:
-                    run_mode_serial(&servo1, &servo2, &servo3, &servo4);
-     de8:	9e 01       	movw	r18, r28
-     dea:	24 5f       	subi	r18, 0xF4	; 244
-     dec:	3f 4f       	sbci	r19, 0xFF	; 255
-     dee:	ae 01       	movw	r20, r28
-     df0:	47 5f       	subi	r20, 0xF7	; 247
-     df2:	5f 4f       	sbci	r21, 0xFF	; 255
-     df4:	be 01       	movw	r22, r28
-     df6:	6b 5f       	subi	r22, 0xFB	; 251
-     df8:	7f 4f       	sbci	r23, 0xFF	; 255
-     dfa:	ce 01       	movw	r24, r28
-     dfc:	01 96       	adiw	r24, 0x01	; 1
-     dfe:	0e 94 92 03 	call	0x724	; 0x724 <run_mode_serial>
-                    break;
-     e02:	1b c0       	rjmp	.+54     	; 0xe3a <main+0x15e>
-                case MODE_RECORD:
-                    run_mode_record(&servo1, &servo2, &servo3, &servo4);
-     e04:	9e 01       	movw	r18, r28
-     e06:	24 5f       	subi	r18, 0xF4	; 244
-     e08:	3f 4f       	sbci	r19, 0xFF	; 255
-     e0a:	ae 01       	movw	r20, r28
-     e0c:	47 5f       	subi	r20, 0xF7	; 247
-     e0e:	5f 4f       	sbci	r21, 0xFF	; 255
-     e10:	be 01       	movw	r22, r28
-     e12:	6b 5f       	subi	r22, 0xFB	; 251
-     e14:	7f 4f       	sbci	r23, 0xFF	; 255
-     e16:	ce 01       	movw	r24, r28
-     e18:	01 96       	adiw	r24, 0x01	; 1
-     e1a:	0e 94 0e 04 	call	0x81c	; 0x81c <run_mode_record>
-                    break;
-     e1e:	0d c0       	rjmp	.+26     	; 0xe3a <main+0x15e>
-                case MODE_PLAYBACK:
-                    run_mode_playback(&servo1, &servo2, &servo3, &servo4);
-     e20:	9e 01       	movw	r18, r28
-     e22:	24 5f       	subi	r18, 0xF4	; 244
-     e24:	3f 4f       	sbci	r19, 0xFF	; 255
-     e26:	ae 01       	movw	r20, r28
-     e28:	47 5f       	subi	r20, 0xF7	; 247
-     e2a:	5f 4f       	sbci	r21, 0xFF	; 255
-     e2c:	be 01       	movw	r22, r28
-     e2e:	6b 5f       	subi	r22, 0xFB	; 251
-     e30:	7f 4f       	sbci	r23, 0xFF	; 255
-     e32:	ce 01       	movw	r24, r28
-     e34:	01 96       	adiw	r24, 0x01	; 1
-     e36:	0e 94 65 05 	call	0xaca	; 0xaca <run_mode_playback>
-                    break;
+                case MODE_ADC:      run_mode_adc(&servo1, &servo2, &servo3, &servo4);      break;
+     e3a:	9e 01       	movw	r18, r28
+     e3c:	24 5f       	subi	r18, 0xF4	; 244
+     e3e:	3f 4f       	sbci	r19, 0xFF	; 255
+     e40:	ae 01       	movw	r20, r28
+     e42:	47 5f       	subi	r20, 0xF7	; 247
+     e44:	5f 4f       	sbci	r21, 0xFF	; 255
+     e46:	be 01       	movw	r22, r28
+     e48:	6b 5f       	subi	r22, 0xFB	; 251
+     e4a:	7f 4f       	sbci	r23, 0xFF	; 255
+     e4c:	ce 01       	movw	r24, r28
+     e4e:	01 96       	adiw	r24, 0x01	; 1
+     e50:	0e 94 c2 01 	call	0x384	; 0x384 <run_mode_adc>
+     e54:	29 c0       	rjmp	.+82     	; 0xea8 <main+0x15e>
+                case MODE_SERIAL:   run_mode_serial(&servo1, &servo2, &servo3, &servo4);   break;
+     e56:	9e 01       	movw	r18, r28
+     e58:	24 5f       	subi	r18, 0xF4	; 244
+     e5a:	3f 4f       	sbci	r19, 0xFF	; 255
+     e5c:	ae 01       	movw	r20, r28
+     e5e:	47 5f       	subi	r20, 0xF7	; 247
+     e60:	5f 4f       	sbci	r21, 0xFF	; 255
+     e62:	be 01       	movw	r22, r28
+     e64:	6b 5f       	subi	r22, 0xFB	; 251
+     e66:	7f 4f       	sbci	r23, 0xFF	; 255
+     e68:	ce 01       	movw	r24, r28
+     e6a:	01 96       	adiw	r24, 0x01	; 1
+     e6c:	0e 94 92 03 	call	0x724	; 0x724 <run_mode_serial>
+     e70:	1b c0       	rjmp	.+54     	; 0xea8 <main+0x15e>
+                case MODE_RECORD:   run_mode_record(&servo1, &servo2, &servo3, &servo4);   break;
+     e72:	9e 01       	movw	r18, r28
+     e74:	24 5f       	subi	r18, 0xF4	; 244
+     e76:	3f 4f       	sbci	r19, 0xFF	; 255
+     e78:	ae 01       	movw	r20, r28
+     e7a:	47 5f       	subi	r20, 0xF7	; 247
+     e7c:	5f 4f       	sbci	r21, 0xFF	; 255
+     e7e:	be 01       	movw	r22, r28
+     e80:	6b 5f       	subi	r22, 0xFB	; 251
+     e82:	7f 4f       	sbci	r23, 0xFF	; 255
+     e84:	ce 01       	movw	r24, r28
+     e86:	01 96       	adiw	r24, 0x01	; 1
+     e88:	0e 94 0e 04 	call	0x81c	; 0x81c <run_mode_record>
+     e8c:	0d c0       	rjmp	.+26     	; 0xea8 <main+0x15e>
+                case MODE_PLAYBACK: run_mode_playback(&servo1, &servo2, &servo3, &servo4); break;
+     e8e:	9e 01       	movw	r18, r28
+     e90:	24 5f       	subi	r18, 0xF4	; 244
+     e92:	3f 4f       	sbci	r19, 0xFF	; 255
+     e94:	ae 01       	movw	r20, r28
+     e96:	47 5f       	subi	r20, 0xF7	; 247
+     e98:	5f 4f       	sbci	r21, 0xFF	; 255
+     e9a:	be 01       	movw	r22, r28
+     e9c:	6b 5f       	subi	r22, 0xFB	; 251
+     e9e:	7f 4f       	sbci	r23, 0xFF	; 255
+     ea0:	ce 01       	movw	r24, r28
+     ea2:	01 96       	adiw	r24, 0x01	; 1
+     ea4:	0e 94 ac 05 	call	0xb58	; 0xb58 <run_mode_playback>
             }
             set_mode_leds(current_mode);
-     e3a:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     e3e:	0e 94 6f 00 	call	0xde	; 0xde <set_mode_leds>
+     ea8:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     eac:	0e 94 6f 00 	call	0xde	; 0xde <set_mode_leds>
             print_mode_name(current_mode);
-     e42:	80 91 3a 05 	lds	r24, 0x053A	; 0x80053a <__data_end>
-     e46:	0e 94 64 01 	call	0x2c8	; 0x2c8 <print_mode_name>
-     e4a:	98 cf       	rjmp	.-208    	; 0xd7c <main+0xa0>
+     eb0:	80 91 48 05 	lds	r24, 0x0548	; 0x800548 <__data_end>
+     eb4:	0e 94 64 01 	call	0x2c8	; 0x2c8 <print_mode_name>
+     eb8:	98 cf       	rjmp	.-208    	; 0xdea <main+0xa0>
 
-00000e4c <__vector_18>:
+00000eba <__vector_18>:
 }
 
 /****************************************/
-// ISR UART
+// Interrupt routines
 ISR(USART_RX_vect)
 {
-     e4c:	1f 92       	push	r1
-     e4e:	0f 92       	push	r0
-     e50:	0f b6       	in	r0, 0x3f	; 63
-     e52:	0f 92       	push	r0
-     e54:	11 24       	eor	r1, r1
-     e56:	8f 93       	push	r24
+     eba:	1f 92       	push	r1
+     ebc:	0f 92       	push	r0
+     ebe:	0f b6       	in	r0, 0x3f	; 63
+     ec0:	0f 92       	push	r0
+     ec2:	11 24       	eor	r1, r1
+     ec4:	8f 93       	push	r24
     datoRX     = UDR0;
-     e58:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
-     e5c:	80 93 3c 05 	sts	0x053C, r24	; 0x80053c <datoRX>
+     ec6:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+     eca:	80 93 4a 05 	sts	0x054A, r24	; 0x80054a <datoRX>
     ExisteDato = 1;
-     e60:	81 e0       	ldi	r24, 0x01	; 1
-     e62:	80 93 3b 05 	sts	0x053B, r24	; 0x80053b <ExisteDato>
-     e66:	8f 91       	pop	r24
-     e68:	0f 90       	pop	r0
-     e6a:	0f be       	out	0x3f, r0	; 63
-     e6c:	0f 90       	pop	r0
-     e6e:	1f 90       	pop	r1
-     e70:	18 95       	reti
+     ece:	81 e0       	ldi	r24, 0x01	; 1
+     ed0:	80 93 49 05 	sts	0x0549, r24	; 0x800549 <ExisteDato>
+     ed4:	8f 91       	pop	r24
+     ed6:	0f 90       	pop	r0
+     ed8:	0f be       	out	0x3f, r0	; 63
+     eda:	0f 90       	pop	r0
+     edc:	1f 90       	pop	r1
+     ede:	18 95       	reti
 
-00000e72 <pwm_servo_init>:
+00000ee0 <pwm_servo_init>:
 uint16_t pwm_servo_get_us(
     const servo_t* servo
 )
 {
     return servo->current_pulse_width_us;
 }
-     e72:	fc 01       	movw	r30, r24
-     e74:	60 83       	st	Z, r22
-     e76:	8c ed       	ldi	r24, 0xDC	; 220
-     e78:	95 e0       	ldi	r25, 0x05	; 5
-     e7a:	92 83       	std	Z+2, r25	; 0x02
-     e7c:	81 83       	std	Z+1, r24	; 0x01
-     e7e:	8a e5       	ldi	r24, 0x5A	; 90
-     e80:	83 83       	std	Z+3, r24	; 0x03
-     e82:	80 91 3d 05 	lds	r24, 0x053D	; 0x80053d <timer1_initialized>
-     e86:	81 11       	cpse	r24, r1
-     e88:	18 c0       	rjmp	.+48     	; 0xeba <pwm_servo_init+0x48>
-     e8a:	a0 e8       	ldi	r26, 0x80	; 128
-     e8c:	b0 e0       	ldi	r27, 0x00	; 0
-     e8e:	1c 92       	st	X, r1
-     e90:	e1 e8       	ldi	r30, 0x81	; 129
-     e92:	f0 e0       	ldi	r31, 0x00	; 0
-     e94:	10 82       	st	Z, r1
-     e96:	8c 91       	ld	r24, X
-     e98:	82 60       	ori	r24, 0x02	; 2
-     e9a:	8c 93       	st	X, r24
-     e9c:	80 81       	ld	r24, Z
-     e9e:	88 61       	ori	r24, 0x18	; 24
-     ea0:	80 83       	st	Z, r24
-     ea2:	80 81       	ld	r24, Z
-     ea4:	82 60       	ori	r24, 0x02	; 2
-     ea6:	80 83       	st	Z, r24
-     ea8:	8f e3       	ldi	r24, 0x3F	; 63
-     eaa:	9c e9       	ldi	r25, 0x9C	; 156
-     eac:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7f8087>
-     eb0:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7f8086>
-     eb4:	81 e0       	ldi	r24, 0x01	; 1
-     eb6:	80 93 3d 05 	sts	0x053D, r24	; 0x80053d <timer1_initialized>
-     eba:	61 11       	cpse	r22, r1
-     ebc:	0f c0       	rjmp	.+30     	; 0xedc <pwm_servo_init+0x6a>
-     ebe:	84 b1       	in	r24, 0x04	; 4
-     ec0:	82 60       	ori	r24, 0x02	; 2
-     ec2:	84 b9       	out	0x04, r24	; 4
-     ec4:	e0 e8       	ldi	r30, 0x80	; 128
-     ec6:	f0 e0       	ldi	r31, 0x00	; 0
-     ec8:	80 81       	ld	r24, Z
-     eca:	80 68       	ori	r24, 0x80	; 128
-     ecc:	80 83       	st	Z, r24
-     ece:	88 eb       	ldi	r24, 0xB8	; 184
-     ed0:	9b e0       	ldi	r25, 0x0B	; 11
-     ed2:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
-     ed6:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
-     eda:	08 95       	ret
-     edc:	84 b1       	in	r24, 0x04	; 4
-     ede:	84 60       	ori	r24, 0x04	; 4
-     ee0:	84 b9       	out	0x04, r24	; 4
-     ee2:	e0 e8       	ldi	r30, 0x80	; 128
-     ee4:	f0 e0       	ldi	r31, 0x00	; 0
-     ee6:	80 81       	ld	r24, Z
-     ee8:	80 62       	ori	r24, 0x20	; 32
-     eea:	80 83       	st	Z, r24
-     eec:	88 eb       	ldi	r24, 0xB8	; 184
-     eee:	9b e0       	ldi	r25, 0x0B	; 11
-     ef0:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <__TEXT_REGION_LENGTH__+0x7f808b>
-     ef4:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7f808a>
-     ef8:	08 95       	ret
+     ee0:	fc 01       	movw	r30, r24
+     ee2:	60 83       	st	Z, r22
+     ee4:	8c ed       	ldi	r24, 0xDC	; 220
+     ee6:	95 e0       	ldi	r25, 0x05	; 5
+     ee8:	92 83       	std	Z+2, r25	; 0x02
+     eea:	81 83       	std	Z+1, r24	; 0x01
+     eec:	8a e5       	ldi	r24, 0x5A	; 90
+     eee:	83 83       	std	Z+3, r24	; 0x03
+     ef0:	80 91 4b 05 	lds	r24, 0x054B	; 0x80054b <timer1_initialized>
+     ef4:	81 11       	cpse	r24, r1
+     ef6:	18 c0       	rjmp	.+48     	; 0xf28 <pwm_servo_init+0x48>
+     ef8:	a0 e8       	ldi	r26, 0x80	; 128
+     efa:	b0 e0       	ldi	r27, 0x00	; 0
+     efc:	1c 92       	st	X, r1
+     efe:	e1 e8       	ldi	r30, 0x81	; 129
+     f00:	f0 e0       	ldi	r31, 0x00	; 0
+     f02:	10 82       	st	Z, r1
+     f04:	8c 91       	ld	r24, X
+     f06:	82 60       	ori	r24, 0x02	; 2
+     f08:	8c 93       	st	X, r24
+     f0a:	80 81       	ld	r24, Z
+     f0c:	88 61       	ori	r24, 0x18	; 24
+     f0e:	80 83       	st	Z, r24
+     f10:	80 81       	ld	r24, Z
+     f12:	82 60       	ori	r24, 0x02	; 2
+     f14:	80 83       	st	Z, r24
+     f16:	8f e3       	ldi	r24, 0x3F	; 63
+     f18:	9c e9       	ldi	r25, 0x9C	; 156
+     f1a:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7f8087>
+     f1e:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7f8086>
+     f22:	81 e0       	ldi	r24, 0x01	; 1
+     f24:	80 93 4b 05 	sts	0x054B, r24	; 0x80054b <timer1_initialized>
+     f28:	61 11       	cpse	r22, r1
+     f2a:	0f c0       	rjmp	.+30     	; 0xf4a <pwm_servo_init+0x6a>
+     f2c:	84 b1       	in	r24, 0x04	; 4
+     f2e:	82 60       	ori	r24, 0x02	; 2
+     f30:	84 b9       	out	0x04, r24	; 4
+     f32:	e0 e8       	ldi	r30, 0x80	; 128
+     f34:	f0 e0       	ldi	r31, 0x00	; 0
+     f36:	80 81       	ld	r24, Z
+     f38:	80 68       	ori	r24, 0x80	; 128
+     f3a:	80 83       	st	Z, r24
+     f3c:	88 eb       	ldi	r24, 0xB8	; 184
+     f3e:	9b e0       	ldi	r25, 0x0B	; 11
+     f40:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+     f44:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+     f48:	08 95       	ret
+     f4a:	84 b1       	in	r24, 0x04	; 4
+     f4c:	84 60       	ori	r24, 0x04	; 4
+     f4e:	84 b9       	out	0x04, r24	; 4
+     f50:	e0 e8       	ldi	r30, 0x80	; 128
+     f52:	f0 e0       	ldi	r31, 0x00	; 0
+     f54:	80 81       	ld	r24, Z
+     f56:	80 62       	ori	r24, 0x20	; 32
+     f58:	80 83       	st	Z, r24
+     f5a:	88 eb       	ldi	r24, 0xB8	; 184
+     f5c:	9b e0       	ldi	r25, 0x0B	; 11
+     f5e:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <__TEXT_REGION_LENGTH__+0x7f808b>
+     f62:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7f808a>
+     f66:	08 95       	ret
 
-00000efa <pwm_servo_set_us>:
-     efa:	64 3f       	cpi	r22, 0xF4	; 244
-     efc:	21 e0       	ldi	r18, 0x01	; 1
-     efe:	72 07       	cpc	r23, r18
-     f00:	10 f4       	brcc	.+4      	; 0xf06 <pwm_servo_set_us+0xc>
-     f02:	64 ef       	ldi	r22, 0xF4	; 244
-     f04:	71 e0       	ldi	r23, 0x01	; 1
-     f06:	61 36       	cpi	r22, 0x61	; 97
-     f08:	e9 e0       	ldi	r30, 0x09	; 9
-     f0a:	7e 07       	cpc	r23, r30
-     f0c:	10 f0       	brcs	.+4      	; 0xf12 <pwm_servo_set_us+0x18>
-     f0e:	60 e6       	ldi	r22, 0x60	; 96
-     f10:	79 e0       	ldi	r23, 0x09	; 9
-     f12:	fc 01       	movw	r30, r24
-     f14:	72 83       	std	Z+2, r23	; 0x02
-     f16:	61 83       	std	Z+1, r22	; 0x01
-     f18:	80 81       	ld	r24, Z
-     f1a:	81 11       	cpse	r24, r1
-     f1c:	07 c0       	rjmp	.+14     	; 0xf2c <pwm_servo_set_us+0x32>
-     f1e:	66 0f       	add	r22, r22
-     f20:	77 1f       	adc	r23, r23
-     f22:	70 93 89 00 	sts	0x0089, r23	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
-     f26:	60 93 88 00 	sts	0x0088, r22	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
-     f2a:	08 95       	ret
-     f2c:	66 0f       	add	r22, r22
-     f2e:	77 1f       	adc	r23, r23
-     f30:	70 93 8b 00 	sts	0x008B, r23	; 0x80008b <__TEXT_REGION_LENGTH__+0x7f808b>
-     f34:	60 93 8a 00 	sts	0x008A, r22	; 0x80008a <__TEXT_REGION_LENGTH__+0x7f808a>
-     f38:	08 95       	ret
+00000f68 <pwm_servo_set_us>:
+     f68:	64 3f       	cpi	r22, 0xF4	; 244
+     f6a:	21 e0       	ldi	r18, 0x01	; 1
+     f6c:	72 07       	cpc	r23, r18
+     f6e:	10 f4       	brcc	.+4      	; 0xf74 <pwm_servo_set_us+0xc>
+     f70:	64 ef       	ldi	r22, 0xF4	; 244
+     f72:	71 e0       	ldi	r23, 0x01	; 1
+     f74:	61 36       	cpi	r22, 0x61	; 97
+     f76:	e9 e0       	ldi	r30, 0x09	; 9
+     f78:	7e 07       	cpc	r23, r30
+     f7a:	10 f0       	brcs	.+4      	; 0xf80 <pwm_servo_set_us+0x18>
+     f7c:	60 e6       	ldi	r22, 0x60	; 96
+     f7e:	79 e0       	ldi	r23, 0x09	; 9
+     f80:	fc 01       	movw	r30, r24
+     f82:	72 83       	std	Z+2, r23	; 0x02
+     f84:	61 83       	std	Z+1, r22	; 0x01
+     f86:	80 81       	ld	r24, Z
+     f88:	81 11       	cpse	r24, r1
+     f8a:	07 c0       	rjmp	.+14     	; 0xf9a <pwm_servo_set_us+0x32>
+     f8c:	66 0f       	add	r22, r22
+     f8e:	77 1f       	adc	r23, r23
+     f90:	70 93 89 00 	sts	0x0089, r23	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+     f94:	60 93 88 00 	sts	0x0088, r22	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+     f98:	08 95       	ret
+     f9a:	66 0f       	add	r22, r22
+     f9c:	77 1f       	adc	r23, r23
+     f9e:	70 93 8b 00 	sts	0x008B, r23	; 0x80008b <__TEXT_REGION_LENGTH__+0x7f808b>
+     fa2:	60 93 8a 00 	sts	0x008A, r22	; 0x80008a <__TEXT_REGION_LENGTH__+0x7f808a>
+     fa6:	08 95       	ret
 
-00000f3a <pwm_servo_set_angle>:
-     f3a:	cf 93       	push	r28
-     f3c:	df 93       	push	r29
-     f3e:	ec 01       	movw	r28, r24
-     f40:	65 3b       	cpi	r22, 0xB5	; 181
-     f42:	08 f0       	brcs	.+2      	; 0xf46 <pwm_servo_set_angle+0xc>
-     f44:	64 eb       	ldi	r22, 0xB4	; 180
-     f46:	6b 83       	std	Y+3, r22	; 0x03
-     f48:	26 2f       	mov	r18, r22
-     f4a:	30 e0       	ldi	r19, 0x00	; 0
-     f4c:	ac e6       	ldi	r26, 0x6C	; 108
-     f4e:	b7 e0       	ldi	r27, 0x07	; 7
-     f50:	0e 94 e1 08 	call	0x11c2	; 0x11c2 <__umulhisi3>
-     f54:	24 eb       	ldi	r18, 0xB4	; 180
-     f56:	30 e0       	ldi	r19, 0x00	; 0
-     f58:	40 e0       	ldi	r20, 0x00	; 0
-     f5a:	50 e0       	ldi	r21, 0x00	; 0
-     f5c:	0e 94 a0 08 	call	0x1140	; 0x1140 <__udivmodsi4>
-     f60:	b9 01       	movw	r22, r18
-     f62:	6c 50       	subi	r22, 0x0C	; 12
-     f64:	7e 4f       	sbci	r23, 0xFE	; 254
-     f66:	ce 01       	movw	r24, r28
-     f68:	0e 94 7d 07 	call	0xefa	; 0xefa <pwm_servo_set_us>
-     f6c:	df 91       	pop	r29
-     f6e:	cf 91       	pop	r28
-     f70:	08 95       	ret
+00000fa8 <pwm_servo_set_angle>:
+     fa8:	cf 93       	push	r28
+     faa:	df 93       	push	r29
+     fac:	ec 01       	movw	r28, r24
+     fae:	65 3b       	cpi	r22, 0xB5	; 181
+     fb0:	08 f0       	brcs	.+2      	; 0xfb4 <pwm_servo_set_angle+0xc>
+     fb2:	64 eb       	ldi	r22, 0xB4	; 180
+     fb4:	6b 83       	std	Y+3, r22	; 0x03
+     fb6:	26 2f       	mov	r18, r22
+     fb8:	30 e0       	ldi	r19, 0x00	; 0
+     fba:	ac e6       	ldi	r26, 0x6C	; 108
+     fbc:	b7 e0       	ldi	r27, 0x07	; 7
+     fbe:	0e 94 18 09 	call	0x1230	; 0x1230 <__umulhisi3>
+     fc2:	24 eb       	ldi	r18, 0xB4	; 180
+     fc4:	30 e0       	ldi	r19, 0x00	; 0
+     fc6:	40 e0       	ldi	r20, 0x00	; 0
+     fc8:	50 e0       	ldi	r21, 0x00	; 0
+     fca:	0e 94 d7 08 	call	0x11ae	; 0x11ae <__udivmodsi4>
+     fce:	b9 01       	movw	r22, r18
+     fd0:	6c 50       	subi	r22, 0x0C	; 12
+     fd2:	7e 4f       	sbci	r23, 0xFE	; 254
+     fd4:	ce 01       	movw	r24, r28
+     fd6:	0e 94 b4 07 	call	0xf68	; 0xf68 <pwm_servo_set_us>
+     fda:	df 91       	pop	r29
+     fdc:	cf 91       	pop	r28
+     fde:	08 95       	ret
 
-00000f72 <pwm_servo_get_angle>:
+00000fe0 <pwm_servo_get_angle>:
 uint8_t pwm_servo_get_angle(
     const servo_t* servo
 )
 {
     return servo->current_angle;
 }
-     f72:	fc 01       	movw	r30, r24
-     f74:	83 81       	ldd	r24, Z+3	; 0x03
-     f76:	08 95       	ret
+     fe0:	fc 01       	movw	r30, r24
+     fe2:	83 81       	ldd	r24, Z+3	; 0x03
+     fe4:	08 95       	ret
 
-00000f78 <timer0_hw_init>:
+00000fe6 <timer0_hw_init>:
 /* GET TICKS                            */
 
 uint8_t pwm_servo_t0_get_ticks(const servo_t0_t *servo)
 {
     return servo->current_ticks;
 }
-     f78:	14 bc       	out	0x24, r1	; 36
-     f7a:	15 bc       	out	0x25, r1	; 37
-     f7c:	84 b5       	in	r24, 0x24	; 36
-     f7e:	83 60       	ori	r24, 0x03	; 3
-     f80:	84 bd       	out	0x24, r24	; 36
-     f82:	85 b5       	in	r24, 0x25	; 37
-     f84:	88 60       	ori	r24, 0x08	; 8
-     f86:	85 bd       	out	0x25, r24	; 37
-     f88:	84 b5       	in	r24, 0x24	; 36
-     f8a:	80 62       	ori	r24, 0x20	; 32
-     f8c:	84 bd       	out	0x24, r24	; 36
-     f8e:	85 b5       	in	r24, 0x25	; 37
-     f90:	85 60       	ori	r24, 0x05	; 5
-     f92:	85 bd       	out	0x25, r24	; 37
-     f94:	89 ef       	ldi	r24, 0xF9	; 249
-     f96:	87 bd       	out	0x27, r24	; 39
-     f98:	8a b1       	in	r24, 0x0a	; 10
-     f9a:	80 62       	ori	r24, 0x20	; 32
-     f9c:	8a b9       	out	0x0a, r24	; 10
-     f9e:	08 95       	ret
+     fe6:	14 bc       	out	0x24, r1	; 36
+     fe8:	15 bc       	out	0x25, r1	; 37
+     fea:	84 b5       	in	r24, 0x24	; 36
+     fec:	83 60       	ori	r24, 0x03	; 3
+     fee:	84 bd       	out	0x24, r24	; 36
+     ff0:	85 b5       	in	r24, 0x25	; 37
+     ff2:	88 60       	ori	r24, 0x08	; 8
+     ff4:	85 bd       	out	0x25, r24	; 37
+     ff6:	84 b5       	in	r24, 0x24	; 36
+     ff8:	80 62       	ori	r24, 0x20	; 32
+     ffa:	84 bd       	out	0x24, r24	; 36
+     ffc:	85 b5       	in	r24, 0x25	; 37
+     ffe:	85 60       	ori	r24, 0x05	; 5
+    1000:	85 bd       	out	0x25, r24	; 37
+    1002:	89 ef       	ldi	r24, 0xF9	; 249
+    1004:	87 bd       	out	0x27, r24	; 39
+    1006:	8a b1       	in	r24, 0x0a	; 10
+    1008:	80 62       	ori	r24, 0x20	; 32
+    100a:	8a b9       	out	0x0a, r24	; 10
+    100c:	08 95       	ret
 
-00000fa0 <pwm_servo_t0_set_ticks>:
-     fa0:	6a 30       	cpi	r22, 0x0A	; 10
-     fa2:	08 f4       	brcc	.+2      	; 0xfa6 <pwm_servo_t0_set_ticks+0x6>
-     fa4:	6a e0       	ldi	r22, 0x0A	; 10
-     fa6:	62 32       	cpi	r22, 0x22	; 34
-     fa8:	08 f0       	brcs	.+2      	; 0xfac <pwm_servo_t0_set_ticks+0xc>
-     faa:	61 e2       	ldi	r22, 0x21	; 33
-     fac:	fc 01       	movw	r30, r24
-     fae:	60 83       	st	Z, r22
-     fb0:	68 bd       	out	0x28, r22	; 40
-     fb2:	08 95       	ret
+0000100e <pwm_servo_t0_set_ticks>:
+    100e:	6a 30       	cpi	r22, 0x0A	; 10
+    1010:	08 f4       	brcc	.+2      	; 0x1014 <pwm_servo_t0_set_ticks+0x6>
+    1012:	6a e0       	ldi	r22, 0x0A	; 10
+    1014:	62 32       	cpi	r22, 0x22	; 34
+    1016:	08 f0       	brcs	.+2      	; 0x101a <pwm_servo_t0_set_ticks+0xc>
+    1018:	61 e2       	ldi	r22, 0x21	; 33
+    101a:	fc 01       	movw	r30, r24
+    101c:	60 83       	st	Z, r22
+    101e:	68 bd       	out	0x28, r22	; 40
+    1020:	08 95       	ret
 
-00000fb4 <pwm_servo_t0_set_angle>:
-     fb4:	fc 01       	movw	r30, r24
-     fb6:	65 36       	cpi	r22, 0x65	; 101
-     fb8:	08 f0       	brcs	.+2      	; 0xfbc <pwm_servo_t0_set_angle+0x8>
-     fba:	64 e6       	ldi	r22, 0x64	; 100
-     fbc:	61 83       	std	Z+1, r22	; 0x01
-     fbe:	87 e1       	ldi	r24, 0x17	; 23
-     fc0:	68 9f       	mul	r22, r24
-     fc2:	90 01       	movw	r18, r0
-     fc4:	11 24       	eor	r1, r1
-     fc6:	36 95       	lsr	r19
-     fc8:	27 95       	ror	r18
-     fca:	36 95       	lsr	r19
-     fcc:	27 95       	ror	r18
-     fce:	ab e7       	ldi	r26, 0x7B	; 123
-     fd0:	b4 e1       	ldi	r27, 0x14	; 20
-     fd2:	0e 94 e1 08 	call	0x11c2	; 0x11c2 <__umulhisi3>
-     fd6:	96 95       	lsr	r25
-     fd8:	87 95       	ror	r24
-     fda:	6a e0       	ldi	r22, 0x0A	; 10
-     fdc:	68 0f       	add	r22, r24
-     fde:	cf 01       	movw	r24, r30
-     fe0:	0e 94 d0 07 	call	0xfa0	; 0xfa0 <pwm_servo_t0_set_ticks>
-     fe4:	08 95       	ret
+00001022 <pwm_servo_t0_set_angle>:
+    1022:	fc 01       	movw	r30, r24
+    1024:	65 36       	cpi	r22, 0x65	; 101
+    1026:	08 f0       	brcs	.+2      	; 0x102a <pwm_servo_t0_set_angle+0x8>
+    1028:	64 e6       	ldi	r22, 0x64	; 100
+    102a:	61 83       	std	Z+1, r22	; 0x01
+    102c:	87 e1       	ldi	r24, 0x17	; 23
+    102e:	68 9f       	mul	r22, r24
+    1030:	90 01       	movw	r18, r0
+    1032:	11 24       	eor	r1, r1
+    1034:	36 95       	lsr	r19
+    1036:	27 95       	ror	r18
+    1038:	36 95       	lsr	r19
+    103a:	27 95       	ror	r18
+    103c:	ab e7       	ldi	r26, 0x7B	; 123
+    103e:	b4 e1       	ldi	r27, 0x14	; 20
+    1040:	0e 94 18 09 	call	0x1230	; 0x1230 <__umulhisi3>
+    1044:	96 95       	lsr	r25
+    1046:	87 95       	ror	r24
+    1048:	6a e0       	ldi	r22, 0x0A	; 10
+    104a:	68 0f       	add	r22, r24
+    104c:	cf 01       	movw	r24, r30
+    104e:	0e 94 07 08 	call	0x100e	; 0x100e <pwm_servo_t0_set_ticks>
+    1052:	08 95       	ret
 
-00000fe6 <pwm_servo_t0_init_at>:
-     fe6:	1f 93       	push	r17
-     fe8:	cf 93       	push	r28
-     fea:	df 93       	push	r29
-     fec:	ec 01       	movw	r28, r24
-     fee:	16 2f       	mov	r17, r22
-     ff0:	0e 94 bc 07 	call	0xf78	; 0xf78 <timer0_hw_init>
-     ff4:	61 2f       	mov	r22, r17
-     ff6:	ce 01       	movw	r24, r28
-     ff8:	0e 94 da 07 	call	0xfb4	; 0xfb4 <pwm_servo_t0_set_angle>
-     ffc:	df 91       	pop	r29
-     ffe:	cf 91       	pop	r28
-    1000:	1f 91       	pop	r17
-    1002:	08 95       	ret
+00001054 <pwm_servo_t0_init_at>:
+    1054:	1f 93       	push	r17
+    1056:	cf 93       	push	r28
+    1058:	df 93       	push	r29
+    105a:	ec 01       	movw	r28, r24
+    105c:	16 2f       	mov	r17, r22
+    105e:	0e 94 f3 07 	call	0xfe6	; 0xfe6 <timer0_hw_init>
+    1062:	61 2f       	mov	r22, r17
+    1064:	ce 01       	movw	r24, r28
+    1066:	0e 94 11 08 	call	0x1022	; 0x1022 <pwm_servo_t0_set_angle>
+    106a:	df 91       	pop	r29
+    106c:	cf 91       	pop	r28
+    106e:	1f 91       	pop	r17
+    1070:	08 95       	ret
 
-00001004 <pwm_servo_t0_get_angle>:
+00001072 <pwm_servo_t0_get_angle>:
 /* GET ANGLE                            */
 
 uint8_t pwm_servo_t0_get_angle(const servo_t0_t *servo)
 {
     return servo->current_angle;
 }
-    1004:	fc 01       	movw	r30, r24
-    1006:	81 81       	ldd	r24, Z+1	; 0x01
-    1008:	08 95       	ret
+    1072:	fc 01       	movw	r30, r24
+    1074:	81 81       	ldd	r24, Z+1	; 0x01
+    1076:	08 95       	ret
 
-0000100a <timer2_hw_init>:
+00001078 <timer2_hw_init>:
 /* GET                                  */
 
 uint16_t pwm_servo_t2_get_us(const servo_t2_t *servo)
 {
     return servo->current_pulse_us;
 }
-    100a:	a0 eb       	ldi	r26, 0xB0	; 176
-    100c:	b0 e0       	ldi	r27, 0x00	; 0
-    100e:	1c 92       	st	X, r1
-    1010:	e1 eb       	ldi	r30, 0xB1	; 177
-    1012:	f0 e0       	ldi	r31, 0x00	; 0
-    1014:	10 82       	st	Z, r1
-    1016:	8c 91       	ld	r24, X
-    1018:	83 60       	ori	r24, 0x03	; 3
-    101a:	8c 93       	st	X, r24
-    101c:	80 81       	ld	r24, Z
-    101e:	88 60       	ori	r24, 0x08	; 8
-    1020:	80 83       	st	Z, r24
-    1022:	8c 91       	ld	r24, X
-    1024:	80 62       	ori	r24, 0x20	; 32
-    1026:	8c 93       	st	X, r24
-    1028:	80 81       	ld	r24, Z
-    102a:	87 60       	ori	r24, 0x07	; 7
-    102c:	80 83       	st	Z, r24
-    102e:	8f ef       	ldi	r24, 0xFF	; 255
-    1030:	80 93 b3 00 	sts	0x00B3, r24	; 0x8000b3 <__TEXT_REGION_LENGTH__+0x7f80b3>
-    1034:	8a b1       	in	r24, 0x0a	; 10
-    1036:	88 60       	ori	r24, 0x08	; 8
-    1038:	8a b9       	out	0x0a, r24	; 10
-    103a:	08 95       	ret
-
-0000103c <pwm_servo_t2_set_us>:
-    103c:	64 3f       	cpi	r22, 0xF4	; 244
-    103e:	21 e0       	ldi	r18, 0x01	; 1
-    1040:	72 07       	cpc	r23, r18
-    1042:	10 f4       	brcc	.+4      	; 0x1048 <pwm_servo_t2_set_us+0xc>
-    1044:	64 ef       	ldi	r22, 0xF4	; 244
-    1046:	71 e0       	ldi	r23, 0x01	; 1
-    1048:	61 36       	cpi	r22, 0x61	; 97
-    104a:	e9 e0       	ldi	r30, 0x09	; 9
-    104c:	7e 07       	cpc	r23, r30
-    104e:	10 f0       	brcs	.+4      	; 0x1054 <pwm_servo_t2_set_us+0x18>
-    1050:	60 e6       	ldi	r22, 0x60	; 96
-    1052:	79 e0       	ldi	r23, 0x09	; 9
-    1054:	fc 01       	movw	r30, r24
-    1056:	71 83       	std	Z+1, r23	; 0x01
-    1058:	60 83       	st	Z, r22
-    105a:	00 24       	eor	r0, r0
-    105c:	66 0f       	add	r22, r22
-    105e:	77 1f       	adc	r23, r23
-    1060:	00 1c       	adc	r0, r0
-    1062:	66 0f       	add	r22, r22
-    1064:	77 1f       	adc	r23, r23
-    1066:	00 1c       	adc	r0, r0
-    1068:	67 2f       	mov	r22, r23
-    106a:	70 2d       	mov	r23, r0
-    106c:	60 93 b4 00 	sts	0x00B4, r22	; 0x8000b4 <__TEXT_REGION_LENGTH__+0x7f80b4>
-    1070:	08 95       	ret
-
-00001072 <pwm_servo_t2_set_angle>:
-    1072:	cf 93       	push	r28
-    1074:	df 93       	push	r29
-    1076:	ec 01       	movw	r28, r24
-    1078:	65 3b       	cpi	r22, 0xB5	; 181
-    107a:	08 f0       	brcs	.+2      	; 0x107e <pwm_servo_t2_set_angle+0xc>
-    107c:	64 eb       	ldi	r22, 0xB4	; 180
-    107e:	6a 83       	std	Y+2, r22	; 0x02
-    1080:	26 2f       	mov	r18, r22
-    1082:	30 e0       	ldi	r19, 0x00	; 0
-    1084:	ac e6       	ldi	r26, 0x6C	; 108
-    1086:	b7 e0       	ldi	r27, 0x07	; 7
-    1088:	0e 94 e1 08 	call	0x11c2	; 0x11c2 <__umulhisi3>
-    108c:	24 eb       	ldi	r18, 0xB4	; 180
-    108e:	30 e0       	ldi	r19, 0x00	; 0
-    1090:	40 e0       	ldi	r20, 0x00	; 0
-    1092:	50 e0       	ldi	r21, 0x00	; 0
-    1094:	0e 94 a0 08 	call	0x1140	; 0x1140 <__udivmodsi4>
-    1098:	b9 01       	movw	r22, r18
-    109a:	6c 50       	subi	r22, 0x0C	; 12
-    109c:	7e 4f       	sbci	r23, 0xFE	; 254
-    109e:	ce 01       	movw	r24, r28
-    10a0:	0e 94 1e 08 	call	0x103c	; 0x103c <pwm_servo_t2_set_us>
-    10a4:	df 91       	pop	r29
-    10a6:	cf 91       	pop	r28
+    1078:	a0 eb       	ldi	r26, 0xB0	; 176
+    107a:	b0 e0       	ldi	r27, 0x00	; 0
+    107c:	1c 92       	st	X, r1
+    107e:	e1 eb       	ldi	r30, 0xB1	; 177
+    1080:	f0 e0       	ldi	r31, 0x00	; 0
+    1082:	10 82       	st	Z, r1
+    1084:	8c 91       	ld	r24, X
+    1086:	83 60       	ori	r24, 0x03	; 3
+    1088:	8c 93       	st	X, r24
+    108a:	80 81       	ld	r24, Z
+    108c:	88 60       	ori	r24, 0x08	; 8
+    108e:	80 83       	st	Z, r24
+    1090:	8c 91       	ld	r24, X
+    1092:	80 62       	ori	r24, 0x20	; 32
+    1094:	8c 93       	st	X, r24
+    1096:	80 81       	ld	r24, Z
+    1098:	87 60       	ori	r24, 0x07	; 7
+    109a:	80 83       	st	Z, r24
+    109c:	8f ef       	ldi	r24, 0xFF	; 255
+    109e:	80 93 b3 00 	sts	0x00B3, r24	; 0x8000b3 <__TEXT_REGION_LENGTH__+0x7f80b3>
+    10a2:	8a b1       	in	r24, 0x0a	; 10
+    10a4:	88 60       	ori	r24, 0x08	; 8
+    10a6:	8a b9       	out	0x0a, r24	; 10
     10a8:	08 95       	ret
 
-000010aa <pwm_servo_t2_init_at>:
-    10aa:	1f 93       	push	r17
-    10ac:	cf 93       	push	r28
-    10ae:	df 93       	push	r29
-    10b0:	ec 01       	movw	r28, r24
-    10b2:	16 2f       	mov	r17, r22
-    10b4:	0e 94 05 08 	call	0x100a	; 0x100a <timer2_hw_init>
-    10b8:	61 2f       	mov	r22, r17
-    10ba:	ce 01       	movw	r24, r28
-    10bc:	0e 94 39 08 	call	0x1072	; 0x1072 <pwm_servo_t2_set_angle>
-    10c0:	df 91       	pop	r29
-    10c2:	cf 91       	pop	r28
-    10c4:	1f 91       	pop	r17
-    10c6:	08 95       	ret
+000010aa <pwm_servo_t2_set_us>:
+    10aa:	64 3f       	cpi	r22, 0xF4	; 244
+    10ac:	21 e0       	ldi	r18, 0x01	; 1
+    10ae:	72 07       	cpc	r23, r18
+    10b0:	10 f4       	brcc	.+4      	; 0x10b6 <pwm_servo_t2_set_us+0xc>
+    10b2:	64 ef       	ldi	r22, 0xF4	; 244
+    10b4:	71 e0       	ldi	r23, 0x01	; 1
+    10b6:	61 36       	cpi	r22, 0x61	; 97
+    10b8:	e9 e0       	ldi	r30, 0x09	; 9
+    10ba:	7e 07       	cpc	r23, r30
+    10bc:	10 f0       	brcs	.+4      	; 0x10c2 <pwm_servo_t2_set_us+0x18>
+    10be:	60 e6       	ldi	r22, 0x60	; 96
+    10c0:	79 e0       	ldi	r23, 0x09	; 9
+    10c2:	fc 01       	movw	r30, r24
+    10c4:	71 83       	std	Z+1, r23	; 0x01
+    10c6:	60 83       	st	Z, r22
+    10c8:	00 24       	eor	r0, r0
+    10ca:	66 0f       	add	r22, r22
+    10cc:	77 1f       	adc	r23, r23
+    10ce:	00 1c       	adc	r0, r0
+    10d0:	66 0f       	add	r22, r22
+    10d2:	77 1f       	adc	r23, r23
+    10d4:	00 1c       	adc	r0, r0
+    10d6:	67 2f       	mov	r22, r23
+    10d8:	70 2d       	mov	r23, r0
+    10da:	60 93 b4 00 	sts	0x00B4, r22	; 0x8000b4 <__TEXT_REGION_LENGTH__+0x7f80b4>
+    10de:	08 95       	ret
 
-000010c8 <pwm_servo_t2_get_angle>:
+000010e0 <pwm_servo_t2_set_angle>:
+    10e0:	cf 93       	push	r28
+    10e2:	df 93       	push	r29
+    10e4:	ec 01       	movw	r28, r24
+    10e6:	65 3b       	cpi	r22, 0xB5	; 181
+    10e8:	08 f0       	brcs	.+2      	; 0x10ec <pwm_servo_t2_set_angle+0xc>
+    10ea:	64 eb       	ldi	r22, 0xB4	; 180
+    10ec:	6a 83       	std	Y+2, r22	; 0x02
+    10ee:	26 2f       	mov	r18, r22
+    10f0:	30 e0       	ldi	r19, 0x00	; 0
+    10f2:	ac e6       	ldi	r26, 0x6C	; 108
+    10f4:	b7 e0       	ldi	r27, 0x07	; 7
+    10f6:	0e 94 18 09 	call	0x1230	; 0x1230 <__umulhisi3>
+    10fa:	24 eb       	ldi	r18, 0xB4	; 180
+    10fc:	30 e0       	ldi	r19, 0x00	; 0
+    10fe:	40 e0       	ldi	r20, 0x00	; 0
+    1100:	50 e0       	ldi	r21, 0x00	; 0
+    1102:	0e 94 d7 08 	call	0x11ae	; 0x11ae <__udivmodsi4>
+    1106:	b9 01       	movw	r22, r18
+    1108:	6c 50       	subi	r22, 0x0C	; 12
+    110a:	7e 4f       	sbci	r23, 0xFE	; 254
+    110c:	ce 01       	movw	r24, r28
+    110e:	0e 94 55 08 	call	0x10aa	; 0x10aa <pwm_servo_t2_set_us>
+    1112:	df 91       	pop	r29
+    1114:	cf 91       	pop	r28
+    1116:	08 95       	ret
+
+00001118 <pwm_servo_t2_init_at>:
+    1118:	1f 93       	push	r17
+    111a:	cf 93       	push	r28
+    111c:	df 93       	push	r29
+    111e:	ec 01       	movw	r28, r24
+    1120:	16 2f       	mov	r17, r22
+    1122:	0e 94 3c 08 	call	0x1078	; 0x1078 <timer2_hw_init>
+    1126:	61 2f       	mov	r22, r17
+    1128:	ce 01       	movw	r24, r28
+    112a:	0e 94 70 08 	call	0x10e0	; 0x10e0 <pwm_servo_t2_set_angle>
+    112e:	df 91       	pop	r29
+    1130:	cf 91       	pop	r28
+    1132:	1f 91       	pop	r17
+    1134:	08 95       	ret
+
+00001136 <pwm_servo_t2_get_angle>:
 
 uint8_t pwm_servo_t2_get_angle(const servo_t2_t *servo)
 {
     return servo->current_angle;
 }
-    10c8:	fc 01       	movw	r30, r24
-    10ca:	82 81       	ldd	r24, Z+2	; 0x02
-    10cc:	08 95       	ret
+    1136:	fc 01       	movw	r30, r24
+    1138:	82 81       	ldd	r24, Z+2	; 0x02
+    113a:	08 95       	ret
 
-000010ce <initUART>:
+0000113c <initUART>:
 #include <avr/interrupt.h>
 
 void initUART(void)
 {
 	// Configurar pines RX y TX
 	DDRD &= ~(1<<DDD0);
-    10ce:	8a b1       	in	r24, 0x0a	; 10
-    10d0:	8e 7f       	andi	r24, 0xFE	; 254
-    10d2:	8a b9       	out	0x0a, r24	; 10
+    113c:	8a b1       	in	r24, 0x0a	; 10
+    113e:	8e 7f       	andi	r24, 0xFE	; 254
+    1140:	8a b9       	out	0x0a, r24	; 10
 	DDRD |=	 (1<<DDD1);
-    10d4:	8a b1       	in	r24, 0x0a	; 10
-    10d6:	82 60       	ori	r24, 0x02	; 2
-    10d8:	8a b9       	out	0x0a, r24	; 10
+    1142:	8a b1       	in	r24, 0x0a	; 10
+    1144:	82 60       	ori	r24, 0x02	; 2
+    1146:	8a b9       	out	0x0a, r24	; 10
 	
 	UCSR0A = 0;
-    10da:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+    1148:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
 	// Habilitando interrupciones, habilitando RX y TX del UART0
 	UCSR0B = (1<<RXCIE0) | (1<<RXEN0) | (1<<TXEN0);
-    10de:	88 e9       	ldi	r24, 0x98	; 152
-    10e0:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    114c:	88 e9       	ldi	r24, 0x98	; 152
+    114e:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
 	// Async, Paridad deshabilitada, 1 stop bit, 8 data bits
 	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
-    10e4:	86 e0       	ldi	r24, 0x06	; 6
-    10e6:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+    1152:	86 e0       	ldi	r24, 0x06	; 6
+    1154:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
 	// Setear UBRR0 = 103
 	UBRR0 = 103;
-    10ea:	87 e6       	ldi	r24, 0x67	; 103
-    10ec:	90 e0       	ldi	r25, 0x00	; 0
-    10ee:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
-    10f2:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
-    10f6:	08 95       	ret
+    1158:	87 e6       	ldi	r24, 0x67	; 103
+    115a:	90 e0       	ldi	r25, 0x00	; 0
+    115c:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+    1160:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+    1164:	08 95       	ret
 
-000010f8 <writeChar>:
+00001166 <writeChar>:
 }
 
 void writeChar(char caracter)
 {
 	while (!(UCSR0A & (1<<UDRE0)));
-    10f8:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
-    10fc:	95 ff       	sbrs	r25, 5
-    10fe:	fc cf       	rjmp	.-8      	; 0x10f8 <writeChar>
+    1166:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+    116a:	95 ff       	sbrs	r25, 5
+    116c:	fc cf       	rjmp	.-8      	; 0x1166 <writeChar>
 	UDR0 = caracter;
-    1100:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
-    1104:	08 95       	ret
+    116e:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+    1172:	08 95       	ret
 
-00001106 <writeString>:
+00001174 <writeString>:
 }
 
 void writeString(char* string)
 {
-    1106:	cf 93       	push	r28
-    1108:	df 93       	push	r29
-    110a:	ec 01       	movw	r28, r24
+    1174:	cf 93       	push	r28
+    1176:	df 93       	push	r29
+    1178:	ec 01       	movw	r28, r24
 	while (*string != '\0')
-    110c:	03 c0       	rjmp	.+6      	; 0x1114 <writeString+0xe>
+    117a:	03 c0       	rjmp	.+6      	; 0x1182 <writeString+0xe>
 	{
 		writeChar(*string);
-    110e:	0e 94 7c 08 	call	0x10f8	; 0x10f8 <writeChar>
+    117c:	0e 94 b3 08 	call	0x1166	; 0x1166 <writeChar>
 		string++;
-    1112:	21 96       	adiw	r28, 0x01	; 1
+    1180:	21 96       	adiw	r28, 0x01	; 1
 	UDR0 = caracter;
 }
 
 void writeString(char* string)
 {
 	while (*string != '\0')
-    1114:	88 81       	ld	r24, Y
-    1116:	81 11       	cpse	r24, r1
-    1118:	fa cf       	rjmp	.-12     	; 0x110e <writeString+0x8>
+    1182:	88 81       	ld	r24, Y
+    1184:	81 11       	cpse	r24, r1
+    1186:	fa cf       	rjmp	.-12     	; 0x117c <writeString+0x8>
 	{
 		writeChar(*string);
 		string++;
 	}
-    111a:	df 91       	pop	r29
-    111c:	cf 91       	pop	r28
-    111e:	08 95       	ret
+    1188:	df 91       	pop	r29
+    118a:	cf 91       	pop	r28
+    118c:	08 95       	ret
 
-00001120 <__mulsi3>:
-    1120:	db 01       	movw	r26, r22
-    1122:	8f 93       	push	r24
-    1124:	9f 93       	push	r25
-    1126:	0e 94 f0 08 	call	0x11e0	; 0x11e0 <__muluhisi3>
-    112a:	bf 91       	pop	r27
-    112c:	af 91       	pop	r26
-    112e:	a2 9f       	mul	r26, r18
-    1130:	80 0d       	add	r24, r0
-    1132:	91 1d       	adc	r25, r1
-    1134:	a3 9f       	mul	r26, r19
-    1136:	90 0d       	add	r25, r0
-    1138:	b2 9f       	mul	r27, r18
-    113a:	90 0d       	add	r25, r0
-    113c:	11 24       	eor	r1, r1
-    113e:	08 95       	ret
+0000118e <__mulsi3>:
+    118e:	db 01       	movw	r26, r22
+    1190:	8f 93       	push	r24
+    1192:	9f 93       	push	r25
+    1194:	0e 94 27 09 	call	0x124e	; 0x124e <__muluhisi3>
+    1198:	bf 91       	pop	r27
+    119a:	af 91       	pop	r26
+    119c:	a2 9f       	mul	r26, r18
+    119e:	80 0d       	add	r24, r0
+    11a0:	91 1d       	adc	r25, r1
+    11a2:	a3 9f       	mul	r26, r19
+    11a4:	90 0d       	add	r25, r0
+    11a6:	b2 9f       	mul	r27, r18
+    11a8:	90 0d       	add	r25, r0
+    11aa:	11 24       	eor	r1, r1
+    11ac:	08 95       	ret
 
-00001140 <__udivmodsi4>:
-    1140:	a1 e2       	ldi	r26, 0x21	; 33
-    1142:	1a 2e       	mov	r1, r26
-    1144:	aa 1b       	sub	r26, r26
-    1146:	bb 1b       	sub	r27, r27
-    1148:	fd 01       	movw	r30, r26
-    114a:	0d c0       	rjmp	.+26     	; 0x1166 <__udivmodsi4_ep>
+000011ae <__udivmodsi4>:
+    11ae:	a1 e2       	ldi	r26, 0x21	; 33
+    11b0:	1a 2e       	mov	r1, r26
+    11b2:	aa 1b       	sub	r26, r26
+    11b4:	bb 1b       	sub	r27, r27
+    11b6:	fd 01       	movw	r30, r26
+    11b8:	0d c0       	rjmp	.+26     	; 0x11d4 <__udivmodsi4_ep>
 
-0000114c <__udivmodsi4_loop>:
-    114c:	aa 1f       	adc	r26, r26
-    114e:	bb 1f       	adc	r27, r27
-    1150:	ee 1f       	adc	r30, r30
-    1152:	ff 1f       	adc	r31, r31
-    1154:	a2 17       	cp	r26, r18
-    1156:	b3 07       	cpc	r27, r19
-    1158:	e4 07       	cpc	r30, r20
-    115a:	f5 07       	cpc	r31, r21
-    115c:	20 f0       	brcs	.+8      	; 0x1166 <__udivmodsi4_ep>
-    115e:	a2 1b       	sub	r26, r18
-    1160:	b3 0b       	sbc	r27, r19
-    1162:	e4 0b       	sbc	r30, r20
-    1164:	f5 0b       	sbc	r31, r21
+000011ba <__udivmodsi4_loop>:
+    11ba:	aa 1f       	adc	r26, r26
+    11bc:	bb 1f       	adc	r27, r27
+    11be:	ee 1f       	adc	r30, r30
+    11c0:	ff 1f       	adc	r31, r31
+    11c2:	a2 17       	cp	r26, r18
+    11c4:	b3 07       	cpc	r27, r19
+    11c6:	e4 07       	cpc	r30, r20
+    11c8:	f5 07       	cpc	r31, r21
+    11ca:	20 f0       	brcs	.+8      	; 0x11d4 <__udivmodsi4_ep>
+    11cc:	a2 1b       	sub	r26, r18
+    11ce:	b3 0b       	sbc	r27, r19
+    11d0:	e4 0b       	sbc	r30, r20
+    11d2:	f5 0b       	sbc	r31, r21
 
-00001166 <__udivmodsi4_ep>:
-    1166:	66 1f       	adc	r22, r22
-    1168:	77 1f       	adc	r23, r23
-    116a:	88 1f       	adc	r24, r24
-    116c:	99 1f       	adc	r25, r25
-    116e:	1a 94       	dec	r1
-    1170:	69 f7       	brne	.-38     	; 0x114c <__udivmodsi4_loop>
-    1172:	60 95       	com	r22
-    1174:	70 95       	com	r23
-    1176:	80 95       	com	r24
-    1178:	90 95       	com	r25
-    117a:	9b 01       	movw	r18, r22
-    117c:	ac 01       	movw	r20, r24
-    117e:	bd 01       	movw	r22, r26
-    1180:	cf 01       	movw	r24, r30
-    1182:	08 95       	ret
+000011d4 <__udivmodsi4_ep>:
+    11d4:	66 1f       	adc	r22, r22
+    11d6:	77 1f       	adc	r23, r23
+    11d8:	88 1f       	adc	r24, r24
+    11da:	99 1f       	adc	r25, r25
+    11dc:	1a 94       	dec	r1
+    11de:	69 f7       	brne	.-38     	; 0x11ba <__udivmodsi4_loop>
+    11e0:	60 95       	com	r22
+    11e2:	70 95       	com	r23
+    11e4:	80 95       	com	r24
+    11e6:	90 95       	com	r25
+    11e8:	9b 01       	movw	r18, r22
+    11ea:	ac 01       	movw	r20, r24
+    11ec:	bd 01       	movw	r22, r26
+    11ee:	cf 01       	movw	r24, r30
+    11f0:	08 95       	ret
 
-00001184 <__divmodsi4>:
-    1184:	05 2e       	mov	r0, r21
-    1186:	97 fb       	bst	r25, 7
-    1188:	1e f4       	brtc	.+6      	; 0x1190 <__divmodsi4+0xc>
-    118a:	00 94       	com	r0
-    118c:	0e 94 d9 08 	call	0x11b2	; 0x11b2 <__negsi2>
-    1190:	57 fd       	sbrc	r21, 7
-    1192:	07 d0       	rcall	.+14     	; 0x11a2 <__divmodsi4_neg2>
-    1194:	0e 94 a0 08 	call	0x1140	; 0x1140 <__udivmodsi4>
-    1198:	07 fc       	sbrc	r0, 7
-    119a:	03 d0       	rcall	.+6      	; 0x11a2 <__divmodsi4_neg2>
-    119c:	4e f4       	brtc	.+18     	; 0x11b0 <__divmodsi4_exit>
-    119e:	0c 94 d9 08 	jmp	0x11b2	; 0x11b2 <__negsi2>
+000011f2 <__divmodsi4>:
+    11f2:	05 2e       	mov	r0, r21
+    11f4:	97 fb       	bst	r25, 7
+    11f6:	1e f4       	brtc	.+6      	; 0x11fe <__divmodsi4+0xc>
+    11f8:	00 94       	com	r0
+    11fa:	0e 94 10 09 	call	0x1220	; 0x1220 <__negsi2>
+    11fe:	57 fd       	sbrc	r21, 7
+    1200:	07 d0       	rcall	.+14     	; 0x1210 <__divmodsi4_neg2>
+    1202:	0e 94 d7 08 	call	0x11ae	; 0x11ae <__udivmodsi4>
+    1206:	07 fc       	sbrc	r0, 7
+    1208:	03 d0       	rcall	.+6      	; 0x1210 <__divmodsi4_neg2>
+    120a:	4e f4       	brtc	.+18     	; 0x121e <__divmodsi4_exit>
+    120c:	0c 94 10 09 	jmp	0x1220	; 0x1220 <__negsi2>
 
-000011a2 <__divmodsi4_neg2>:
-    11a2:	50 95       	com	r21
-    11a4:	40 95       	com	r20
-    11a6:	30 95       	com	r19
-    11a8:	21 95       	neg	r18
-    11aa:	3f 4f       	sbci	r19, 0xFF	; 255
-    11ac:	4f 4f       	sbci	r20, 0xFF	; 255
-    11ae:	5f 4f       	sbci	r21, 0xFF	; 255
+00001210 <__divmodsi4_neg2>:
+    1210:	50 95       	com	r21
+    1212:	40 95       	com	r20
+    1214:	30 95       	com	r19
+    1216:	21 95       	neg	r18
+    1218:	3f 4f       	sbci	r19, 0xFF	; 255
+    121a:	4f 4f       	sbci	r20, 0xFF	; 255
+    121c:	5f 4f       	sbci	r21, 0xFF	; 255
 
-000011b0 <__divmodsi4_exit>:
-    11b0:	08 95       	ret
+0000121e <__divmodsi4_exit>:
+    121e:	08 95       	ret
 
-000011b2 <__negsi2>:
-    11b2:	90 95       	com	r25
-    11b4:	80 95       	com	r24
-    11b6:	70 95       	com	r23
-    11b8:	61 95       	neg	r22
-    11ba:	7f 4f       	sbci	r23, 0xFF	; 255
-    11bc:	8f 4f       	sbci	r24, 0xFF	; 255
-    11be:	9f 4f       	sbci	r25, 0xFF	; 255
-    11c0:	08 95       	ret
+00001220 <__negsi2>:
+    1220:	90 95       	com	r25
+    1222:	80 95       	com	r24
+    1224:	70 95       	com	r23
+    1226:	61 95       	neg	r22
+    1228:	7f 4f       	sbci	r23, 0xFF	; 255
+    122a:	8f 4f       	sbci	r24, 0xFF	; 255
+    122c:	9f 4f       	sbci	r25, 0xFF	; 255
+    122e:	08 95       	ret
 
-000011c2 <__umulhisi3>:
-    11c2:	a2 9f       	mul	r26, r18
-    11c4:	b0 01       	movw	r22, r0
-    11c6:	b3 9f       	mul	r27, r19
-    11c8:	c0 01       	movw	r24, r0
-    11ca:	a3 9f       	mul	r26, r19
-    11cc:	70 0d       	add	r23, r0
-    11ce:	81 1d       	adc	r24, r1
-    11d0:	11 24       	eor	r1, r1
-    11d2:	91 1d       	adc	r25, r1
-    11d4:	b2 9f       	mul	r27, r18
-    11d6:	70 0d       	add	r23, r0
-    11d8:	81 1d       	adc	r24, r1
-    11da:	11 24       	eor	r1, r1
-    11dc:	91 1d       	adc	r25, r1
-    11de:	08 95       	ret
+00001230 <__umulhisi3>:
+    1230:	a2 9f       	mul	r26, r18
+    1232:	b0 01       	movw	r22, r0
+    1234:	b3 9f       	mul	r27, r19
+    1236:	c0 01       	movw	r24, r0
+    1238:	a3 9f       	mul	r26, r19
+    123a:	70 0d       	add	r23, r0
+    123c:	81 1d       	adc	r24, r1
+    123e:	11 24       	eor	r1, r1
+    1240:	91 1d       	adc	r25, r1
+    1242:	b2 9f       	mul	r27, r18
+    1244:	70 0d       	add	r23, r0
+    1246:	81 1d       	adc	r24, r1
+    1248:	11 24       	eor	r1, r1
+    124a:	91 1d       	adc	r25, r1
+    124c:	08 95       	ret
 
-000011e0 <__muluhisi3>:
-    11e0:	0e 94 e1 08 	call	0x11c2	; 0x11c2 <__umulhisi3>
-    11e4:	a5 9f       	mul	r26, r21
-    11e6:	90 0d       	add	r25, r0
-    11e8:	b4 9f       	mul	r27, r20
-    11ea:	90 0d       	add	r25, r0
-    11ec:	a4 9f       	mul	r26, r20
-    11ee:	80 0d       	add	r24, r0
-    11f0:	91 1d       	adc	r25, r1
-    11f2:	11 24       	eor	r1, r1
-    11f4:	08 95       	ret
+0000124e <__muluhisi3>:
+    124e:	0e 94 18 09 	call	0x1230	; 0x1230 <__umulhisi3>
+    1252:	a5 9f       	mul	r26, r21
+    1254:	90 0d       	add	r25, r0
+    1256:	b4 9f       	mul	r27, r20
+    1258:	90 0d       	add	r25, r0
+    125a:	a4 9f       	mul	r26, r20
+    125c:	80 0d       	add	r24, r0
+    125e:	91 1d       	adc	r25, r1
+    1260:	11 24       	eor	r1, r1
+    1262:	08 95       	ret
 
-000011f6 <atoi>:
-    11f6:	fc 01       	movw	r30, r24
-    11f8:	88 27       	eor	r24, r24
-    11fa:	99 27       	eor	r25, r25
-    11fc:	e8 94       	clt
-    11fe:	21 91       	ld	r18, Z+
-    1200:	20 32       	cpi	r18, 0x20	; 32
-    1202:	e9 f3       	breq	.-6      	; 0x11fe <atoi+0x8>
-    1204:	29 30       	cpi	r18, 0x09	; 9
-    1206:	10 f0       	brcs	.+4      	; 0x120c <atoi+0x16>
-    1208:	2e 30       	cpi	r18, 0x0E	; 14
-    120a:	c8 f3       	brcs	.-14     	; 0x11fe <atoi+0x8>
-    120c:	2b 32       	cpi	r18, 0x2B	; 43
-    120e:	41 f0       	breq	.+16     	; 0x1220 <atoi+0x2a>
-    1210:	2d 32       	cpi	r18, 0x2D	; 45
-    1212:	39 f4       	brne	.+14     	; 0x1222 <atoi+0x2c>
-    1214:	68 94       	set
-    1216:	04 c0       	rjmp	.+8      	; 0x1220 <atoi+0x2a>
-    1218:	0e 94 2d 09 	call	0x125a	; 0x125a <__mulhi_const_10>
-    121c:	82 0f       	add	r24, r18
-    121e:	91 1d       	adc	r25, r1
-    1220:	21 91       	ld	r18, Z+
-    1222:	20 53       	subi	r18, 0x30	; 48
-    1224:	2a 30       	cpi	r18, 0x0A	; 10
-    1226:	c0 f3       	brcs	.-16     	; 0x1218 <atoi+0x22>
-    1228:	1e f4       	brtc	.+6      	; 0x1230 <atoi+0x3a>
-    122a:	90 95       	com	r25
-    122c:	81 95       	neg	r24
-    122e:	9f 4f       	sbci	r25, 0xFF	; 255
-    1230:	08 95       	ret
+00001264 <atoi>:
+    1264:	fc 01       	movw	r30, r24
+    1266:	88 27       	eor	r24, r24
+    1268:	99 27       	eor	r25, r25
+    126a:	e8 94       	clt
+    126c:	21 91       	ld	r18, Z+
+    126e:	20 32       	cpi	r18, 0x20	; 32
+    1270:	e9 f3       	breq	.-6      	; 0x126c <atoi+0x8>
+    1272:	29 30       	cpi	r18, 0x09	; 9
+    1274:	10 f0       	brcs	.+4      	; 0x127a <atoi+0x16>
+    1276:	2e 30       	cpi	r18, 0x0E	; 14
+    1278:	c8 f3       	brcs	.-14     	; 0x126c <atoi+0x8>
+    127a:	2b 32       	cpi	r18, 0x2B	; 43
+    127c:	41 f0       	breq	.+16     	; 0x128e <atoi+0x2a>
+    127e:	2d 32       	cpi	r18, 0x2D	; 45
+    1280:	39 f4       	brne	.+14     	; 0x1290 <atoi+0x2c>
+    1282:	68 94       	set
+    1284:	04 c0       	rjmp	.+8      	; 0x128e <atoi+0x2a>
+    1286:	0e 94 64 09 	call	0x12c8	; 0x12c8 <__mulhi_const_10>
+    128a:	82 0f       	add	r24, r18
+    128c:	91 1d       	adc	r25, r1
+    128e:	21 91       	ld	r18, Z+
+    1290:	20 53       	subi	r18, 0x30	; 48
+    1292:	2a 30       	cpi	r18, 0x0A	; 10
+    1294:	c0 f3       	brcs	.-16     	; 0x1286 <atoi+0x22>
+    1296:	1e f4       	brtc	.+6      	; 0x129e <atoi+0x3a>
+    1298:	90 95       	com	r25
+    129a:	81 95       	neg	r24
+    129c:	9f 4f       	sbci	r25, 0xFF	; 255
+    129e:	08 95       	ret
 
-00001232 <strchr>:
-    1232:	fc 01       	movw	r30, r24
-    1234:	81 91       	ld	r24, Z+
-    1236:	86 17       	cp	r24, r22
-    1238:	21 f0       	breq	.+8      	; 0x1242 <strchr+0x10>
-    123a:	88 23       	and	r24, r24
-    123c:	d9 f7       	brne	.-10     	; 0x1234 <strchr+0x2>
-    123e:	99 27       	eor	r25, r25
-    1240:	08 95       	ret
-    1242:	31 97       	sbiw	r30, 0x01	; 1
-    1244:	cf 01       	movw	r24, r30
-    1246:	08 95       	ret
+000012a0 <strchr>:
+    12a0:	fc 01       	movw	r30, r24
+    12a2:	81 91       	ld	r24, Z+
+    12a4:	86 17       	cp	r24, r22
+    12a6:	21 f0       	breq	.+8      	; 0x12b0 <strchr+0x10>
+    12a8:	88 23       	and	r24, r24
+    12aa:	d9 f7       	brne	.-10     	; 0x12a2 <strchr+0x2>
+    12ac:	99 27       	eor	r25, r25
+    12ae:	08 95       	ret
+    12b0:	31 97       	sbiw	r30, 0x01	; 1
+    12b2:	cf 01       	movw	r24, r30
+    12b4:	08 95       	ret
 
-00001248 <strcmp>:
-    1248:	fb 01       	movw	r30, r22
-    124a:	dc 01       	movw	r26, r24
-    124c:	8d 91       	ld	r24, X+
-    124e:	01 90       	ld	r0, Z+
-    1250:	80 19       	sub	r24, r0
-    1252:	01 10       	cpse	r0, r1
-    1254:	d9 f3       	breq	.-10     	; 0x124c <strcmp+0x4>
-    1256:	99 0b       	sbc	r25, r25
-    1258:	08 95       	ret
+000012b6 <strcmp>:
+    12b6:	fb 01       	movw	r30, r22
+    12b8:	dc 01       	movw	r26, r24
+    12ba:	8d 91       	ld	r24, X+
+    12bc:	01 90       	ld	r0, Z+
+    12be:	80 19       	sub	r24, r0
+    12c0:	01 10       	cpse	r0, r1
+    12c2:	d9 f3       	breq	.-10     	; 0x12ba <strcmp+0x4>
+    12c4:	99 0b       	sbc	r25, r25
+    12c6:	08 95       	ret
 
-0000125a <__mulhi_const_10>:
-    125a:	7a e0       	ldi	r23, 0x0A	; 10
-    125c:	97 9f       	mul	r25, r23
-    125e:	90 2d       	mov	r25, r0
-    1260:	87 9f       	mul	r24, r23
-    1262:	80 2d       	mov	r24, r0
-    1264:	91 0d       	add	r25, r1
-    1266:	11 24       	eor	r1, r1
-    1268:	08 95       	ret
+000012c8 <__mulhi_const_10>:
+    12c8:	7a e0       	ldi	r23, 0x0A	; 10
+    12ca:	97 9f       	mul	r25, r23
+    12cc:	90 2d       	mov	r25, r0
+    12ce:	87 9f       	mul	r24, r23
+    12d0:	80 2d       	mov	r24, r0
+    12d2:	91 0d       	add	r25, r1
+    12d4:	11 24       	eor	r1, r1
+    12d6:	08 95       	ret
 
-0000126a <_exit>:
-    126a:	f8 94       	cli
+000012d8 <_exit>:
+    12d8:	f8 94       	cli
 
-0000126c <__stop_program>:
-    126c:	ff cf       	rjmp	.-2      	; 0x126c <__stop_program>
+000012da <__stop_program>:
+    12da:	ff cf       	rjmp	.-2      	; 0x12da <__stop_program>
